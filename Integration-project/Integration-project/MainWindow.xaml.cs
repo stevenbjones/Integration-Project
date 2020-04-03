@@ -28,9 +28,10 @@ namespace Integration_project
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //C:\Users\steve\OneDrive\Documenten\TEST
-            StreamReader reader = new StreamReader(File.OpenRead(@"C:\Users\steve\OneDrive\Documenten\TEST\geg met klas.csv"));
+           //Open file reader 
+            StreamReader reader = new StreamReader(File.OpenRead(@"..\geg met klas.csv"));
 
+            //Maak variabelen voor de waarden
             List<string> Naam = new List<String>();
             List<string> Voornaam = new List<String>();
             List<string> Geboorte = new List<String>();
@@ -39,7 +40,7 @@ namespace Integration_project
             List<string> Nationaliteit = new List<String>();
             List<string> Module = new List<String>();
             List<string> Klas = new List<String>();
-            //string vara1, vara2, vara3, vara4;
+            
             while (!reader.EndOfStream)
             {
                 string line = reader.ReadLine();
@@ -58,6 +59,7 @@ namespace Integration_project
                 }
             }
 
+            //Voeg listen toe aan de listboxen
             lstbxNaam.ItemsSource = Naam;
             lstbxVoorNaam.ItemsSource = Voornaam;
             lstbxGeboorteDatum.ItemsSource = Geboorte;

@@ -28,15 +28,19 @@ namespace Integration_Project_2
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            StreamReader reader = new StreamReader(File.OpenRead(@"C:\Users\steve\OneDrive\Documenten\TEST\geg met klas.csv"));
+            StreamReader reader =  new StreamReader(File.OpenRead(@"..\geg met klas.csv"));
             List<Leerling> Leerlingen = new List<Leerling>();
+            
+            //Doorloop het bestand
             while (!reader.EndOfStream)
             {
                 string line = reader.ReadLine();
                 if (!String.IsNullOrWhiteSpace(line))
                 {
+                    //Values worden gescheiden met ;
                     string[] values = line.Split(';');
 
+                    //Voeg waarden toe aan lijst classe leerlingen
                     Leerlingen.Add(new Leerling
                     {
                         Naam = values[0],
@@ -52,6 +56,7 @@ namespace Integration_Project_2
                 }
             }
 
+            //Voeg lijst toe aan listbox
            foreach(Leerling l in Leerlingen)
             {
                 LstbxLeerlingen.Items.Add(l);
