@@ -1,0 +1,22 @@
+﻿<Window x:Class="Integration_project.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Integration_project"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <ListBox Name="lstbxNaam" Margin="10,27,625,276"/>
+        <ListBox Name="lstbxVoorNaam" Margin="208,27,427,276"/>
+        <ListBox Name="lstbxGeboorteDatum" Margin="400,27,235,276"/>
+        <ListBox Name="lstbxGeboorteJaar" Margin="612,27,23,276"/>
+        <ListBox Name="lstbxGeslacht" Margin="10,217,625,86"/>
+        <ListBox Name="lstbxNationaliteit" Margin="208,217,427,86"/>
+        <ListBox Name="lstbxModule" Margin="400,217,235,86"/>
+        <ListBox Name="lstbxKlas" Margin="612,217,23,86"/>
+
+
+
+    </Grid>
+</Window>
