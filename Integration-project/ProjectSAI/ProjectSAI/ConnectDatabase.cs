@@ -20,8 +20,8 @@ namespace ProjectSAI
         {
             string connString = ConfigurationManager.AppSettings["connString"];
             SqlConnection connection = new SqlConnection(connString); //connstring converte naar het juiste var type
-            //File.ReadAllText("DatabaseSQL.txt")
-            string txtDatabase = "create database testingdatabase";
+
+            string txtDatabase = File.ReadAllText("DatabaseSQL.txt");
            if (!CheckDatabaseExists(connection, "testingdatabase"))
                 {
                 CreateDatabase(txtDatabase, connection);
@@ -58,11 +58,14 @@ namespace ProjectSAI
         public static bool CreateDatabase(string txtDatabase, SqlConnection connection)
         {
 
-            SqlCommand command = new SqlCommand(txtDatabase, connection);
+            SqlCommand cmdCreateDatabase = new SqlCommand("Create Database dbStudentGegevens", connection);
+            SqlCommand cmdCreateTable = new SqlCommand(txtDatabase, connection);
+
             try
             {
                 connection.Open();
-                command.ExecuteNonQuery();
+                cmdCreateDatabase.ExecuteNonQuery();
+                cmdCreateTable.ExecuteNonQuery();
             }
             catch (System.Exception ex)
             {

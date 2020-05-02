@@ -1,122 +1,40 @@
-USE [master]
-GO
-/****** Object:  Database [dbStudentGegevens]    Script Date: 02-05-20 15:46:55 ******/
-CREATE DATABASE [dbStudentGegevens]
- CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'dbStudentGegevens', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\dbStudentGegevens.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
- LOG ON 
-( NAME = N'dbStudentGegevens_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\dbStudentGegevens_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
- WITH CATALOG_COLLATION = DATABASE_DEFAULT
-GO
-ALTER DATABASE [dbStudentGegevens] SET COMPATIBILITY_LEVEL = 150
-GO
-IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
-begin
-EXEC [dbStudentGegevens].[dbo].[sp_fulltext_database] @action = 'enable'
-end
-GO
-ALTER DATABASE [dbStudentGegevens] SET ANSI_NULL_DEFAULT OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET ANSI_NULLS OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET ANSI_PADDING OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET ANSI_WARNINGS OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET ARITHABORT OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET AUTO_CLOSE OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET AUTO_SHRINK OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET AUTO_UPDATE_STATISTICS ON 
-GO
-ALTER DATABASE [dbStudentGegevens] SET CURSOR_CLOSE_ON_COMMIT OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET CURSOR_DEFAULT  GLOBAL 
-GO
-ALTER DATABASE [dbStudentGegevens] SET CONCAT_NULL_YIELDS_NULL OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET NUMERIC_ROUNDABORT OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET QUOTED_IDENTIFIER OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET RECURSIVE_TRIGGERS OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET  DISABLE_BROKER 
-GO
-ALTER DATABASE [dbStudentGegevens] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET DATE_CORRELATION_OPTIMIZATION OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET TRUSTWORTHY OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET ALLOW_SNAPSHOT_ISOLATION OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET PARAMETERIZATION SIMPLE 
-GO
-ALTER DATABASE [dbStudentGegevens] SET READ_COMMITTED_SNAPSHOT OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET HONOR_BROKER_PRIORITY OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET RECOVERY FULL 
-GO
-ALTER DATABASE [dbStudentGegevens] SET  MULTI_USER 
-GO
-ALTER DATABASE [dbStudentGegevens] SET PAGE_VERIFY CHECKSUM  
-GO
-ALTER DATABASE [dbStudentGegevens] SET DB_CHAINING OFF 
-GO
-ALTER DATABASE [dbStudentGegevens] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
-GO
-ALTER DATABASE [dbStudentGegevens] SET TARGET_RECOVERY_TIME = 60 SECONDS 
-GO
-ALTER DATABASE [dbStudentGegevens] SET DELAYED_DURABILITY = DISABLED 
-GO
-EXEC sys.sp_db_vardecimal_storage_format N'dbStudentGegevens', N'ON'
-GO
-ALTER DATABASE [dbStudentGegevens] SET QUERY_STORE = OFF
-GO
 USE [dbStudentGegevens]
-GO
-/****** Object:  Table [dbo].[tblStudentGegevens]    Script Date: 02-05-20 15:46:57 ******/
+
+
+   
 SET ANSI_NULLS ON
-GO
+
+
 SET QUOTED_IDENTIFIER ON
-GO
+
+
 CREATE TABLE [dbo].[tblStudentGegevens](
-	[Stamnummer] [nvarchar](50) NULL,
-	[Geslacht] [nvarchar](50) NULL,
-	[Geboortedatum] [date] NULL,
-	[Nationaliteit] [nvarchar](50) NULL,
-	[Thuistaal] [nvarchar](50) NULL,
-	[Proeven verpleegkunde] [nvarchar](50) NULL,
-	[Hoogst behaald diploma] [nvarchar](50) NULL,
-	[Herkomst studenten] [nvarchar](200) NULL,
-	[Project SO-CVO] [nvarchar](50) NULL,
-	[Faciliteiten leermoeilijkheden/anderstaligen] [nvarchar](200) NULL,
-	[Diploma SO na CVO] [nvarchar](50) NULL,
-	[Reden stoppen] [nvarchar](100) NULL,
-	[VDAB] [nvarchar](50) NULL,
-	[School leren kennen] [nvarchar](100) NULL,
-	[Module] [nvarchar](200) NULL,
-	[Module attest] [nvarchar](50) NULL,
-	[Module begindatum] [date] NULL,
-	[Module einddatum] [date] NULL,
-	[Einddatum inschrijving] [date] NULL,
-	[Afdelingscode] [nvarchar](50) NULL,
-	[Klas] [nvarchar](50) NULL,
-	[Instellingnummber vorig schooljaar] [nvarchar](50) NULL,
-	[Attest Vorig schooljaar] [nvarchar](200) NULL,
-	[Verleende studiebewijzen 1ste zit] [nvarchar](200) NULL,
-	[Verleende studiebewijzen 1ste zit vorig schooljaar] [nvarchar](300) NULL,
-	[Klas vorig schooljaar] [nvarchar](50) NULL,
-	[Instellingnummer vorige inschrijving] [nvarchar](50) NULL,
-	[Attest vorige inschrijving] [nvarchar](100) NULL
+    [Stamnummer] [nvarchar](50) NULL,
+    [Geslacht] [nvarchar](50) NULL,
+    [Geboortedatum] [date] NULL,
+    [Nationaliteit] [nvarchar](50) NULL,
+    [Thuistaal] [nvarchar](50) NULL,
+    [Proeven verpleegkunde] [nvarchar](50) NULL,
+    [Hoogst behaald diploma] [nvarchar](50) NULL,
+    [Herkomst studenten] [nvarchar](200) NULL,
+    [Project SO-CVO] [nvarchar](50) NULL,
+    [Faciliteiten leermoeilijkheden/anderstaligen] [nvarchar](200) NULL,
+    [Diploma SO na CVO] [nvarchar](50) NULL,
+    [Reden stoppen] [nvarchar](100) NULL,
+    [VDAB] [nvarchar](50) NULL,
+    [School leren kennen] [nvarchar](100) NULL,
+    [Module] [nvarchar](200) NULL,
+    [Module attest] [nvarchar](50) NULL,
+    [Module begindatum] [date] NULL,
+    [Module einddatum] [date] NULL,
+    [Einddatum inschrijving] [date] NULL,
+    [Afdelingscode] [nvarchar](50) NULL,
+    [Klas] [nvarchar](50) NULL,
+    [Instellingnummber vorig schooljaar] [nvarchar](50) NULL,
+    [Attest Vorig schooljaar] [nvarchar](200) NULL,
+    [Verleende studiebewijzen 1ste zit] [nvarchar](200) NULL,
+    [Verleende studiebewijzen 1ste zit vorig schooljaar] [nvarchar](300) NULL,
+    [Klas vorig schooljaar] [nvarchar](50) NULL,
+    [Instellingnummer vorige inschrijving] [nvarchar](50) NULL,
+    [Attest vorige inschrijving] [nvarchar](100) NULL
 ) ON [PRIMARY]
-GO
-USE [master]
-GO
-ALTER DATABASE [dbStudentGegevens] SET  READ_WRITE 
-GO
