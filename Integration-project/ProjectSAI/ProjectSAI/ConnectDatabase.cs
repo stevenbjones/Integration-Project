@@ -1,33 +1,79 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ProjectSAI
 {
+
     class ConnectDatabase
     {
-        public static bool CheckDatabaseExists(string connString, string databaseName )
-        {
-            bool result = false;
+       
+        
 
-            SqlConnection sqlConnectionString = new SqlConnection(connString);
-            string sqlQuery = string.Format("SELECT database_id FROM sys.databases WHERE Name = '{0}'", databaseName);
-            using (SqlCommand sqlCmd = new SqlCommand(sqlQuery, sqlConnectionString))
-            {
-                sqlConnectionString.Open();
-                object resultObj = sqlCmd.ExecuteScalar();
-                int databaseID = 0;
-                if (resultObj != null)
+        public static void Test()
+        {
+            string connString = ConfigurationManager.AppSettings["connString"];
+            SqlConnection connection = new SqlConnection(connString); //connstring converte naar het juiste var type
+            //File.ReadAllText("DatabaseSQL.txt")
+            string txtDatabase = "create database testingdatabase";
+           if (!CheckDatabaseExists(connection, "testingdatabase"))
                 {
-                    int.TryParse(resultObj.ToString(), out databaseID);
+                CreateDatabase(txtDatabase, connection);
                 }
-                sqlConnectionString.Close();
-                result = (databaseID > 0);
+        }
+        public static bool CheckDatabaseExists(SqlConnection connection, string databaseName)
+        {
+            bool result = false; //var voor return waarde
+
+            try
+            {
+               
+                string sqlQuery = string.Format("SELECT database_id FROM sys.databases WHERE Name = '{0}'", databaseName); //query
+                using (SqlCommand sqlCmd = new SqlCommand(sqlQuery, connection)) //verbinding maken
+                {
+                    connection.Open();
+                    object resultObj = sqlCmd.ExecuteScalar();//resultaat ophalen en in een object steken
+                    int databaseID = 0;
+                    if (resultObj != null)
+                    {
+                        int.TryParse(resultObj.ToString(), out databaseID); //als hij iets heeft gevonden dat een int is steken we dit in databaseID
+                    }
+                    connection.Close();
+                    result = (databaseID > 0); //als de id niet 0 is bestaat de database al
+                }
             }
+            catch (Exception)
+            {
+                result = false;
+            }
+            return result;
         }
 
+        public static bool CreateDatabase(string txtDatabase, SqlConnection connection)
+        {
+
+            SqlCommand command = new SqlCommand(txtDatabase, connection);
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return false;
+            }
+            return true;
+        
+
+
+        }
 
     }
+}

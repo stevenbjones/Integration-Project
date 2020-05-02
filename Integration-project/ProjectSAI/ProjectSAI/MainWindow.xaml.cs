@@ -25,8 +25,10 @@ namespace ProjectSAI
             InitializeComponent();
 
 
+            ConnectDatabase.Test();
 
 
-
+        }
     }
+}
 
