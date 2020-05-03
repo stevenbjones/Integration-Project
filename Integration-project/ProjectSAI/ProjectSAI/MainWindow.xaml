@@ -9,6 +9,71 @@
     <Grid>
         <Rectangle Fill="Black" HorizontalAlignment="Stretch" Height="60" Stroke="Black" Margin="-10,127,10,738"/>
         <Image HorizontalAlignment="Left" Height="132" VerticalAlignment="Top"  Width="270" Source="SAILogo.png" Margin="1,1,0,0"/>
-        <DataGrid HorizontalAlignment="Left" Height="675" Margin="10,159,0,0" VerticalAlignment="Top" Width="910"/>
+        <DataGrid IsReadOnly="true" Name="dtgStudent" HorizontalAlignment="Left" Height="675" Margin="10,159,0,0" VerticalAlignment="Top" Width="910">
+            <!--<DataGrid.Columns>
+
+                <DataGridTextColumn Header="Stamnummer"   Width="100" Binding="{Binding Stamnummer}"/>
+
+                <DataGridTextColumn Header="Geslacht" Width="100" Binding="{Binding Geslacht}"/>
+
+                <DataGridTextColumn Header="Geboortedatum" Width="100" Binding="{Binding Geboortedatum}"/>
+
+                <DataGridTextColumn Header="Nationaliteit" Width="100" Binding="{Binding Nationaliteit}"/>
+
+                <DataGridTextColumn Header="Thuistaal" Width="100" Binding="{Binding Thuistaal}"/>
+
+                <DataGridTextColumn Header="Proeven verpleegkunde" Width="100" Binding="{Binding [Proeven verpleegkunde]}"/>
+
+                <DataGridTextColumn Header="Hoogst behaald diploma" Width="100" Binding="{Binding [Hoogst behaald diploma]}"/>
+
+                <DataGridTextColumn Header="Herkomst studenten" Width="100" Binding="{Binding [Herkomst studenten]}"/>
+
+                <DataGridTextColumn Header="Project SO-CVO" Width="100" Binding="{Binding [Project SO-CVO]}"/>
+
+                <DataGridTextColumn Header="Faciliteiten leermoeilijkheden/anderstaligen" Width="100" Binding="{Binding [Faciliteiten leermoeilijkheden/anderstaligen]}"/>
+
+                <DataGridTextColumn Header="Diploma SO na CVO" Width="100" Binding="{Binding [Diploma SO na CVO]}"/>
+
+                <DataGridTextColumn Header="Reden stoppen" Width="100" Binding="{Binding [Reden stoppen]}"/>
+
+                <DataGridTextColumn Header="Diploma SO na HBO" Width="100" Binding="{Binding [Diploma SO na HBO]}"/>
+
+                <DataGridTextColumn Header="VDAB" Width="100" Binding="{Binding VDAB}"/>
+
+                <DataGridTextColumn Header="School leren kennen" Width="100" Binding="{Binding [School leren kennen]}"/>
+
+                <DataGridTextColumn Header="Module" Width="100" Binding="{Binding Module}"/>
+
+                <DataGridTextColumn Header="Module attest" Width="100" Binding="{Binding [Module attest]}"/>
+
+                <DataGridTextColumn Header="Module begindatum" Width="100" Binding="{Binding [Module begindatum]}"/>
+
+                <DataGridTextColumn Header="Module einddatum" Width="100" Binding="{Binding [Module einddatum]}"/>
+
+                <DataGridTextColumn Header="Einddatum inschrijving" Width="100" Binding="{Binding [Einddatum inschrijving]}"/>
+
+                <DataGridTextColumn Header="Afdelingscode" Width="100" Binding="{Binding Afdelingscode}"/>
+
+                <DataGridTextColumn Header="Klas" Width="100" Binding="{Binding Klas}"/>
+
+                <DataGridTextColumn Header="Instellingsnummer vorig schooljaar" Width="100" Binding="{Binding [Instellingsnummer vorig schooljaar]}"/>
+
+                <DataGridTextColumn Header="Attest vorig schooljaar" Width="100" Binding="{Binding [Attest vorig schooljaar]}"/>
+
+                <DataGridTextColumn Header="Verleende studiebewijzen 1ste zit" Width="100" Binding="{Binding [Verleende studiebewijzen 1ste zit]}"/>
+
+                <DataGridTextColumn Header="Verleende studiebewijzen 1ste zit vorig schooljaar" Width="100" Binding="{Binding [Verleende studiebewijzen 1ste zit vorig schooljaar]}"/>
+
+                <DataGridTextColumn Header="Klas vorig schooljaar" Width="100" Binding="{Binding [Klas vorig schooljaar]}"/>
+
+                <DataGridTextColumn Header="Instellingnummer vorige inschrijving" Width="100" Binding="{Binding [Instellingnummer vorige inschrijving]}"/>
+
+                <DataGridTextColumn Header="Attest vorige inschrijving" Width="100" Binding="{Binding [Attest vorige inschrijving]}"/>
+
+              
+
+            </DataGrid.Columns>-->
+        </DataGrid>
+        <CheckBox Name="chkEditCells" Content="Cells bewerken" HorizontalAlignment="Left" Margin="940,819,0,0" VerticalAlignment="Top" Click="chkEditCells_Click" />
     </Grid>
 </Window>

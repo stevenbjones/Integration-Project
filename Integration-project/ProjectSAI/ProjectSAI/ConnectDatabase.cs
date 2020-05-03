@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -13,21 +14,24 @@ namespace ProjectSAI
 
     class ConnectDatabase
     {
-       
-        
+        public static string connString = ConfigurationManager.AppSettings["connStringMaster"];
+      public static  SqlConnection connection = new SqlConnection(connString); //connstring converte naar het juiste var type
 
-        public static void Test()
+
+        public static void CreateDatabaseIfNotExists()
         {
-            string connString = ConfigurationManager.AppSettings["connString"];
-            SqlConnection connection = new SqlConnection(connString); //connstring converte naar het juiste var type
+            
 
-            string txtDatabase = File.ReadAllText("DatabaseSQL.txt");
-           if (!CheckDatabaseExists(connection, "testingdatabase"))
+            string txtDatabase = File.ReadAllText("DatabaseSQL.txt"); //text file lezen en in var steken
+           if (!CheckDatabaseExists("dbStudentGegevens")) //check of dbStudentGegevens is angemaakt
                 {
-                CreateDatabase(txtDatabase, connection);
+                CreateDatabase(txtDatabase); //database maken dat in de textfile zit
                 }
+
+            connString = ConfigurationManager.AppSettings["connStringDB"];
+            connection = new SqlConnection(connString); //connstring converte naar het juiste var type
         }
-        public static bool CheckDatabaseExists(SqlConnection connection, string databaseName)
+        public static bool CheckDatabaseExists(string databaseName)
         {
             bool result = false; //var voor return waarde
 
@@ -55,9 +59,9 @@ namespace ProjectSAI
             return result;
         }
 
-        public static bool CreateDatabase(string txtDatabase, SqlConnection connection)
+        public static bool CreateDatabase(string txtDatabase)
         {
-
+            //2 commandos, 1 voor de databank aan te maken, andere voor tabellen en eventueel data te importeren. Moet appart, anders kregen we errors
             SqlCommand cmdCreateDatabase = new SqlCommand("Create Database dbStudentGegevens", connection);
             SqlCommand cmdCreateTable = new SqlCommand(txtDatabase, connection);
 
@@ -69,13 +73,39 @@ namespace ProjectSAI
             }
             catch (System.Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Er is een onverwachte fout opgetreden bij het aanmaken van de databank: " + ex.ToString());
                 return false;
             }
+
             return true;
-        
 
 
+
+    }
+
+        public static void FillDataGrid(System.Windows.Controls.DataGrid dataGrid)
+        {
+            using (connection)
+            {   
+                //commando sql
+                SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.tblStudentGegevens", connection);
+                //sql adaptop aanmake
+                SqlDataAdapter SqlDataAdapt = new SqlDataAdapter(cmd);
+                //datatable aanmaken van de databank
+                DataTable dataTable = new DataTable("dbStudentGegevens");
+                //de datatable vullen met gegevens van de databank
+                SqlDataAdapt.Fill(dataTable);
+                //grid vullen met gegevens
+                dataGrid.ItemsSource = dataTable.DefaultView;
+
+                DataSet dataSet = new DataSet();
+               
+         
+        }
+
+        //public static bool UpdateDatabase()
+        {
+           //todo
         }
 
     }
