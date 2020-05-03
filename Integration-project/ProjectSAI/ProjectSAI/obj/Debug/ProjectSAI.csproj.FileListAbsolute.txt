@@ -13,3 +13,18 @@ J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integra
 J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csproj.CoreCompileInputs.cache
 J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.exe
 J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.pdb
+C:\Users\jarno\Downloads\Integration-Project-master\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csprojAssemblyReference.cache
+C:\Users\jarno\Downloads\Integration-Project-master\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\MainWindow.g.cs
+C:\Users\jarno\Downloads\Integration-Project-master\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\App.g.cs
+C:\Users\jarno\Downloads\Integration-Project-master\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI_MarkupCompile.cache
+C:\Users\jarno\Downloads\Integration-Project-master\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI_MarkupCompile.lref
+C:\Users\jarno\Downloads\Integration-Project-master\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\ProjectSAI.exe.config
+C:\Users\jarno\Downloads\Integration-Project-master\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\ProjectSAI.exe
+C:\Users\jarno\Downloads\Integration-Project-master\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\ProjectSAI.pdb
+C:\Users\jarno\Downloads\Integration-Project-master\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\MainWindow.baml
+C:\Users\jarno\Downloads\Integration-Project-master\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.g.resources
+C:\Users\jarno\Downloads\Integration-Project-master\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.Properties.Resources.resources
+C:\Users\jarno\Downloads\Integration-Project-master\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csproj.GenerateResource.cache
+C:\Users\jarno\Downloads\Integration-Project-master\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csproj.CoreCompileInputs.cache
+C:\Users\jarno\Downloads\Integration-Project-master\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.exe
+C:\Users\jarno\Downloads\Integration-Project-master\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.pdb

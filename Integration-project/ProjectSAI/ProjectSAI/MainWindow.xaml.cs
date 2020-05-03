@@ -45,6 +45,11 @@ namespace ProjectSAI
                 dtgStudent.IsReadOnly = true;
             }
         }
+
+        private void cmboPartnerLogo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Code here
+        }
     }
 }
 
