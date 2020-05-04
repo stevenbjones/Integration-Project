@@ -39,16 +39,26 @@ namespace ProjectSAI
            if (chkEditCells.IsChecked == true)
             {
                 dtgStudent.IsReadOnly = false;
+                btnSubmit.IsEnabled = true;
             }
             else
             {
                 dtgStudent.IsReadOnly = true;
+                btnSubmit.IsEnabled = false;
             }
         }
 
+<<<<<<< HEAD
+        private void btnSubmit_Click(object sender, RoutedEventArgs e)
+        {
+            chkEditCells.IsChecked = false;
+            btnSubmit.IsEnabled = false;
+         //   ConnectDatabase.UpdateDatabase();
+=======
         private void cmboPartnerLogo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Code here
+>>>>>>> 55a599fc8654d24b0eeae72a931613e8f2cfa186
         }
     }
 }
