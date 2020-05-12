@@ -8,7 +8,6 @@ namespace ProjectSAI
 {
     class Leerling
     {
-        public int Id { get; set; }
         public string Stamnummer { get; set; }
         public string Geslacht { get; set; }
         public DateTime Geboortedatum { get; set; }
