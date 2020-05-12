@@ -92,6 +92,14 @@ namespace ProjectSAI
                 dataTable = new DataTable("dbStudentGegevens");
                 //de datatable vullen met gegevens van de databank
                 sqlDataAdapter.Fill(dataTable);
+
+                List<Leerling> testc = new List<Leerling>();
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    MessageBox.Show(dataTable.Rows[i]["Stamnummer"].ToString());
+                }
+                //grid vullen met gegevens
+                dataGrid.ItemsSource = dataTable.DefaultView;
                 //grid vullen met gegevens
                 dataGrid.ItemsSource = dataTable.DefaultView;
                    
@@ -112,11 +120,12 @@ namespace ProjectSAI
             {
                 connection.Open();
                 cmdClearTable.ExecuteNonQuery();
-                foreach (Leerling leerling in datagrid.Items)
-                {
-                    cmdInsertTable = new SqlCommand($"INSERT INTO dbo.tblStudentGegevens VALUES({leerling.Stamnummer},{leerling.Geslacht},{leerling.Geboortedatum},{leerling.Nationaliteit},{leerling.Thuistaal},{leerling.ProevenVerpleegkunde},{leerling.HoogstBehaaldDiploma},{leerling.HerkomstStudent},{leerling.ProjectSO_CVO},{leerling.FaciliteitenLeermoeilijkheden_Anderstaligen},{leerling.DiplomaSOnaCVO},{leerling.RedenStoppen},{leerling.DiplomaSOnaHBO},{leerling.VDAB},{leerling.SchoolLerenKennen},{leerling.Module},{leerling.ModuleAttest},{leerling.ModuleBegindatum},{leerling.ModuleEinddatum},{leerling.EinddatumInschrijving},{leerling.AfdelingsCode},{leerling.Klas},{leerling.InstellingnummerVorigJaar},{leerling.AttestVorigSchooljaar},{leerling.VerleendeStudiebewijzen1steZit},{leerling.VerleendeStudiebewijzen1steZitVorigSchooljaar},{leerling.KlasVorigSchooljaar},{leerling.InstellingnummerVorigeInschrijving},{leerling.AttestVorigeInschrijving}", connection);
-                    cmdInsertTable.ExecuteNonQuery();
-                }
+               
+                //foreach ( in datagrid.Items)
+                //{
+                //    cmdInsertTable = new SqlCommand($"INSERT INTO dbo.tblStudentGegevens VALUES({leerling.Stamnummer},{leerling.Geslacht},{leerling.Geboortedatum},{leerling.Nationaliteit},{leerling.Thuistaal},{leerling.ProevenVerpleegkunde},{leerling.HoogstBehaaldDiploma},{leerling.HerkomstStudent},{leerling.ProjectSO_CVO},{leerling.FaciliteitenLeermoeilijkheden_Anderstaligen},{leerling.DiplomaSOnaCVO},{leerling.RedenStoppen},{leerling.DiplomaSOnaHBO},{leerling.VDAB},{leerling.SchoolLerenKennen},{leerling.Module},{leerling.ModuleAttest},{leerling.ModuleBegindatum},{leerling.ModuleEinddatum},{leerling.EinddatumInschrijving},{leerling.AfdelingsCode},{leerling.Klas},{leerling.InstellingnummerVorigJaar},{leerling.AttestVorigSchooljaar},{leerling.VerleendeStudiebewijzen1steZit},{leerling.VerleendeStudiebewijzen1steZitVorigSchooljaar},{leerling.KlasVorigSchooljaar},{leerling.InstellingnummerVorigeInschrijving},{leerling.AttestVorigeInschrijving}", connection);
+                //    cmdInsertTable.ExecuteNonQuery();
+                //}
                 MessageBox.Show("Data succesvol verandert", "Gelukt", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (System.Exception ex)

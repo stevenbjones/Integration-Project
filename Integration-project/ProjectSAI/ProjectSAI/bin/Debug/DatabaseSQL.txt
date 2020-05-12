@@ -8,10 +8,9 @@ SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 
 
-CREATE TABLE [dbo].[tblStudentGegevens](
-    [Stamnummer] [nvarchar](50) NULL,
-    [Geslacht] [nvarchar](50) NULL,
+CREATE TABLE [dbo].[tblStudentGegevens](   
     [Geboortedatum] [date] NULL,
+    [Geslacht] [nvarchar](50) NULL,
     [Nationaliteit] [nvarchar](50) NULL,
     [Thuistaal] [nvarchar](50) NULL,
     [Proeven verpleegkunde] [nvarchar](50) NULL,
@@ -21,12 +20,14 @@ CREATE TABLE [dbo].[tblStudentGegevens](
     [Faciliteiten leermoeilijkheden/anderstaligen] [nvarchar](200) NULL,
     [Diploma SO na CVO] [nvarchar](50) NULL,
     [Reden stoppen] [nvarchar](100) NULL,
+    [Diploma SO na HBO] [nvarchar](100) NULL,
     [VDAB] [nvarchar](50) NULL,
     [School leren kennen] [nvarchar](100) NULL,
     [Module] [nvarchar](200) NULL,
     [Module attest] [nvarchar](50) NULL,
     [Module begindatum] [date] NULL,
     [Module einddatum] [date] NULL,
+    [Stamnummer] [nvarchar](50) NULL,
     [Einddatum inschrijving] [date] NULL,
     [Afdelingscode] [nvarchar](50) NULL,
     [Klas] [nvarchar](50) NULL,
