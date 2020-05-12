@@ -94,15 +94,18 @@ namespace ProjectSAI
                 //de datatable vullen met gegevens van de databank
                 sqlDataAdapter.Fill(dataTable);
 
-                List<Leerling> testc = new List<Leerling>();
+                List<Leerling> listLeerling = new List<Leerling>();
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
-                    MessageBox.Show(dataTable.Rows[i]["Stamnummer"].ToString());
+                    Leerling leerling = new Leerling();
+                    leerling.Nationaliteit = dataTable.Rows[i]["Nationaliteit"].ToString();
+                    leerling.Geslacht =  dataTable.Rows[i]["Geslacht"].ToString();
+                    DateTime.TryParse(dataTable.Rows[i]["Geboortedatum"].ToString(), out DateTime geboorteDatum);
+                    leerling.Geboortedatum = geboorteDatum.Date;
+                    listLeerling.Add(leerling);
                 }
                 //grid vullen met gegevens
-                dataGrid.ItemsSource = dataTable.DefaultView;
-                //grid vullen met gegevens
-                dataGrid.ItemsSource = dataTable.DefaultView;
+                dataGrid.ItemsSource = listLeerling;
                    
             }
 
@@ -121,15 +124,17 @@ namespace ProjectSAI
             {
                 connection.Open();
                 cmdClearTable.ExecuteNonQuery();
-               
-                //foreach ( in datagrid.Items)
-                //{
-                //    cmdInsertTable = new SqlCommand($"INSERT INTO dbo.tblStudentGegevens VALUES({leerling.Stamnummer},{leerling.Geslacht},{leerling.Geboortedatum},{leerling.Nationaliteit},{leerling.Thuistaal},{leerling.ProevenVerpleegkunde},{leerling.HoogstBehaaldDiploma},{leerling.HerkomstStudent},{leerling.ProjectSO_CVO},{leerling.FaciliteitenLeermoeilijkheden_Anderstaligen},{leerling.DiplomaSOnaCVO},{leerling.RedenStoppen},{leerling.DiplomaSOnaHBO},{leerling.VDAB},{leerling.SchoolLerenKennen},{leerling.Module},{leerling.ModuleAttest},{leerling.ModuleBegindatum},{leerling.ModuleEinddatum},{leerling.EinddatumInschrijving},{leerling.AfdelingsCode},{leerling.Klas},{leerling.InstellingnummerVorigJaar},{leerling.AttestVorigSchooljaar},{leerling.VerleendeStudiebewijzen1steZit},{leerling.VerleendeStudiebewijzen1steZitVorigSchooljaar},{leerling.KlasVorigSchooljaar},{leerling.InstellingnummerVorigeInschrijving},{leerling.AttestVorigeInschrijving}", connection);
-                //    cmdInsertTable.ExecuteNonQuery();
-                //}
+
+                for (int i = 0; i < datagrid.Items.Count-1; i++)
+                {
+                    Leerling leerling = (Leerling)datagrid.Items[i];
+                    cmdInsertTable = new SqlCommand($"INSERT INTO dbo.tblStudentGegevens (Nationaliteit, Geboortedatum) VALUES('{leerling.Nationaliteit}', '{leerling.Geboortedatum}')", connection);
+                    cmdInsertTable.ExecuteNonQuery();
+                }
                 MessageBox.Show("Data succesvol verandert", "Gelukt", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (System.Exception ex)
+            
             {
                 MessageBox.Show("Er is een onverwachte fout opgetreden bij het updaten van de databank: " + ex.ToString(), "Fout!", MessageBoxButton.OK, MessageBoxImage.Error);             
             }

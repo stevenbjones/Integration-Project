@@ -55,7 +55,7 @@
 
                 <DataGridTextColumn Header="Klas" Width="100" Binding="{Binding Klas,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Instellingsnummer vorig schooljaar" Width="100" Binding="{Binding [Instellingsnummer vorig schooljaar],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Instellingnummer vorig schooljaar" Width="100" Binding="{Binding [Instellingnummer vorig schooljaar],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <DataGridTextColumn Header="Attest vorig schooljaar" Width="100" Binding="{Binding [Attest vorig schooljaar],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
