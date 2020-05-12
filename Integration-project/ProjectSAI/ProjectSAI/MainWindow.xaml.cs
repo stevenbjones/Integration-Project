@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -62,6 +63,22 @@ namespace ProjectSAI
         private void cmboPartnerLogo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void btnUploadData_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+
+            dlg.Filter = "CSV files (*.csv)|*.csv|XML files (*.xml)|*.xml";
+
+            if (dlg.ShowDialog() == true)
+            {
+                string fileName;
+                fileName = dlg.FileName;
+                MessageBox.Show(fileName);
+                ConnectDatabase.UploadCSV(fileName);
+                MessageBox.Show("pls work");
+            }
         }
     } }
 

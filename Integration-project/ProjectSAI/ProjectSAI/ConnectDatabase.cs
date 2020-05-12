@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -134,6 +135,76 @@ namespace ProjectSAI
             }
 
         }
-      
+
+        public static void UploadCSV(string filePath)
+        {
+
+            //string filepath = filePath;
+
+            //string line1 = File.ReadLines(filepath).First(); // gets the first line from file.
+
+            //MessageBox.Show(line1);
+
+            using (StreamReader sr = new StreamReader(filePath))
+            {
+                 string connString = ConfigurationManager.AppSettings["connStringMaster"];
+                 SqlConnection connection = new SqlConnection(connString); 
+
+        string headerLine = sr.ReadLine(); //Leest 1e lijn csv
+
+                //leest de rest.
+                var lines = File.ReadAllLines(filePath);
+                if (lines.Count() == 0) return;
+                var table = new DataTable();
+
+                for (int i = 1; i < lines.Count() - 1 ; i++)
+                {
+
+                    List<string> listStrLineElements;
+                    listStrLineElements = lines[i].Split(',').ToList();
+                    using (connection)
+                    {
+                        SqlCommand cmd = new SqlCommand("INSERT INTO dbo.tblStudentGegevens VALUES(" +
+                            " '{" + listStrLineElements[0]  + "}'," +
+                            " '{" + listStrLineElements[1]  + "}'," +
+                            " '{" + listStrLineElements[2]  + "}'," +
+                            " '{" + listStrLineElements[3]  + "}', " +
+                            " '{" + listStrLineElements[4]  + "}'," +
+                            " '{" + listStrLineElements[5]  + "}'," +
+                            " '{" + listStrLineElements[6]  + "}'," +
+                            " '{" + listStrLineElements[7]  + "}'," +
+                            " '{" + listStrLineElements[8]  + "}'," +
+                            " '{" + listStrLineElements[9]  + "}'," +
+                            " '{" + listStrLineElements[10] + "}'," +
+                            " '{" + listStrLineElements[11] + "}'," +
+                            " '{" + listStrLineElements[12] + "}'," +
+                            " '{" + listStrLineElements[13] + "}'," +
+                            " '{" + listStrLineElements[14] + "}'," +
+                            " '{" + listStrLineElements[15] + "}'," +
+                            " '{" + listStrLineElements[16] + "}'," +
+                            " '{" + listStrLineElements[17] + "}'," +
+                            " '{" + listStrLineElements[18] + "}'," +
+                            " '{" + listStrLineElements[19] + "}'," +
+                            " '{" + listStrLineElements[20] + "}'," +
+                            " '{" + listStrLineElements[21] + "}'," +
+                            " '{" + listStrLineElements[22] + "}'," +
+                            " '{" + listStrLineElements[23] + "}'," +
+                            " '{" + listStrLineElements[24] + "}'," +
+                            " '{" + listStrLineElements[25] + "}'," +
+                            " '{" + listStrLineElements[26] + "}'," +
+                            " '{" + listStrLineElements[27] + "}'," +
+                            " '{" + listStrLineElements[28] + "}')",
+                            connection);
+
+                        sqlDataAdapter = new SqlDataAdapter(cmd);
+
+                        sqlDataAdapter.Fill(dataTable);
+                    }
+                }
+            }
+
+        }
+
+
     }
 }
