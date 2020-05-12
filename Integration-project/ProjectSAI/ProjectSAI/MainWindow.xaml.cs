@@ -54,7 +54,7 @@ namespace ProjectSAI
         {
             chkEditCells.IsChecked = false;
             btnSubmit.IsEnabled = false;
-            ConnectDatabase.UpdateDatabase();
+            ConnectDatabase.UpdateDatabase(dtgStudent);
 
           
         }

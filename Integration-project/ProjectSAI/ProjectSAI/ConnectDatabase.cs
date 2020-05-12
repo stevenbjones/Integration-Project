@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
 
 namespace ProjectSAI
@@ -67,6 +68,7 @@ namespace ProjectSAI
                 connection.Open();
                 cmdCreateDatabase.ExecuteNonQuery();
                 cmdCreateTable.ExecuteNonQuery();
+                connection.Close();
             }
             catch (System.Exception ex)
             {
@@ -92,43 +94,37 @@ namespace ProjectSAI
                 sqlDataAdapter.Fill(dataTable);
                 //grid vullen met gegevens
                 dataGrid.ItemsSource = dataTable.DefaultView;
-                //test
                    
             }
 
 
         }
 
-        public static void UpdateDatabase()
+        public static void UpdateDatabase(DataGrid datagrid)
         {
+            
+            connString = ConfigurationManager.AppSettings["connStringDB"];
+            connection = new SqlConnection(connString); //connstring converte naar het juiste var type
+            SqlCommand cmdClearTable = new SqlCommand("Delete from dbo.tblStudentGegevens", connection);
+            SqlCommand cmdInsertTable;
 
-         
-            //connection = new SqlConnection(connString); jarno help
-          
-            //connection.Open();
-            //using (connection)
-            //{
-            //    SqlCommandBuilder builder = new SqlCommandBuilder(sqlDataAdapter);
-            //    sqlDataAdapter.InsertCommand = builder.GetInsertCommand();
-            //    sqlDataAdapter.Update(dataTable);
-            //}
-            //connection.Close();
+            try
+            {
+                connection.Open();
+                cmdClearTable.ExecuteNonQuery();
+                foreach (Leerling leerling in datagrid.Items)
+                {
+                    cmdInsertTable = new SqlCommand($"INSERT INTO dbo.tblStudentGegevens VALUES({leerling.Stamnummer},{leerling.Geslacht},{leerling.Geboortedatum},{leerling.Nationaliteit},{leerling.Thuistaal},{leerling.ProevenVerpleegkunde},{leerling.HoogstBehaaldDiploma},{leerling.HerkomstStudent},{leerling.ProjectSO_CVO},{leerling.FaciliteitenLeermoeilijkheden_Anderstaligen},{leerling.DiplomaSOnaCVO},{leerling.RedenStoppen},{leerling.DiplomaSOnaHBO},{leerling.VDAB},{leerling.SchoolLerenKennen},{leerling.Module},{leerling.ModuleAttest},{leerling.ModuleBegindatum},{leerling.ModuleEinddatum},{leerling.EinddatumInschrijving},{leerling.AfdelingsCode},{leerling.Klas},{leerling.InstellingnummerVorigJaar},{leerling.AttestVorigSchooljaar},{leerling.VerleendeStudiebewijzen1steZit},{leerling.VerleendeStudiebewijzen1steZitVorigSchooljaar},{leerling.KlasVorigSchooljaar},{leerling.InstellingnummerVorigeInschrijving},{leerling.AttestVorigeInschrijving}", connection);
+                    cmdInsertTable.ExecuteNonQuery();
+                }
+                MessageBox.Show("Data succesvol verandert", "Gelukt", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Er is een onverwachte fout opgetreden bij het updaten van de databank: " + ex.ToString(), "Fout!", MessageBoxButton.OK, MessageBoxImage.Error);             
+            }
+
         }
-        //public static List<string> GetAllLeerlingen()
-        //{
-        //    ////nog testen, mss da datatable is ingevult
-        //    ////commando sql
-        //    //SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.tblStudentGegevens", connection); 
-        //    ////sql adaptop aanmake
-        //    //SqlDataAdapter SqlDataAdapt = new SqlDataAdapter(cmd);
-        //    ////datatable aanmaken van de databank
-        //    //DataTable dataTable = new DataTable("dbStudentGegevens");
-        //    ////de datatable vullen met gegevens van de databank
-        //    //SqlDataAdapt.Fill(dataTable);
-        //    //List<string> leerlingen = new List<string>();
-       
-        //    //leerlingen.Add(SqlDataAdapt.ToString());
-        //    //return leerlingen;
-        //}
+      
     }
 }
