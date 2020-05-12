@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -98,6 +99,7 @@ namespace ProjectSAI
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
                     Leerling leerling = new Leerling();
+                    leerling.Stamnummer = dataTable.Rows[i]["Stamnummer"].ToString();
                     leerling.Nationaliteit = dataTable.Rows[i]["Nationaliteit"].ToString();
                     leerling.Geslacht =  dataTable.Rows[i]["Geslacht"].ToString();
                     DateTime.TryParse(dataTable.Rows[i]["Geboortedatum"].ToString(), out DateTime geboorteDatum);
@@ -167,44 +169,52 @@ namespace ProjectSAI
 
                     List<string> listStrLineElements;
                     listStrLineElements = lines[i].Split(',').ToList();
-                    using (connection)
+
+                    connection.Open();
+
+                    string insertQuery = "INSERT INTO  dbStudentGegevens.dbo.tblStudentGegevens VALUES (" +
+                             "'" + listStrLineElements[0] + "'," +
+                             "'" + listStrLineElements[1] + "'," +
+                             "'" + listStrLineElements[2] + "'," +
+                             "'" + listStrLineElements[3] + "'," +
+                             "'" + listStrLineElements[4] + "'," +
+                             "'" + listStrLineElements[5] + "'," +
+                             "'" + listStrLineElements[6] + "'," +
+                             "'" + listStrLineElements[7] + "'," +
+                             "'" + listStrLineElements[8] + "'," +
+                             "'" + listStrLineElements[9] + "'," +
+                             "'" + listStrLineElements[10] + "'," +
+                             "'" + listStrLineElements[11] + "'," +
+                             "'" + listStrLineElements[12] + "'," +
+                             "'" + listStrLineElements[13] + "'," +
+                             "'" + listStrLineElements[14] + "'," +
+                             "'" + listStrLineElements[15] + "'," +
+                             "'" + listStrLineElements[16] + "'," +
+                             "'" + listStrLineElements[17] + "'," +
+                             "'" + listStrLineElements[18] + "'," +
+                             "'" + listStrLineElements[19] + "'," +
+                             "'" + listStrLineElements[20] + "'," +
+                             "'" + listStrLineElements[21] + "'," +
+                             "'" + listStrLineElements[22] + "'," +
+                             "'" + listStrLineElements[23] + "'," +
+                             "'" + listStrLineElements[24] + "'," +
+                             "'" + listStrLineElements[25] + "'," +
+                             "'" + listStrLineElements[26] + "'," +
+                             "'" + listStrLineElements[27] + "'," +
+                             "'" + listStrLineElements[28] + "')";
+
+                    try
                     {
-                        SqlCommand cmd = new SqlCommand("INSERT INTO dbo.tblStudentGegevens VALUES(" +
-                            " '{" + listStrLineElements[0]  + "}'," +
-                            " '{" + listStrLineElements[1]  + "}'," +
-                            " '{" + listStrLineElements[2]  + "}'," +
-                            " '{" + listStrLineElements[3]  + "}', " +
-                            " '{" + listStrLineElements[4]  + "}'," +
-                            " '{" + listStrLineElements[5]  + "}'," +
-                            " '{" + listStrLineElements[6]  + "}'," +
-                            " '{" + listStrLineElements[7]  + "}'," +
-                            " '{" + listStrLineElements[8]  + "}'," +
-                            " '{" + listStrLineElements[9]  + "}'," +
-                            " '{" + listStrLineElements[10] + "}'," +
-                            " '{" + listStrLineElements[11] + "}'," +
-                            " '{" + listStrLineElements[12] + "}'," +
-                            " '{" + listStrLineElements[13] + "}'," +
-                            " '{" + listStrLineElements[14] + "}'," +
-                            " '{" + listStrLineElements[15] + "}'," +
-                            " '{" + listStrLineElements[16] + "}'," +
-                            " '{" + listStrLineElements[17] + "}'," +
-                            " '{" + listStrLineElements[18] + "}'," +
-                            " '{" + listStrLineElements[19] + "}'," +
-                            " '{" + listStrLineElements[20] + "}'," +
-                            " '{" + listStrLineElements[21] + "}'," +
-                            " '{" + listStrLineElements[22] + "}'," +
-                            " '{" + listStrLineElements[23] + "}'," +
-                            " '{" + listStrLineElements[24] + "}'," +
-                            " '{" + listStrLineElements[25] + "}'," +
-                            " '{" + listStrLineElements[26] + "}'," +
-                            " '{" + listStrLineElements[27] + "}'," +
-                            " '{" + listStrLineElements[28] + "}')",
-                            connection);
-
-                        sqlDataAdapter = new SqlDataAdapter(cmd);
-
-                        sqlDataAdapter.Fill(dataTable);
+                        SqlCommand command = new SqlCommand(insertQuery, connection);
+                        command.ExecuteNonQuery();
                     }
+                    catch (Exception ex)
+                    {
+                    }
+                    connection.Close();
+
+
+
                 }
             }
 

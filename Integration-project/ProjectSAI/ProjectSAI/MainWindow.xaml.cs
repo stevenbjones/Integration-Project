@@ -75,9 +75,10 @@ namespace ProjectSAI
             {
                 string fileName;
                 fileName = dlg.FileName;
-                MessageBox.Show(fileName);
+                //MessageBox.Show(fileName);
                 ConnectDatabase.UploadCSV(fileName);
-                MessageBox.Show("pls work");
+                //MessageBox.Show("pls work");
+                
             }
         }
     } }
