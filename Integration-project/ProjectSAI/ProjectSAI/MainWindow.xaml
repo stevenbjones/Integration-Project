@@ -7,24 +7,80 @@
         mc:Ignorable="d"
           Title="Rappport Generatie SAI en Partners" Height="907.5" Width="1210.5" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,0,-19">
-        <DataGrid IsReadOnly="true" Name="dtgStudent" HorizontalAlignment="Left" Height="788" Margin="10,10,0,0" VerticalAlignment="Top" Width="1174" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False">
-            <!--<DataGrid.Columns>
+       
+        <DataGrid IsReadOnly="true" AutoGenerateColumns="False" Name="dtgStudent" HorizontalAlignment="Left" Height="788" Margin="10,10,0,0" VerticalAlignment="Top" Width="1174" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False">
+            <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Stamnummer"   Width="100" Binding="{Binding Stamnummer}"/>
-@ -74,7 +72,24 @@
+                <DataGridTextColumn Header="Stamnummer" Width="100" Binding="{Binding Stamnummer ,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-            </DataGrid.Columns>-->
+                <DataGridTextColumn Header="Geslacht" Width="100" Binding="{Binding Geslacht,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Geboortedatum" Width="100" Binding="{Binding Geboortedatum,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Nationaliteit" Width="100" Binding="{Binding Nationaliteit,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Thuistaal" Width="100" Binding="{Binding Thuistaal,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Proeven verpleegkunde" Width="100" Binding="{Binding [Proeven verpleegkunde],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Hoogst behaald diploma" Width="100" Binding="{Binding [Hoogst behaald diploma],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Herkomst studenten" Width="100" Binding="{Binding [Herkomst studenten],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Project SO-CVO" Width="100" Binding="{Binding [Project SO-CVO],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Faciliteiten leermoeilijkheden/anderstaligen" Width="100" Binding="{Binding [Faciliteiten leermoeilijkheden/anderstaligen],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Diploma SO na CVO" Width="100" Binding="{Binding [Diploma SO na CVO],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Reden stoppen" Width="100" Binding="{Binding [Reden stoppen],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Diploma SO na HBO" Width="100" Binding="{Binding [Diploma SO na HBO],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="VDAB" Width="100" Binding="{Binding VDAB,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="School leren kennen" Width="100" Binding="{Binding [School leren kennen],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Module" Width="100" Binding="{Binding Module,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Module attest" Width="100" Binding="{Binding [Module attest],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Module begindatum" Width="100" Binding="{Binding [Module begindatum],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Module einddatum" Width="100" Binding="{Binding [Module einddatum],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Einddatum inschrijving" Width="100" Binding="{Binding [Einddatum inschrijving],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Afdelingscode" Width="100" Binding="{Binding Afdelingscode,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Klas" Width="100" Binding="{Binding Klas,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Instellingsnummer vorig schooljaar" Width="100" Binding="{Binding [Instellingsnummer vorig schooljaar],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Attest vorig schooljaar" Width="100" Binding="{Binding [Attest vorig schooljaar],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Verleende studiebewijzen 1ste zit" Width="100" Binding="{Binding [Verleende studiebewijzen 1ste zit],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Verleende studiebewijzen 1ste zit vorig schooljaar" Width="100" Binding="{Binding [Verleende studiebewijzen 1ste zit vorig schooljaar],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Klas vorig schooljaar" Width="100" Binding="{Binding [Klas vorig schooljaar],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Instellingnummer vorige inschrijving" Width="100" Binding="{Binding [Instellingnummer vorige inschrijving],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Attest vorige inschrijving" Width="100" Binding="{Binding [Attest vorige inschrijving],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+
+            </DataGrid.Columns>
         </DataGrid>
-<<<<<<< HEAD
+
         <CheckBox Name="chkEditCells" Content="Cells bewerken" HorizontalAlignment="Left" Margin="936,771,0,0" VerticalAlignment="Top" Click="chkEditCells_Click" />
         <Button Name="btnSubmit" IsEnabled="false" Content="Submit veranderingen" HorizontalAlignment="Left" Margin="936,801,0,0" VerticalAlignment="Top" Width="131" Height="33" Click="btnSubmit_Click"/>
-=======
 
-        <CheckBox Name="chkEditCells" Content="Cells bewerken" HorizontalAlignment="Left" Margin="1058,803,0,0" VerticalAlignment="Top" Click="chkEditCells_Click" FontSize="16" ScrollViewer.HorizontalScrollBarVisibility="Auto" />
-        <Button Name="btnUploadData" Content="Data Uploaden" HorizontalAlignment="Left" Margin="10,803,0,0" VerticalAlignment="Top" Width="167" Height="58" FontSize="16"/>
+         <Button Name="btnUploadData" Content="Data Uploaden" HorizontalAlignment="Left" Margin="10,803,0,0" VerticalAlignment="Top" Width="167" Height="58" FontSize="16"/>
         <Button Name="btnGenerateRapport" Content="Rapport Genereren" HorizontalAlignment="Left" Margin="428,803,0,0" VerticalAlignment="Top" Width="166" Height="58" FontSize="16"/>
         <!-- dropdown met keuzes logo, kan eventueel nog via een Enum + databinding voor content. Globale var voor bijhouden logo bij generatie op word document? -->
-        <ComboBox Name="cmboPartnerLogo" HorizontalAlignment="Left" Margin="224,832,0,0" VerticalAlignment="Top" Width="185" SelectionChanged="cmboPartnerLogo_SelectionChanged" FontSize="16">
+        <ComboBox Name="cmboPartnerLogo" HorizontalAlignment="Left" Margin="224,832,0,0" VerticalAlignment="Top" Width="185" SelectionChanged="cmboPartnerLogo_SelectionChanged"  FontSize="16">
             <ComboBoxItem IsSelected="True" Content = "Geen" FontSize="16"/>
             <ComboBoxItem Content = "Sint Augustinusinstituut Aalst" FontSize="16"/>
             <ComboBoxItem Content = "Benedictuspoort – Gent" FontSize="16"/>
@@ -33,6 +89,6 @@
 
         </ComboBox>
         <Label Content="Logo Rapport" HorizontalAlignment="Left" Margin="220,803,0,0" VerticalAlignment="Top" FontSize="16"/>
->>>>>>> 55a599fc8654d24b0eeae72a931613e8f2cfa186
+
     </Grid>
 </Window>

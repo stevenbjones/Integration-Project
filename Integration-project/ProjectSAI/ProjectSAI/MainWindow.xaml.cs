@@ -21,22 +21,24 @@ namespace ProjectSAI
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {   
+    {
         public MainWindow()
         {
             InitializeComponent();
 
+
             ConnectDatabase.CreateDatabaseIfNotExists();
 
             ConnectDatabase.FillDataGrid(dtgStudent);
+         
 
         }
 
         private void chkEditCells_Click(object sender, RoutedEventArgs e)
         {
-            
 
-           if (chkEditCells.IsChecked == true)
+
+            if (chkEditCells.IsChecked == true)
             {
                 dtgStudent.IsReadOnly = false;
                 btnSubmit.IsEnabled = true;
@@ -48,18 +50,18 @@ namespace ProjectSAI
             }
         }
 
-<<<<<<< HEAD
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
             chkEditCells.IsChecked = false;
             btnSubmit.IsEnabled = false;
-         //   ConnectDatabase.UpdateDatabase();
-=======
+            ConnectDatabase.UpdateDatabase();
+
+          
+        }
+
         private void cmboPartnerLogo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //Code here
->>>>>>> 55a599fc8654d24b0eeae72a931613e8f2cfa186
+
         }
-    }
-}
+    } }
 

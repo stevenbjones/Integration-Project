@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Windows;
+using System.Windows.Documents;
 
 namespace ProjectSAI
 {
@@ -11,6 +13,9 @@ namespace ProjectSAI
     {
         public static string connString = ConfigurationManager.AppSettings["connStringMaster"];
         public static SqlConnection connection = new SqlConnection(connString); //connstring converte naar het juiste var type
+        public static DataSet dataSet;
+        public static SqlDataAdapter sqlDataAdapter;
+        public static DataTable dataTable;
 
         public static void CreateDatabaseIfNotExists()
         {
@@ -76,24 +81,54 @@ namespace ProjectSAI
         {
             using (connection)
             {
+                dataSet = new DataSet();
                 //commando sql
                 SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.tblStudentGegevens", connection);
                 //sql adaptop aanmake
-                SqlDataAdapter SqlDataAdapt = new SqlDataAdapter(cmd);
+                sqlDataAdapter = new SqlDataAdapter(cmd);
                 //datatable aanmaken van de databank
-                DataTable dataTable = new DataTable("dbStudentGegevens");
+                dataTable = new DataTable("dbStudentGegevens");
                 //de datatable vullen met gegevens van de databank
-                SqlDataAdapt.Fill(dataTable);
+                sqlDataAdapter.Fill(dataTable);
                 //grid vullen met gegevens
                 dataGrid.ItemsSource = dataTable.DefaultView;
-
-                DataSet dataSet = new DataSet();
+                //test
+                   
             }
 
-            //public static bool UpdateDatabase()
-            {
-                //todo
-            }
+
         }
+
+        public static void UpdateDatabase()
+        {
+
+         
+            //connection = new SqlConnection(connString); jarno help
+          
+            //connection.Open();
+            //using (connection)
+            //{
+            //    SqlCommandBuilder builder = new SqlCommandBuilder(sqlDataAdapter);
+            //    sqlDataAdapter.InsertCommand = builder.GetInsertCommand();
+            //    sqlDataAdapter.Update(dataTable);
+            //}
+            //connection.Close();
+        }
+        //public static List<string> GetAllLeerlingen()
+        //{
+        //    ////nog testen, mss da datatable is ingevult
+        //    ////commando sql
+        //    //SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.tblStudentGegevens", connection); 
+        //    ////sql adaptop aanmake
+        //    //SqlDataAdapter SqlDataAdapt = new SqlDataAdapter(cmd);
+        //    ////datatable aanmaken van de databank
+        //    //DataTable dataTable = new DataTable("dbStudentGegevens");
+        //    ////de datatable vullen met gegevens van de databank
+        //    //SqlDataAdapt.Fill(dataTable);
+        //    //List<string> leerlingen = new List<string>();
+       
+        //    //leerlingen.Add(SqlDataAdapt.ToString());
+        //    //return leerlingen;
+        //}
     }
 }

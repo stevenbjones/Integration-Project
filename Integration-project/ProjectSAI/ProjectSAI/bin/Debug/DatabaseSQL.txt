@@ -30,7 +30,7 @@ CREATE TABLE [dbo].[tblStudentGegevens](
     [Einddatum inschrijving] [date] NULL,
     [Afdelingscode] [nvarchar](50) NULL,
     [Klas] [nvarchar](50) NULL,
-    [Instellingnummber vorig schooljaar] [nvarchar](50) NULL,
+    [Instellingnummer vorig schooljaar] [nvarchar](50) NULL,
     [Attest Vorig schooljaar] [nvarchar](200) NULL,
     [Verleende studiebewijzen 1ste zit] [nvarchar](200) NULL,
     [Verleende studiebewijzen 1ste zit vorig schooljaar] [nvarchar](300) NULL,
