@@ -198,13 +198,16 @@ namespace ProjectSAI
                     listStrLineElements = lines[i].Split(',').ToList();
 
                     listStrLineElements[0] = listStrLineElements[0].Replace('.', '/');
+                    listStrLineElements[16] = listStrLineElements[16].Replace('.', '/');
+                    listStrLineElements[17] = listStrLineElements[17].Replace('.', '/');
+                    listStrLineElements[19] = listStrLineElements[19].Replace('.', '/');
 
-                    MessageBox.Show(listStrLineElements[0] + " " + listStrLineElements[1].ToString());
-                    var test = Convert.ToDateTime(listStrLineElements[0]);
-                    test = test.Date;
-                    var test2 = listStrLineElements[16];
-                    var test3 = listStrLineElements[17];
-                    var test4 = listStrLineElements[19];
+                    var test = DateTime.ParseExact(listStrLineElements[0], "d/M/yyyy", null);
+
+                    MessageBox.Show(listStrLineElements[16]);
+                    var test2 = DateTime.ParseExact(listStrLineElements[16], "d/M/yyyy", null);
+                    var test3 = DateTime.ParseExact(listStrLineElements[17], "d/M/yyyy", null);
+                    var test4 = DateTime.ParseExact(listStrLineElements[19], "d/M/yyyy", null);
 
 
                     connection.Open();
