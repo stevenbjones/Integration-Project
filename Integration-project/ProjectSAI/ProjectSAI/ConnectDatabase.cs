@@ -1,15 +1,12 @@
-﻿using Microsoft.OData.Edm;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 
 namespace ProjectSAI
 {
@@ -145,9 +142,9 @@ namespace ProjectSAI
                 leerling.Geboortedatum = Convert.ToDateTime(dataTable.Rows[i]["Geboortedatum"]).Date;               
                 leerling.Stamnummer = dataTable.Rows[i]["Stamnummer"].ToString();
                 leerling.Thuistaal = dataTable.Rows[i]["Thuistaal"].ToString();
-                leerling.ProevenVerpleegkunde = dataTable.Rows[i]["Proeven verpleegkunde"].ToString();
-                leerling.HoogstBehaaldDiploma = dataTable.Rows[i]["Hoogst behaald diploma"].ToString();
-                leerling.HerkomstStudent = dataTable.Rows[i]["Herkomst Studenten"].ToString();
+                leerling.ProevenVerpleegkunde = dataTable.Rows[i]["Proeven_verpleegkunde"].ToString();
+                leerling.HoogstBehaaldDiploma = dataTable.Rows[i]["Hoogst_behaald_diploma"].ToString();
+                leerling.HerkomstStudent = dataTable.Rows[i]["Herkomst_Studenten"].ToString();
                 leerling.ProjectSO_CVO = dataTable.Rows[i]["Project SO-CVO"].ToString();
                 leerling.FaciliteitenLeermoeilijkheden_Anderstaligen = dataTable.Rows[i]["Faciliteiten leermoeilijkheden/Anderstaligen"].ToString();
                 leerling.DiplomaSOnaCVO = dataTable.Rows[i]["Diploma SO na CVO"].ToString();
@@ -188,12 +185,11 @@ namespace ProjectSAI
                  string connString = ConfigurationManager.AppSettings["connStringMaster"];
                  SqlConnection connection = new SqlConnection(connString); 
 
-        string headerLine = sr.ReadLine(); //Leest 1e lijn csv
+                string headerLine = sr.ReadLine(); //Leest 1e lijn csv
 
                 //leest de rest.
                 var lines = File.ReadAllLines(filePath);
                 if (lines.Count() == 0) return;
-                var table = new DataTable();
 
                 for (int i = 1; i < lines.Count() - 1 ; i++)
                 {
@@ -201,10 +197,20 @@ namespace ProjectSAI
                     List<string> listStrLineElements;
                     listStrLineElements = lines[i].Split(',').ToList();
 
+                    listStrLineElements[0] = listStrLineElements[0].Replace('.', '/');
+
+                    MessageBox.Show(listStrLineElements[0] + " " + listStrLineElements[1].ToString());
+                    var test = Convert.ToDateTime(listStrLineElements[0]);
+                    test = test.Date;
+                    var test2 = listStrLineElements[16];
+                    var test3 = listStrLineElements[17];
+                    var test4 = listStrLineElements[19];
+
+
                     connection.Open();
 
                     string insertQuery = "INSERT INTO  dbStudentGegevens.dbo.tblStudentGegevens VALUES (" +
-                             "'" + listStrLineElements[0] + "'," +
+                             "'" + test + "'," +
                              "'" + listStrLineElements[1] + "'," +
                              "'" + listStrLineElements[2] + "'," +
                              "'" + listStrLineElements[3] + "'," +
@@ -220,10 +226,10 @@ namespace ProjectSAI
                              "'" + listStrLineElements[13] + "'," +
                              "'" + listStrLineElements[14] + "'," +
                              "'" + listStrLineElements[15] + "'," +
-                             "'" + listStrLineElements[16] + "'," +
-                             "'" + listStrLineElements[17] + "'," +
+                             "'" + test2 + "'," +
+                             "'" + test3 + "'," +
                              "'" + listStrLineElements[18] + "'," +
-                             "'" + listStrLineElements[19] + "'," +
+                             "'" + test4 + "'," +
                              "'" + listStrLineElements[20] + "'," +
                              "'" + listStrLineElements[21] + "'," +
                              "'" + listStrLineElements[22] + "'," +

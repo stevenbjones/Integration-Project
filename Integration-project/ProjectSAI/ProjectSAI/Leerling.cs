@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectSAI
 {
-    class Leerling
+    public class Leerling
     {
         public string Stamnummer { get; set; }
         public string Geslacht { get; set; }

@@ -24,11 +24,11 @@
 
                 <DataGridTextColumn Header="Thuistaal" Width="100" Binding="{Binding Thuistaal,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Proeven verpleegkunde" Width="100" Binding="{Binding [Proeven verpleegkunde],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Proeven verpleegkunde" Width="100" Binding="{Binding ProevenVerpleegkunde, NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Hoogst behaald diploma" Width="100" Binding="{Binding [Hoogst behaald diploma],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Hoogst behaald diploma" Width="100" Binding="{Binding HoogstBehaaldDiploma, NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Herkomst studenten" Width="100" Binding="{Binding [Herkomst studenten],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Herkomst studenten" Width="100" Binding="{Binding [Herkomst studenten], NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <DataGridTextColumn Header="Project SO-CVO" Width="100" Binding="{Binding [Project SO-CVO],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
@@ -48,11 +48,11 @@
 
                 <DataGridTextColumn Header="Module attest" Width="100" Binding="{Binding [Module attest],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Module begindatum" Width="100" Binding="{Binding [Module begindatum],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Module begindatum" Width="100" Binding="{Binding [Module begindatum],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:dd/MM/yyyy}}"/>
 
-                <DataGridTextColumn Header="Module einddatum" Width="100" Binding="{Binding [Module einddatum],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Module einddatum" Width="100" Binding="{Binding [Module einddatum],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:dd/MM/yyyy}}"/>
 
-                <DataGridTextColumn Header="Einddatum inschrijving" Width="100" Binding="{Binding [Einddatum inschrijving],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Einddatum inschrijving" Width="100" Binding="{Binding [Einddatum inschrijving],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:dd/MM/yyyy}}"/>
 
                 <DataGridTextColumn Header="Afdelingscode" Width="100" Binding="{Binding Afdelingscode,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
