@@ -81,5 +81,10 @@ namespace ProjectSAI
                 
             }
         }
+
+        private void btnGenerateRapport_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     } }
 

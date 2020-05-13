@@ -78,7 +78,7 @@
         <Button Name="btnSubmit" IsEnabled="false" Content="Submit veranderingen" HorizontalAlignment="Left" Margin="936,801,0,0" VerticalAlignment="Top" Width="131" Height="33" Click="btnSubmit_Click"/>
 
          <Button Name="btnUploadData" Content="Data Uploaden" HorizontalAlignment="Left" Margin="10,803,0,0" VerticalAlignment="Top" Width="167" Height="58" FontSize="16" Click="btnUploadData_Click"/>
-        <Button Name="btnGenerateRapport" Content="Rapport Genereren" HorizontalAlignment="Left" Margin="428,803,0,0" VerticalAlignment="Top" Width="166" Height="58" FontSize="16"/>
+        <Button Name="btnGenerateRapport" Content="Rapport Genereren" HorizontalAlignment="Left" Margin="428,803,0,0" VerticalAlignment="Top" Width="166" Height="58" FontSize="16" Click="btnGenerateRapport_Click"/>
         <!-- dropdown met keuzes logo, kan eventueel nog via een Enum + databinding voor content. Globale var voor bijhouden logo bij generatie op word document? -->
         <ComboBox Name="cmboPartnerLogo" HorizontalAlignment="Left" Margin="224,832,0,0" VerticalAlignment="Top" Width="185" SelectionChanged="cmboPartnerLogo_SelectionChanged"  FontSize="16">
             <ComboBoxItem IsSelected="True" Content = "Geen" FontSize="16"/>

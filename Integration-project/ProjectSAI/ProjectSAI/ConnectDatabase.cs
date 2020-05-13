@@ -107,11 +107,8 @@ namespace ProjectSAI
                     listLeerling.Add(leerling);
                 }
                 //grid vullen met gegevens
-                dataGrid.ItemsSource = listLeerling;
-                   
+                dataGrid.ItemsSource = listLeerling;                   
             }
-
-
         }
 
         public static void UpdateDatabase(DataGrid datagrid)
