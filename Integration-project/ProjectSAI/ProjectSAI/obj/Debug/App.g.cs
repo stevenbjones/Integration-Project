@@ -16,6 +16,7 @@ using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Controls.Ribbon;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Ink;
@@ -61,6 +62,8 @@ namespace ProjectSAI {
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
         public static void Main() {
+            SplashScreen splashScreen = new SplashScreen("splashscreen/sailogo.png");
+            splashScreen.Show(true);
             ProjectSAI.App app = new ProjectSAI.App();
             app.InitializeComponent();
             app.Run();

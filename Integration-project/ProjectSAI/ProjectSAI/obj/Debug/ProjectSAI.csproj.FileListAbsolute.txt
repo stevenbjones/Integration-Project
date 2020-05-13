@@ -76,12 +76,8 @@ D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debu
 D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Microsoft.OData.Edm.dll
 D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Microsoft.OData.Edm.xml
 D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csproj.CopyComplete
-C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Xamarin.Forms.Core.dll
-C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Xamarin.Forms.Platform.dll
-C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Xamarin.Forms.Xaml.dll
-C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Xamarin.Forms.Core.pdb
-C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Xamarin.Forms.Core.xml
-C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Xamarin.Forms.Xaml.pdb
-C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Xamarin.Forms.Xaml.xml
-C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\XamlC.stamp
 C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csproj.CopyComplete
+C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\System.IO.Packaging.dll
+C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\System.IO.Packaging.xml

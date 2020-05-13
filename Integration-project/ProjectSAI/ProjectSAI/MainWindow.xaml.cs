@@ -50,7 +50,7 @@ namespace ProjectSAI
 
         }
 
-        private async void btnUploadData_Click(object sender, RoutedEventArgs e)
+        void btnUploadData_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
 
@@ -64,9 +64,8 @@ namespace ProjectSAI
                 ConnectDatabase.UploadCSV(fileName);
                 //MessageBox.Show("pls work");
 
-                ProgressBar.IsIndeterminate = true;
-                var result = await GetInvoices();
-                ProgressBar.IsIndeterminate = false;
+                dtgStudent.Items.Refresh();
+
             }
         }
 
@@ -74,6 +73,7 @@ namespace ProjectSAI
         {
             //ConnectDatabase.
         }
+
 
     } }
 
