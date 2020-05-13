@@ -28,49 +28,49 @@
 
                 <DataGridTextColumn Header="Hoogst behaald diploma" Width="100" Binding="{Binding HoogstBehaaldDiploma, NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Herkomst studenten" Width="100" Binding="{Binding [Herkomst studenten], NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Herkomst studenten" Width="100" Binding="{Binding HerkomstStudent, NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Project SO-CVO" Width="100" Binding="{Binding [Project SO-CVO],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Project SO-CVO" Width="100" Binding="{Binding ProjectSO_CVO,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Faciliteiten leermoeilijkheden/anderstaligen" Width="100" Binding="{Binding [Faciliteiten leermoeilijkheden/anderstaligen],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Faciliteiten leermoeilijkheden/anderstaligen" Width="100" Binding="{Binding FaciliteitenLeermoeilijkheden_Anderstaligen,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Diploma SO na CVO" Width="100" Binding="{Binding [Diploma SO na CVO],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Diploma SO na CVO" Width="100" Binding="{Binding DiplomaSOnaCVO,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Reden stoppen" Width="100" Binding="{Binding [Reden stoppen],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Reden stoppen" Width="100" Binding="{Binding RedenStoppen,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Diploma SO na HBO" Width="100" Binding="{Binding [Diploma SO na HBO],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Diploma SO na HBO" Width="100" Binding="{Binding DiplomaSOnaHBO,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <DataGridTextColumn Header="VDAB" Width="100" Binding="{Binding VDAB,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="School leren kennen" Width="100" Binding="{Binding [School leren kennen],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="School leren kennen" Width="100" Binding="{Binding SchoolLerenKennen,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <DataGridTextColumn Header="Module" Width="100" Binding="{Binding Module,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Module attest" Width="100" Binding="{Binding [Module attest],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Module attest" Width="100" Binding="{Binding ModuleAttest,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Module begindatum" Width="100" Binding="{Binding [Module begindatum],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:dd/MM/yyyy}}"/>
+                <DataGridTextColumn Header="Module begindatum" Width="100" Binding="{Binding ModuleBegindatum,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:dd/MM/yyyy}}"/>
 
-                <DataGridTextColumn Header="Module einddatum" Width="100" Binding="{Binding [Module einddatum],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:dd/MM/yyyy}}"/>
+                <DataGridTextColumn Header="Module einddatum" Width="100" Binding="{Binding ModuleEinddatum,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:dd/MM/yyyy}}"/>
 
-                <DataGridTextColumn Header="Einddatum inschrijving" Width="100" Binding="{Binding [Einddatum inschrijving],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:dd/MM/yyyy}}"/>
+                <DataGridTextColumn Header="Einddatum inschrijving" Width="100" Binding="{Binding EinddatumInschrijving,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:dd/MM/yyyy}}"/>
 
                 <DataGridTextColumn Header="Afdelingscode" Width="100" Binding="{Binding Afdelingscode,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <DataGridTextColumn Header="Klas" Width="100" Binding="{Binding Klas,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Instellingnummer vorig schooljaar" Width="100" Binding="{Binding [Instellingnummer vorig schooljaar],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Instellingnummer vorig schooljaar" Width="100" Binding="{Binding InstellingnummerVorigJaar,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Attest vorig schooljaar" Width="100" Binding="{Binding [Attest vorig schooljaar],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Attest vorig schooljaar" Width="100" Binding="{Binding AttestVorigSchooljaar,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Verleende studiebewijzen 1ste zit" Width="100" Binding="{Binding [Verleende studiebewijzen 1ste zit],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Verleende studiebewijzen 1ste zit" Width="100" Binding="{Binding VerleendeStudiebewijzen1steZit,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Verleende studiebewijzen 1ste zit vorig schooljaar" Width="100" Binding="{Binding [Verleende studiebewijzen 1ste zit vorig schooljaar],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Verleende studiebewijzen 1ste zit vorig schooljaar" Width="100" Binding="{Binding VerleendeStudiebewijzen1steZitVorigSchooljaar,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Klas vorig schooljaar" Width="100" Binding="{Binding [Klas vorig schooljaar],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Klas vorig schooljaar" Width="100" Binding="{Binding KlasVorigSchooljaar,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Instellingnummer vorige inschrijving" Width="100" Binding="{Binding [Instellingnummer vorige inschrijving],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Instellingnummer vorige inschrijving" Width="100" Binding="{Binding InstellingnummerVorigeInschrijving,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Attest vorige inschrijving" Width="100" Binding="{Binding [Attest vorige inschrijving],NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Attest vorige inschrijving" Width="100" Binding="{Binding AttestVorigeInschrijving,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
 
 

@@ -203,11 +203,34 @@ namespace ProjectSAI
                     listStrLineElements[19] = listStrLineElements[19].Replace('.', '/');
 
                     var test = DateTime.ParseExact(listStrLineElements[0], "d/M/yyyy", null);
+                    DateTime test2 = DateTime.MinValue;
+                    DateTime test3 = DateTime.MinValue;
+                    DateTime test4 = DateTime.MinValue;
+                    //MessageBox.Show(listStrLineElements[16]);
+                    if (listStrLineElements[16] != "")
+                    {
+                        test2 = DateTime.ParseExact(listStrLineElements[16], "MM/dd/yyyy", null);
+                    }
+                    else
+                    {
+                       
+                        listStrLineElements[16] = test2.ToString();
 
-                    MessageBox.Show(listStrLineElements[16]);
-                    var test2 = DateTime.ParseExact(listStrLineElements[16], "d/M/yyyy", null);
-                    var test3 = DateTime.ParseExact(listStrLineElements[17], "d/M/yyyy", null);
-                    var test4 = DateTime.ParseExact(listStrLineElements[19], "d/M/yyyy", null);
+                    }
+
+                    if (listStrLineElements[17] == "")
+                    {
+                        listStrLineElements[17] = test4.ToString();
+                    }
+
+                    if (listStrLineElements[19] == "")
+                    {
+                        listStrLineElements[19] = test4.ToString();
+                    }
+                   
+
+
+
 
 
                     connection.Open();
@@ -250,7 +273,7 @@ namespace ProjectSAI
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.ToString());
+                        //MessageBox.Show(ex.ToString());
                     }
                     connection.Close();
 
