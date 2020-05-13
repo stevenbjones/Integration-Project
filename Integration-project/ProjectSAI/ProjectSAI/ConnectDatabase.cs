@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.OData.Edm;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -93,19 +94,10 @@ namespace ProjectSAI
                 //datatable aanmaken van de databank
                 dataTable = new DataTable("dbStudentGegevens");
                 //de datatable vullen met gegevens van de databank
-                sqlDataAdapter.Fill(dataTable);
+                sqlDataAdapter.Fill(dataTable);                
 
-                List<Leerling> listLeerling = new List<Leerling>();
-                for (int i = 0; i < dataTable.Rows.Count; i++)
-                {
-                    Leerling leerling = new Leerling();
-                    leerling.Stamnummer = dataTable.Rows[i]["Stamnummer"].ToString();
-                    leerling.Nationaliteit = dataTable.Rows[i]["Nationaliteit"].ToString();
-                    leerling.Geslacht =  dataTable.Rows[i]["Geslacht"].ToString();
-                    DateTime.TryParse(dataTable.Rows[i]["Geboortedatum"].ToString(), out DateTime geboorteDatum);
-                    leerling.Geboortedatum = geboorteDatum.Date;
-                    listLeerling.Add(leerling);
-                }
+                List<Leerling> listLeerling = GetAllLeerlingenFromDatabase();
+
                 //grid vullen met gegevens
                 dataGrid.ItemsSource = listLeerling;                   
             }
@@ -127,7 +119,8 @@ namespace ProjectSAI
                 for (int i = 0; i < datagrid.Items.Count-1; i++)
                 {
                     Leerling leerling = (Leerling)datagrid.Items[i];
-                    cmdInsertTable = new SqlCommand($"INSERT INTO dbo.tblStudentGegevens (Nationaliteit, Geboortedatum) VALUES('{leerling.Nationaliteit}', '{leerling.Geboortedatum}')", connection);
+                    cmdInsertTable = new SqlCommand($"INSERT INTO dbo.tblStudentGegevens VALUES( '{leerling.Geboortedatum}','{leerling.Geslacht}','{leerling.Nationaliteit}','{leerling.Thuistaal}','{leerling.ProevenVerpleegkunde}', '{leerling.HoogstBehaaldDiploma}', '{leerling.HerkomstStudent}', '{leerling.ProjectSO_CVO}', '{leerling.FaciliteitenLeermoeilijkheden_Anderstaligen}', '{leerling.DiplomaSOnaCVO}', '{leerling.RedenStoppen}', '{leerling.DiplomaSOnaHBO}', '{leerling.VDAB}', '{leerling.SchoolLerenKennen}', '{leerling.Module}', '{leerling.ModuleAttest}', '{leerling.ModuleBegindatum}', '{leerling.ModuleEinddatum}','{leerling.Stamnummer}', '{leerling.EinddatumInschrijving}', '{leerling.AfdelingsCode}', '{leerling.Klas}', '{leerling.InstellingnummerVorigJaar}', '{leerling.AttestVorigSchooljaar}', '{leerling.VerleendeStudiebewijzen1steZit}', '{leerling.VerleendeStudiebewijzen1steZitVorigSchooljaar}', '{leerling.KlasVorigSchooljaar}', '{leerling.InstellingnummerVorigeInschrijving}', '{leerling.AttestVorigeInschrijving}')", connection);
+
                     cmdInsertTable.ExecuteNonQuery();
                 }
                 MessageBox.Show("Data succesvol verandert", "Gelukt", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -138,6 +131,47 @@ namespace ProjectSAI
                 MessageBox.Show("Er is een onverwachte fout opgetreden bij het updaten van de databank: " + ex.ToString(), "Fout!", MessageBoxButton.OK, MessageBoxImage.Error);             
             }
 
+        }
+
+        public static List<Leerling> GetAllLeerlingenFromDatabase()
+        {
+            List<Leerling> listLeerling = new List<Leerling>();
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                Leerling leerling = new Leerling();
+                leerling.Nationaliteit = dataTable.Rows[i]["Nationaliteit"].ToString();
+                leerling.Geslacht = dataTable.Rows[i]["Geslacht"].ToString();
+
+                leerling.Geboortedatum = Convert.ToDateTime(dataTable.Rows[i]["Geboortedatum"]).Date;               
+                leerling.Stamnummer = dataTable.Rows[i]["Stamnummer"].ToString();
+                leerling.Thuistaal = dataTable.Rows[i]["Thuistaal"].ToString();
+                leerling.ProevenVerpleegkunde = dataTable.Rows[i]["Proeven verpleegkunde"].ToString();
+                leerling.HoogstBehaaldDiploma = dataTable.Rows[i]["Hoogst behaald diploma"].ToString();
+                leerling.HerkomstStudent = dataTable.Rows[i]["Herkomst Studenten"].ToString();
+                leerling.ProjectSO_CVO = dataTable.Rows[i]["Project SO-CVO"].ToString();
+                leerling.FaciliteitenLeermoeilijkheden_Anderstaligen = dataTable.Rows[i]["Faciliteiten leermoeilijkheden/Anderstaligen"].ToString();
+                leerling.DiplomaSOnaCVO = dataTable.Rows[i]["Diploma SO na CVO"].ToString();
+                leerling.RedenStoppen = dataTable.Rows[i]["Reden stoppen"].ToString();
+                leerling.VDAB = dataTable.Rows[i]["VDAB"].ToString();
+                leerling.SchoolLerenKennen = dataTable.Rows[i]["School leren kennen"].ToString();
+                leerling.Module = dataTable.Rows[i]["Module"].ToString();
+                leerling.ModuleAttest = dataTable.Rows[i]["Module attest"].ToString();
+
+                leerling.ModuleBegindatum  = Convert.ToDateTime(dataTable.Rows[i]["Module begindatum"]).Date;
+                leerling.ModuleEinddatum  = Convert.ToDateTime(dataTable.Rows[i]["Module einddatum"]).Date;
+                leerling.EinddatumInschrijving = Convert.ToDateTime(dataTable.Rows[i]["Einddatum inschrijving"]).Date;
+                leerling.AfdelingsCode = dataTable.Rows[i]["Afdelingscode"].ToString();
+                leerling.Klas = dataTable.Rows[i]["Klas"].ToString();
+                leerling.InstellingnummerVorigJaar = dataTable.Rows[i]["Instellingnummer vorig schooljaar"].ToString();
+                leerling.AttestVorigSchooljaar = dataTable.Rows[i]["Attest vorig schooljaar"].ToString();
+                leerling.VerleendeStudiebewijzen1steZit = dataTable.Rows[i]["Verleende studiebewijzen 1ste zit"].ToString();
+                leerling.VerleendeStudiebewijzen1steZitVorigSchooljaar = dataTable.Rows[i]["Verleende studiebewijzen 1ste zit vorig schooljaar"].ToString();
+                leerling.KlasVorigSchooljaar = dataTable.Rows[i]["Klas vorig schooljaar"].ToString();
+                leerling.InstellingnummerVorigeInschrijving = dataTable.Rows[i]["Instellingnummer vorige inschrijving"].ToString();
+                leerling.AttestVorigeInschrijving = dataTable.Rows[i]["Attest vorige inschrijving"].ToString();
+                listLeerling.Add(leerling);
+            }
+            return listLeerling;
         }
 
         public static void UploadCSV(string filePath)
@@ -207,10 +241,9 @@ namespace ProjectSAI
                     }
                     catch (Exception ex)
                     {
+                        MessageBox.Show(ex.ToString());
                     }
                     connection.Close();
-
-
 
                 }
             }

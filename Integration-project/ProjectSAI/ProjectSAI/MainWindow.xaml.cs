@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace ProjectSAI
 {
     /// <summary>
@@ -31,7 +32,6 @@ namespace ProjectSAI
             ConnectDatabase.CreateDatabaseIfNotExists();
 
             ConnectDatabase.FillDataGrid(dtgStudent);
-         
 
         }
 
@@ -84,7 +84,7 @@ namespace ProjectSAI
 
         private void btnGenerateRapport_Click(object sender, RoutedEventArgs e)
         {
-
+            //ConnectDatabase.
         }
     } }
 

@@ -15,7 +15,10 @@
 
                 <DataGridTextColumn Header="Geslacht" Width="100" Binding="{Binding Geslacht,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGridTextColumn Header="Geboortedatum" Width="100" Binding="{Binding Geboortedatum,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Geboortedatum"  Width="100" Binding="{Binding Geboortedatum,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:dd/MM/yyyy}}">
+
+                   
+                </DataGridTextColumn>
 
                 <DataGridTextColumn Header="Nationaliteit" Width="100" Binding="{Binding Nationaliteit,NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 

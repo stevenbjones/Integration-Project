@@ -73,3 +73,6 @@ D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debu
 D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csproj.CoreCompileInputs.cache
 D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.exe
 D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.pdb
+D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Microsoft.OData.Edm.dll
+D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Microsoft.OData.Edm.xml
+D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csproj.CopyComplete
