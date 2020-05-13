@@ -179,106 +179,129 @@ namespace ProjectSAI
             //string line1 = File.ReadLines(filepath).First(); // gets the first line from file.
 
             //MessageBox.Show(line1);
-
-            using (StreamReader sr = new StreamReader(filePath))
+            try
             {
-                 string connString = ConfigurationManager.AppSettings["connStringMaster"];
-                 SqlConnection connection = new SqlConnection(connString); 
-
-                string headerLine = sr.ReadLine(); //Leest 1e lijn csv
-
-                //leest de rest.
-                var lines = File.ReadAllLines(filePath);
-                if (lines.Count() == 0) return;
-
-                for (int i = 1; i < lines.Count() - 1 ; i++)
+                using (StreamReader sr = new StreamReader(filePath))
                 {
+                    System.Globalization.CultureInfo cultureinfo = new System.Globalization.CultureInfo("nl-NL");
 
-                    List<string> listStrLineElements;
-                    listStrLineElements = lines[i].Split(',').ToList();
+                    string connString = ConfigurationManager.AppSettings["connStringMaster"];
+                    SqlConnection connection = new SqlConnection(connString);
 
-                    listStrLineElements[0] = listStrLineElements[0].Replace('.', '/');
-                    listStrLineElements[16] = listStrLineElements[16].Replace('.', '/');
-                    listStrLineElements[17] = listStrLineElements[17].Replace('.', '/');
-                    listStrLineElements[19] = listStrLineElements[19].Replace('.', '/');
+                    string headerLine = sr.ReadLine(); //Leest 1e lijn csv
 
-                    var test = DateTime.ParseExact(listStrLineElements[0], "d/M/yyyy", null);
-                    DateTime test2 = DateTime.MinValue;
-                    DateTime test3 = DateTime.MinValue;
-                    DateTime test4 = DateTime.MinValue;
-                    //MessageBox.Show(listStrLineElements[16]);
-                    if (listStrLineElements[16] != "")
+                    //leest de rest.
+                    var lines = File.ReadAllLines(filePath);
+                    if (lines.Count() == 0) return;
+
+                    for (int i = 1; i < lines.Count(); i++)
                     {
-                        test2 = DateTime.ParseExact(listStrLineElements[16], "MM/dd/yyyy", null);
-                    }
-                    else
-                    {
-                       
-                        listStrLineElements[16] = test2.ToString();
+
+                        List<string> listStrLineElements;
+                        listStrLineElements = lines[i].Split(',').ToList();
+
+                        if (listStrLineElements.Count > 29)
+                        {
+                            //MessageBox.Show("Er zit een fout in de data. Controleer op komma's die data sheiden binnen een kolom. Fout op lijn Gelieve het excell bestand te openen. Ctrl+f ',' vervangen met '/' of '-'"+i);
+                        }
+
+                        listStrLineElements[0] = listStrLineElements[0].Replace('.', '/');
+                        listStrLineElements[16] = listStrLineElements[16].Replace('.', '/');
+                        listStrLineElements[17] = listStrLineElements[17].Replace('.', '/');
+                        listStrLineElements[19] = listStrLineElements[19].Replace('.', '/');
+
+                        var test = DateTime.ParseExact(listStrLineElements[0], "d/M/yyyy", cultureinfo);
+                        DateTime test2 = DateTime.MinValue;
+                        DateTime test3 = DateTime.MinValue;
+                        DateTime test4 = DateTime.MinValue;
+                        //MessageBox.Show(listStrLineElements[16]);
+                        if (listStrLineElements[16] != "")
+                        {
+                            try
+                            {
+                                test2 = DateTime.ParseExact(listStrLineElements[16], "MM/dd/yyyy", cultureinfo);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.ToString());
+                            }
+                        }
+                        else
+                        {
+
+                            listStrLineElements[16] = test2.ToString();
+
+                        }
+
+                        if (listStrLineElements[17] == "")
+                        {
+                            listStrLineElements[17] = test4.ToString();
+                        }
+
+                        if (listStrLineElements[19] == "")
+                        {
+                            listStrLineElements[19] = test4.ToString();
+                        }
+
+
+
+
+
+
+                        connection.Open();
+
+                        string insertQuery = "INSERT INTO  dbStudentGegevens.dbo.tblStudentGegevens VALUES (" +
+                                 "'" + test + "'," +
+                                 "'" + listStrLineElements[1] + "'," +
+                                 "'" + listStrLineElements[2] + "'," +
+                                 "'" + listStrLineElements[3] + "'," +
+                                 "'" + listStrLineElements[4] + "'," +
+                                 "'" + listStrLineElements[5] + "'," +
+                                 "'" + listStrLineElements[6] + "'," +
+                                 "'" + listStrLineElements[7] + "'," +
+                                 "'" + listStrLineElements[8] + "'," +
+                                 "'" + listStrLineElements[9] + "'," +
+                                 "'" + listStrLineElements[10] + "'," +
+                                 "'" + listStrLineElements[11] + "'," +
+                                 "'" + listStrLineElements[12] + "'," +
+                                 "'" + listStrLineElements[13] + "'," +
+                                 "'" + listStrLineElements[14] + "'," +
+                                 "'" + listStrLineElements[15] + "'," +
+                                 "'" + test2 + "'," +
+                                 "'" + test3 + "'," +
+                                 "'" + listStrLineElements[18] + "'," +
+                                 "'" + test4 + "'," +
+                                 "'" + listStrLineElements[20] + "'," +
+                                 "'" + listStrLineElements[21] + "'," +
+                                 "'" + listStrLineElements[22] + "'," +
+                                 "'" + listStrLineElements[23] + "'," +
+                                 "'" + listStrLineElements[24] + "'," +
+                                 "'" + listStrLineElements[25] + "'," +
+                                 "'" + listStrLineElements[26] + "'," +
+                                 "'" + listStrLineElements[27] + "'," +
+                                 "'" + listStrLineElements[28] + "')";
+
+                        try
+                        {
+                            SqlCommand command = new SqlCommand(insertQuery, connection);
+                            command.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            //MessageBox.Show(ex.ToString());
+                        }
+                        connection.Close();
+
+                        
 
                     }
-
-                    if (listStrLineElements[17] == "")
-                    {
-                        listStrLineElements[17] = test4.ToString();
-                    }
-
-                    if (listStrLineElements[19] == "")
-                    {
-                        listStrLineElements[19] = test4.ToString();
-                    }
-                   
-
-
-
-
-
-                    connection.Open();
-
-                    string insertQuery = "INSERT INTO  dbStudentGegevens.dbo.tblStudentGegevens VALUES (" +
-                             "'" + test + "'," +
-                             "'" + listStrLineElements[1] + "'," +
-                             "'" + listStrLineElements[2] + "'," +
-                             "'" + listStrLineElements[3] + "'," +
-                             "'" + listStrLineElements[4] + "'," +
-                             "'" + listStrLineElements[5] + "'," +
-                             "'" + listStrLineElements[6] + "'," +
-                             "'" + listStrLineElements[7] + "'," +
-                             "'" + listStrLineElements[8] + "'," +
-                             "'" + listStrLineElements[9] + "'," +
-                             "'" + listStrLineElements[10] + "'," +
-                             "'" + listStrLineElements[11] + "'," +
-                             "'" + listStrLineElements[12] + "'," +
-                             "'" + listStrLineElements[13] + "'," +
-                             "'" + listStrLineElements[14] + "'," +
-                             "'" + listStrLineElements[15] + "'," +
-                             "'" + test2 + "'," +
-                             "'" + test3 + "'," +
-                             "'" + listStrLineElements[18] + "'," +
-                             "'" + test4 + "'," +
-                             "'" + listStrLineElements[20] + "'," +
-                             "'" + listStrLineElements[21] + "'," +
-                             "'" + listStrLineElements[22] + "'," +
-                             "'" + listStrLineElements[23] + "'," +
-                             "'" + listStrLineElements[24] + "'," +
-                             "'" + listStrLineElements[25] + "'," +
-                             "'" + listStrLineElements[26] + "'," +
-                             "'" + listStrLineElements[27] + "'," +
-                             "'" + listStrLineElements[28] + "')";
-
-                    try
-                    {
-                        SqlCommand command = new SqlCommand(insertQuery, connection);
-                        command.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        //MessageBox.Show(ex.ToString());
-                    }
-                    connection.Close();
-
                 }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Gelieve het bestand te sluiten alvorens te uploaden.");
+            }
+
 
         }
 
