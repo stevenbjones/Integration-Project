@@ -61,7 +61,6 @@ C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectS
 D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\ProjectSAI.exe.config
 D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\ProjectSAI.exe
 D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\ProjectSAI.pdb
-D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csprojAssemblyReference.cache
 D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\MainWindow.g.cs
 D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\App.g.cs
 D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI_MarkupCompile.cache
@@ -73,9 +72,6 @@ D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debu
 D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csproj.CoreCompileInputs.cache
 D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.exe
 D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.pdb
-D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Microsoft.OData.Edm.dll
-D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Microsoft.OData.Edm.xml
-D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csproj.CopyComplete
 C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csproj.CopyComplete
 C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\DocumentFormat.OpenXml.dll
 C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\System.IO.Packaging.dll

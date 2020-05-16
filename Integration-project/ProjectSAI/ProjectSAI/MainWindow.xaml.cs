@@ -92,7 +92,7 @@ namespace ProjectSAI
 
         private void btnGenerateRapport_Click(object sender, RoutedEventArgs e)
         {
-            isGifLoadingVisible = Visibility.Visible;
+            MaakWordDocument.Create();
         }
 
 
