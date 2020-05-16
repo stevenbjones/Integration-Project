@@ -81,6 +81,9 @@ namespace ProjectSAI
 
         public static void FillDataGrid(System.Windows.Controls.DataGrid dataGrid)
         {
+            
+            connString = ConfigurationManager.AppSettings["connStringDB"];
+            connection = new SqlConnection(connString); //connstring converte naar het juiste var type
             using (connection)
             {
                 dataSet = new DataSet();
@@ -102,7 +105,7 @@ namespace ProjectSAI
 
         public static void UpdateDatabase(DataGrid datagrid)
         {
-            
+            System.Globalization.CultureInfo cultureinfo = new System.Globalization.CultureInfo("nl-NL");
             connString = ConfigurationManager.AppSettings["connStringDB"];
             connection = new SqlConnection(connString); //connstring converte naar het juiste var type
             SqlCommand cmdClearTable = new SqlCommand("Delete from dbo.tblStudentGegevens", connection);
@@ -116,7 +119,42 @@ namespace ProjectSAI
                 for (int i = 0; i < datagrid.Items.Count-1; i++)
                 {
                     Leerling leerling = (Leerling)datagrid.Items[i];
-                    cmdInsertTable = new SqlCommand($"INSERT INTO dbo.tblStudentGegevens VALUES( '{leerling.Geboortedatum}','{leerling.Geslacht}','{leerling.Nationaliteit}','{leerling.Thuistaal}','{leerling.ProevenVerpleegkunde}', '{leerling.HoogstBehaaldDiploma}', '{leerling.HerkomstStudent}', '{leerling.ProjectSO_CVO}', '{leerling.FaciliteitenLeermoeilijkheden_Anderstaligen}', '{leerling.DiplomaSOnaCVO}', '{leerling.RedenStoppen}', '{leerling.DiplomaSOnaHBO}', '{leerling.VDAB}', '{leerling.SchoolLerenKennen}', '{leerling.Module}', '{leerling.ModuleAttest}', '{leerling.ModuleBegindatum}', '{leerling.ModuleEinddatum}','{leerling.Stamnummer}', '{leerling.EinddatumInschrijving}', '{leerling.AfdelingsCode}', '{leerling.Klas}', '{leerling.InstellingnummerVorigJaar}', '{leerling.AttestVorigSchooljaar}', '{leerling.VerleendeStudiebewijzen1steZit}', '{leerling.VerleendeStudiebewijzen1steZitVorigSchooljaar}', '{leerling.KlasVorigSchooljaar}', '{leerling.InstellingnummerVorigeInschrijving}', '{leerling.AttestVorigeInschrijving}')", connection);
+
+                    cmdInsertTable = new SqlCommand($"INSERT INTO dbo.tblStudentGegevens VALUES( " +
+                        $"@geboortedatum,'" +
+                        $"{leerling.Geslacht}','" +
+                        $"{leerling.Nationaliteit}','" +
+                        $"{leerling.Thuistaal}','" +
+                        $"{leerling.ProevenVerpleegkunde}', '" +
+                        $"{leerling.HoogstBehaaldDiploma}', '" +
+                        $"{leerling.HerkomstStudent}', '" +
+                        $"{leerling.ProjectSO_CVO}', '" +
+                        $"{leerling.FaciliteitenLeermoeilijkheden_Anderstaligen}', '" +
+                        $"{leerling.DiplomaSOnaCVO}', '" +
+                        $"{leerling.RedenStoppen}', '" +
+                        $"{leerling.DiplomaSOnaHBO}', '" +
+                        $"{leerling.VDAB}', '" +
+                        $"{leerling.SchoolLerenKennen}', '" +
+                        $"{leerling.Module}', '" +
+                        $"{leerling.ModuleAttest}', " +
+                        $"@moduleBegindatum, " +
+                        $"@moduleEinddatum,'" +
+                        $"{leerling.Stamnummer}', " +
+                        $"@einddatumInschrijving, '" +
+                        $"{leerling.AfdelingsCode}', '" +
+                        $"{leerling.Klas}', '" +
+                        $"{leerling.InstellingnummerVorigJaar}', '" +
+                        $"{leerling.AttestVorigSchooljaar}', '" +
+                        $"{leerling.VerleendeStudiebewijzen1steZit}', '" +
+                        $"{leerling.VerleendeStudiebewijzen1steZitVorigSchooljaar}', '" +
+                        $"{leerling.KlasVorigSchooljaar}', '" +
+                        $"{leerling.InstellingnummerVorigeInschrijving}', '" +
+                        $"{leerling.AttestVorigeInschrijving}')", connection);
+                    cmdInsertTable.Parameters.AddWithValue("@geboortedatum", leerling.Geboortedatum);
+                    cmdInsertTable.Parameters.AddWithValue("@moduleBegindatum", leerling.ModuleBegindatum);
+                    cmdInsertTable.Parameters.AddWithValue("@moduleEinddatum", leerling.ModuleEinddatum);
+                    cmdInsertTable.Parameters.AddWithValue("@einddatumInschrijving", leerling.EinddatumInschrijving);
+
 
                     cmdInsertTable.ExecuteNonQuery();
                 }
@@ -127,7 +165,7 @@ namespace ProjectSAI
             {
                 MessageBox.Show("Er is een onverwachte fout opgetreden bij het updaten van de databank: " + ex.ToString(), "Fout!", MessageBoxButton.OK, MessageBoxImage.Error);             
             }
-
+       
         }
 
         public static List<Leerling> GetAllLeerlingenFromDatabase()
@@ -139,7 +177,7 @@ namespace ProjectSAI
                 leerling.Nationaliteit = dataTable.Rows[i]["Nationaliteit"].ToString();
                 leerling.Geslacht = dataTable.Rows[i]["Geslacht"].ToString();
 
-                leerling.Geboortedatum = Convert.ToDateTime(dataTable.Rows[i]["Geboortedatum"]).Date;               
+                leerling.Geboortedatum = Convert.ToDateTime(dataTable.Rows[i]["Geboortedatum"]);               
                 leerling.Stamnummer = dataTable.Rows[i]["Stamnummer"].ToString();
                 leerling.Thuistaal = dataTable.Rows[i]["Thuistaal"].ToString();
                 leerling.ProevenVerpleegkunde = dataTable.Rows[i]["Proeven_verpleegkunde"].ToString();
@@ -154,9 +192,9 @@ namespace ProjectSAI
                 leerling.Module = dataTable.Rows[i]["Module"].ToString();
                 leerling.ModuleAttest = dataTable.Rows[i]["Module attest"].ToString();
 
-                leerling.ModuleBegindatum  = Convert.ToDateTime(dataTable.Rows[i]["Module begindatum"]).Date;
-                leerling.ModuleEinddatum  = Convert.ToDateTime(dataTable.Rows[i]["Module einddatum"]).Date;
-                leerling.EinddatumInschrijving = Convert.ToDateTime(dataTable.Rows[i]["Einddatum inschrijving"]).Date;
+                leerling.ModuleBegindatum  = Convert.ToDateTime(dataTable.Rows[i]["Module begindatum"]);
+                leerling.ModuleEinddatum  = Convert.ToDateTime(dataTable.Rows[i]["Module einddatum"]);
+                leerling.EinddatumInschrijving = Convert.ToDateTime(dataTable.Rows[i]["Einddatum inschrijving"]);
                 leerling.AfdelingsCode = dataTable.Rows[i]["Afdelingscode"].ToString();
                 leerling.Klas = dataTable.Rows[i]["Klas"].ToString();
                 leerling.InstellingnummerVorigJaar = dataTable.Rows[i]["Instellingnummer vorig schooljaar"].ToString();
@@ -171,7 +209,7 @@ namespace ProjectSAI
             return listLeerling;
         }
 
-        public static void UploadCSV(string filePath)
+        public static void UploadCSV(string filePath, DataGrid dataGrid)
         {
 
             //string filepath = filePath;
@@ -192,55 +230,79 @@ namespace ProjectSAI
 
                     //leest de rest.
                     var lines = File.ReadAllLines(filePath);
+                    bool dataHasComma = false;
                     if (lines.Count() == 0) return;
 
+                    for (int i = 0; i < lines.Count(); i++)
+                    {
+                        List<string> listStrLineElements;
+                        listStrLineElements = lines[i].Split(',').ToList();
+
+                        if (listStrLineElements.Count > 29)
+                        {
+                            MessageBox.Show("Er zit een fout in de data. Controleer op komma's die data scheiden binnen een kolom. Gelieve het excell bestand te openen. Ctrl+f ',' vervangen met '/' of '-'. Fout op lijn: " + i, "Fout", MessageBoxButton.OK, MessageBoxImage.Error);
+                            dataHasComma = true;
+                        }
+                    }
+
+                    if (dataHasComma) return;
                     for (int i = 1; i < lines.Count(); i++)
                     {
 
                         List<string> listStrLineElements;
                         listStrLineElements = lines[i].Split(',').ToList();
 
-                        if (listStrLineElements.Count > 29)
-                        {
-                            //MessageBox.Show("Er zit een fout in de data. Controleer op komma's die data sheiden binnen een kolom. Fout op lijn Gelieve het excell bestand te openen. Ctrl+f ',' vervangen met '/' of '-'"+i);
-                        }
 
                         listStrLineElements[0] = listStrLineElements[0].Replace('.', '/');
                         listStrLineElements[16] = listStrLineElements[16].Replace('.', '/');
                         listStrLineElements[17] = listStrLineElements[17].Replace('.', '/');
                         listStrLineElements[19] = listStrLineElements[19].Replace('.', '/');
 
-                        var test = DateTime.ParseExact(listStrLineElements[0], "d/M/yyyy", cultureinfo);
-                        DateTime test2 = DateTime.MinValue;
-                        DateTime test3 = DateTime.MinValue;
-                        DateTime test4 = DateTime.MinValue;
-                        //MessageBox.Show(listStrLineElements[16]);
-                        if (listStrLineElements[16] != "")
+                        DateTime geboortedatum = new DateTime(); ;
+                        DateTime moduleBeginDatum = new DateTime();
+                        DateTime moduleEindDatum = new DateTime();
+                        DateTime einddatumInschrijving = new DateTime();
+
+
+                        
+                        if (listStrLineElements[0] == "")
                         {
-                            try
-                            {
-                                test2 = DateTime.ParseExact(listStrLineElements[16], "MM/dd/yyyy", cultureinfo);
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.ToString());
-                            }
+                            listStrLineElements[0] = DateTime.MaxValue.ToString();
                         }
                         else
                         {
+                            geboortedatum = DateTime.ParseExact(listStrLineElements[0], "dd/MM/yyyy", cultureinfo);
+                            listStrLineElements[0] = geboortedatum.ToString();
+                        }
 
-                            listStrLineElements[16] = test2.ToString();
-
+                        if (listStrLineElements[16] == "")
+                        {
+                            listStrLineElements[16] = DateTime.MaxValue.ToString();
+                        }
+                        else
+                        {
+                             moduleBeginDatum = DateTime.ParseExact(listStrLineElements[16], "dd/MM/yyyy", cultureinfo);
+                            listStrLineElements[16] = moduleBeginDatum.ToString();
                         }
 
                         if (listStrLineElements[17] == "")
                         {
-                            listStrLineElements[17] = test4.ToString();
+                            listStrLineElements[17] = DateTime.MaxValue.ToString();
+                        }
+                        else
+                        {
+                            moduleEindDatum = DateTime.ParseExact(listStrLineElements[17], "dd/MM/yyyy", cultureinfo);
+                            listStrLineElements[17] = moduleEindDatum.ToString();
                         }
 
                         if (listStrLineElements[19] == "")
                         {
-                            listStrLineElements[19] = test4.ToString();
+                            listStrLineElements[19] = DateTime.MaxValue.ToString();
+                        }
+                        else
+                        {
+                            einddatumInschrijving = DateTime.ParseExact(listStrLineElements[19], "dd/MM/yyyy", cultureinfo);
+                            listStrLineElements[19] = einddatumInschrijving.ToString();
                         }
 
 
@@ -250,40 +312,47 @@ namespace ProjectSAI
 
                         connection.Open();
 
-                        string insertQuery = "INSERT INTO  dbStudentGegevens.dbo.tblStudentGegevens VALUES (" +
-                                 "'" + test + "'," +
-                                 "'" + listStrLineElements[1] + "'," +
-                                 "'" + listStrLineElements[2] + "'," +
-                                 "'" + listStrLineElements[3] + "'," +
-                                 "'" + listStrLineElements[4] + "'," +
-                                 "'" + listStrLineElements[5] + "'," +
-                                 "'" + listStrLineElements[6] + "'," +
-                                 "'" + listStrLineElements[7] + "'," +
-                                 "'" + listStrLineElements[8] + "'," +
-                                 "'" + listStrLineElements[9] + "'," +
-                                 "'" + listStrLineElements[10] + "'," +
-                                 "'" + listStrLineElements[11] + "'," +
-                                 "'" + listStrLineElements[12] + "'," +
-                                 "'" + listStrLineElements[13] + "'," +
-                                 "'" + listStrLineElements[14] + "'," +
-                                 "'" + listStrLineElements[15] + "'," +
-                                 "'" + test2 + "'," +
-                                 "'" + test3 + "'," +
-                                 "'" + listStrLineElements[18] + "'," +
-                                 "'" + test4 + "'," +
-                                 "'" + listStrLineElements[20] + "'," +
-                                 "'" + listStrLineElements[21] + "'," +
-                                 "'" + listStrLineElements[22] + "'," +
-                                 "'" + listStrLineElements[23] + "'," +
-                                 "'" + listStrLineElements[24] + "'," +
-                                 "'" + listStrLineElements[25] + "'," +
-                                 "'" + listStrLineElements[26] + "'," +
-                                 "'" + listStrLineElements[27] + "'," +
-                                 "'" + listStrLineElements[28] + "')";
+                        string insertQuery = "INSERT INTO  dbStudentGegevens.dbo.tblStudentGegevens  VALUES  (" +
+                        "@geboortedatum ," +
+                        "'" + listStrLineElements[1] + "'," +
+                        "'" + listStrLineElements[2] + "'," +
+                        "'" + listStrLineElements[3] + "'," +
+                        "'" + listStrLineElements[4] + "'," +
+                        "'" + listStrLineElements[5] + "'," +
+                        "'" + listStrLineElements[6] + "'," +
+                        "'" + listStrLineElements[7] + "'," +
+                        "'" + listStrLineElements[8] + "'," +
+                        "'" + listStrLineElements[9] + "'," +
+                        "'" + listStrLineElements[10] + "'," +
+                        "'" + listStrLineElements[11] + "'," +
+                        "'" + listStrLineElements[12] + "'," +
+                        "'" + listStrLineElements[13] + "'," +
+                        "'" + listStrLineElements[14] + "'," +
+                        "'" + listStrLineElements[15] + "'," +
+                        "@modulebegindatum ," +
+                        "@moduleeinddatum ," +
+                        "'" + listStrLineElements[18] + "'," +
+                        "@einddatuminschrijving ," +
+                        "'" + listStrLineElements[20] + "'," +
+                        "'" + listStrLineElements[21] + "'," +
+                        "'" + listStrLineElements[22] + "'," +
+                        "'" + listStrLineElements[23] + "'," +
+                        "'" + listStrLineElements[24] + "'," +
+                        "'" + listStrLineElements[25] + "'," +
+                        "'" + listStrLineElements[26] + "'," +
+                        "'" + listStrLineElements[27] + "'," +
+                        "'" + listStrLineElements[28] + "')";
+                        SqlCommand command = new SqlCommand(insertQuery, connection);
+
+                        command.Parameters.AddWithValue("@geboortedatum", geboortedatum );
+                        command.Parameters.AddWithValue("@modulebegindatum", moduleBeginDatum);
+                        command.Parameters.AddWithValue("@moduleeinddatum", moduleEindDatum);
+                        command.Parameters.AddWithValue("@einddatuminschrijving", einddatumInschrijving);
+                       
 
                         try
                         {
-                            SqlCommand command = new SqlCommand(insertQuery, connection);
+                           
                             command.ExecuteNonQuery();
                         }
                         catch (Exception ex)
@@ -299,8 +368,11 @@ namespace ProjectSAI
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Gelieve het bestand te sluiten alvorens te uploaden.");
+                MessageBox.Show("Gelieve het bestand te sluiten alvorens te uploaden.", "Fout", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.ToString());
             }
+
+            FillDataGrid(dataGrid);
 
 
         }

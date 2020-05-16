@@ -81,3 +81,18 @@ C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectS
 C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\System.IO.Packaging.dll
 C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\DocumentFormat.OpenXml.xml
 C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\System.IO.Packaging.xml
+J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\ProjectSAI.exe.config
+J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\ProjectSAI.exe
+J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\ProjectSAI.pdb
+J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csprojAssemblyReference.cache
+J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\MainWindow.g.cs
+J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\App.g.cs
+J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI_MarkupCompile.cache
+J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI_MarkupCompile.lref
+J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\MainWindow.baml
+J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.g.resources
+J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.Properties.Resources.resources
+J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csproj.GenerateResource.cache
+J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csproj.CoreCompileInputs.cache
+J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.exe
+J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.pdb
