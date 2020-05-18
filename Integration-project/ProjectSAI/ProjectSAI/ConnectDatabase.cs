@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.ExtendedProperties;
+using Microsoft.Office.Interop.Word;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -16,7 +18,7 @@ namespace ProjectSAI
         public static SqlConnection connection = new SqlConnection(connString); //connstring converte naar het juiste var type
         public static DataSet dataSet;
         public static SqlDataAdapter sqlDataAdapter;
-        public static DataTable dataTable;
+        public static System.Data.DataTable dataTable;
 
         public static void CreateDatabaseIfNotExists()
         {
@@ -92,7 +94,7 @@ namespace ProjectSAI
                 //sql adaptop aanmake
                 sqlDataAdapter = new SqlDataAdapter(cmd);
                 //datatable aanmaken van de databank
-                dataTable = new DataTable("dbStudentGegevens");
+                dataTable = new System.Data.DataTable("dbStudentGegevens");
                 //de datatable vullen met gegevens van de databank
                 sqlDataAdapter.Fill(dataTable);                
 
@@ -211,7 +213,6 @@ namespace ProjectSAI
 
         public static void UploadCSV(string filePath, DataGrid dataGrid)
         {
-
             //string filepath = filePath;
 
             //string line1 = File.ReadLines(filepath).First(); // gets the first line from file.
@@ -360,9 +361,6 @@ namespace ProjectSAI
                             //MessageBox.Show(ex.ToString());
                         }
                         connection.Close();
-
-                        
-
                     }
                 }
             }
@@ -371,10 +369,8 @@ namespace ProjectSAI
                 MessageBox.Show("Gelieve het bestand te sluiten alvorens te uploaden.", "Fout", MessageBoxButton.OK, MessageBoxImage.Error);
                 MessageBox.Show(ex.ToString());
             }
-
+            
             FillDataGrid(dataGrid);
-
-
         }
 
 

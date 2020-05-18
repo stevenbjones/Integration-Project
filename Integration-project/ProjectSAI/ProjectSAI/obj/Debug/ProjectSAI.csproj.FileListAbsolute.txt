@@ -92,3 +92,6 @@ J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integra
 J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csproj.CoreCompileInputs.cache
 J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.exe
 J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration-Project\Integration\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.pdb
+C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\WpfAnimatedGif.dll
+C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\WpfAnimatedGif.pdb
+C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\WpfAnimatedGif.xml

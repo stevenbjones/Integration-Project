@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjectSAI"
         mc:Ignorable="d"
           Title="Rappport Generatie SAI en Partners" Height="907.5" Width="1210.5" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
-    <Grid Margin="0,0,0,-19">
+    <Grid Margin="0,0,4,-19">
 
         <DataGrid IsReadOnly="true" AutoGenerateColumns="False" Name="dtgStudent" HorizontalAlignment="Left" Height="788" Margin="10,10,0,0" VerticalAlignment="Top" Width="1174" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False">
             <DataGrid.Columns>
@@ -77,13 +77,13 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <CheckBox Name="chkEditCells" Content="Cells bewerken" HorizontalAlignment="Left" Margin="936,771,0,0" VerticalAlignment="Top" Click="chkEditCells_Click" />
-        <Button Name="btnSubmit" IsEnabled="false" Content="Submit veranderingen" HorizontalAlignment="Left" Margin="936,801,0,0" VerticalAlignment="Top" Width="131" Height="33" Click="btnSubmit_Click"/>
+        <CheckBox Name="chkEditCells" Content="Cells bewerken" HorizontalAlignment="Left" Margin="1053,806,0,0" VerticalAlignment="Top" Click="chkEditCells_Click" />
+        <Button Name="btnSubmit" IsEnabled="false" Content="Submit veranderingen" HorizontalAlignment="Left" Margin="1053,826,0,0" VerticalAlignment="Top" Width="131" Height="33" Click="btnSubmit_Click"/>
 
         <Button Name="btnUploadData" Content="Data Uploaden" HorizontalAlignment="Left" Margin="10,803,0,0" VerticalAlignment="Top" Width="167" Height="58" FontSize="16" Click="btnUploadData_Click"/>
-        <Button Name="btnGenerateRapport" Content="Rapport Genereren" HorizontalAlignment="Left" Margin="428,803,0,0" VerticalAlignment="Top" Width="166" Height="58" FontSize="16" Click="btnGenerateRapport_Click"/>
+        <Button Name="btnGenerateRapport" Content="Rapport Genereren" HorizontalAlignment="Left" Margin="410,803,0,0" VerticalAlignment="Top" Width="166" Height="58" FontSize="16" Click="btnGenerateRapport_Click"/>
         <!-- dropdown met keuzes logo, kan eventueel nog via een Enum + databinding voor content. Globale var voor bijhouden logo bij generatie op word document? -->
-        <ComboBox Name="cmboPartnerLogo" HorizontalAlignment="Left" Margin="224,832,0,0" VerticalAlignment="Top" Width="185" SelectionChanged="cmboPartnerLogo_SelectionChanged"  FontSize="16">
+        <ComboBox Name="cmboPartnerLogo" HorizontalAlignment="Left" Margin="205,832,0,0" VerticalAlignment="Top" Width="185" SelectionChanged="cmboPartnerLogo_SelectionChanged"  FontSize="16">
             <ComboBoxItem IsSelected="True" Content = "Geen" FontSize="16"/>
             <ComboBoxItem Content = "Sint Augustinusinstituut Aalst" FontSize="16"/>
             <ComboBoxItem Content = "Benedictuspoort – Gent" FontSize="16"/>
@@ -91,7 +91,6 @@
             <ComboBoxItem Content = "Sint Guido – Anderlecht" FontSize="16"/>
 
         </ComboBox>
-        <Label Content="Logo Rapport" HorizontalAlignment="Left" Margin="220,803,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Image Name="gifLoading" Visibility="{Binding isGifLoadingVisible}" HorizontalAlignment="Left"   Height="233" Margin="477,272,0,0" VerticalAlignment="Top" Width="268" Source="loading.gif"/>
+        <Label Content="Logo Rapport" HorizontalAlignment="Left" Margin="201,803,0,0" VerticalAlignment="Top" FontSize="16"/>
     </Grid>
 </Window>
