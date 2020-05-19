@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
-using Word = Microsoft.Office.Interop.Word;
 using Spire.Doc.Documents;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Office.Interop.Word;
 using Spire;
 using Spire.Doc.Documents;
 using Spire.Doc.Fields;
 using Spire.Doc.Interface;
 using Spire.Doc;
 using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace ProjectSAI
 {
@@ -20,20 +20,51 @@ namespace ProjectSAI
         {
             List<Leerling> leerlingen = ConnectDatabase.GetAllLeerlingenFromDatabase();
 
-            Spire.Doc.Document testdoc = new Spire.Doc.Document();
+            Document testdoc = new Document();
             testdoc.LoadFromFile(@"D:\test\Template2.docx");
 
-            Spire.Doc.Table table = new Spire.Doc.Table(testdoc, true);
+            Table table = new Table(testdoc, true);
 
-            System.Data.DataTable dt = new System.Data.DataTable();
+            
+           
+            string sql = "select Module, count(Geslacht) as Aantal , MONTH([Module begindatum]) as maand, YEAR([Module begindatum]) as jaar from tblStudentGegevens group by module, MONTH([Module begindatum]) , YEAR([Module begindatum])";
+
+           
+           DataTable resultaat =  ConnectDatabase.getTable(sql);
+           List<TabelAantalLlnPerModule> listAantalPerModule = new List<TabelAantalLlnPerModule>();
+
+            for (int i = 0; i < resultaat.Rows.Count; i++)
+            {
+                TabelAantalLlnPerModule a = new TabelAantalLlnPerModule();
+                a.NaamModule = resultaat.Rows[i]["Module"].ToString();
+                a.Aantal = Convert.ToInt32(resultaat.Rows[i]["Aantal"]);
+                a.Maand = Convert.ToInt32(resultaat.Rows[i]["maand"]);
+                a.Jaar = Convert.ToInt32(resultaat.Rows[i]["jaar"]);
+
+                listAantalPerModule.Add(a);
+            }
+
+            MessageBox.Show(listAantalPerModule.ToString());
+
+            //IDictionary<int, List<string>> data = new Dictionary<int, List<string>>();
+
+            TabelAantalLlnPerModule test = new TabelAantalLlnPerModule();
+          
+
+
+          
+
+
+
+            DataTable dt = new DataTable();
             dt.Columns.Add("id", typeof(string));
             dt.Columns.Add("name", typeof(string));
-            dt.Rows.Add(new string[] { "Stamnummer", "Nationaliteit "});
+            dt.Rows.Add(new string[] { "Stamnummer", "Nationaliteit " });
             foreach (Leerling l in leerlingen)
             {
                 dt.Rows.Add(new string[] { l.Stamnummer, l.Nationaliteit });
             }
-            
+
 
             table.ResetCells(dt.Rows.Count, dt.Columns.Count);
 
@@ -62,37 +93,6 @@ namespace ProjectSAI
             testdoc.SaveToFile("output.docx", FileFormat.Docx2013);
             System.Diagnostics.Process.Start("output.docx");
 
-
         }
-
-        private static void ReplaceBookmarkText(Microsoft.Office.Interop.Word.Document doc, string bookmarkName, Word.Table text)
-
-        {
-
-
-            if (doc.Bookmarks.Exists(bookmarkName))
-
-            {
-
-                Object name = bookmarkName;
-
-
-               object test = doc.Bookmarks.get_Item(ref name);
-
-                Microsoft.Office.Interop.Word.Range range = doc.Bookmarks.get_Item(ref name).Range;
-
-                range.Text = text.ToString();
-
-
-                object newRange = range;
-
-               // doc.Bookmarks.Add(bookmarkName, ref newRange);
-
-            }
-
-        }
-
     }
-
-
 }

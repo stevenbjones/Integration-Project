@@ -92,5 +92,7 @@
 
         </ComboBox>
         <Label Content="Logo Rapport" HorizontalAlignment="Left" Margin="201,803,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <CheckBox x:Name="chkEnableDatagrid" Content="Data tonen" HorizontalAlignment="Left" Margin="601,843,0,0" VerticalAlignment="Top" Click="chkEnableDatagrid_Click"  Height="18" Width="98" />
+        <Label Name="lblOutput" Content="" HorizontalAlignment="Left" Margin="699,807,0,0" VerticalAlignment="Top" Height="52" Width="338"/>
     </Grid>
 </Window>

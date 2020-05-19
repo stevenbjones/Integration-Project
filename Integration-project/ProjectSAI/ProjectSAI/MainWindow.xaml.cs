@@ -15,9 +15,7 @@ namespace ProjectSAI
         {
             InitializeComponent();
 
-            ConnectDatabase.CreateDatabaseIfNotExists();
-
-            ConnectDatabase.FillDataGrid(dtgStudent);
+            ConnectDatabase.CreateDatabaseIfNotExists();            
         }
 
         private void chkEditCells_Click(object sender, RoutedEventArgs e)
@@ -64,6 +62,34 @@ namespace ProjectSAI
         private void btnGenerateRapport_Click(object sender, RoutedEventArgs e)
         {
             MaakWordDocument.Create();
+        }
+
+        private async void chkEnableDatagrid_Click(object sender, RoutedEventArgs e)
+        {
+            if (chkEnableDatagrid.IsChecked == true)
+            {
+
+                await Task.Run(() => this.Dispatcher.Invoke(() => lblOutput.Content = "Data word geladen..."));
+                await Task.Run(() => this.Dispatcher.Invoke(() => ConnectDatabase.FillDataGrid(dtgStudent)));
+                lblOutput.Content = "Data succesvol geladen.";
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Waarschuwing, uw gewijzigde gegevens zullen niet opgeslaan worden. Bent u zeker?", "Opgelet", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    dtgStudent.ItemsSource = null;
+                    dtgStudent.Items.Clear();
+                    lblOutput.Content = "";
+                }
+                else
+                {
+                    chkEnableDatagrid.IsChecked = true;
+
+                }
+
+
+            }
         }
     }
 }

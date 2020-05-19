@@ -83,26 +83,10 @@ namespace ProjectSAI
 
         public static void FillDataGrid(System.Windows.Controls.DataGrid dataGrid)
         {
-            
-            connString = ConfigurationManager.AppSettings["connStringDB"];
-            connection = new SqlConnection(connString); //connstring converte naar het juiste var type
-            using (connection)
-            {
-                dataSet = new DataSet();
-                //commando sql
-                SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.tblStudentGegevens", connection);
-                //sql adaptop aanmake
-                sqlDataAdapter = new SqlDataAdapter(cmd);
-                //datatable aanmaken van de databank
-                dataTable = new System.Data.DataTable("dbStudentGegevens");
-                //de datatable vullen met gegevens van de databank
-                sqlDataAdapter.Fill(dataTable);                
 
-                List<Leerling> listLeerling = GetAllLeerlingenFromDatabase();
-
-                //grid vullen met gegevens
-                dataGrid.ItemsSource = listLeerling;                   
-            }
+            List<Leerling> listLeerling = GetAllLeerlingenFromDatabase();
+            //grid vullen met gegevens
+            dataGrid.ItemsSource = listLeerling;
         }
 
         public static void UpdateDatabase(DataGrid datagrid)
@@ -172,6 +156,16 @@ namespace ProjectSAI
 
         public static List<Leerling> GetAllLeerlingenFromDatabase()
         {
+            connString = ConfigurationManager.AppSettings["connStringDB"];
+            connection = new SqlConnection(connString); //connstring converte naar het juiste var type
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.tblStudentGegevens", connection);
+            //sql adaptop aanmake
+            sqlDataAdapter = new SqlDataAdapter(cmd);
+            //datatable aanmaken van de databank
+            dataTable = new System.Data.DataTable("dbStudentGegevens");
+            //de datatable vullen met gegevens van de databank
+            sqlDataAdapter.Fill(dataTable);
             List<Leerling> listLeerling = new List<Leerling>();
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
@@ -373,6 +367,38 @@ namespace ProjectSAI
             FillDataGrid(dataGrid);
         }
 
+        public static System.Data.DataTable getTable(string query)
+        {
+            connString = ConfigurationManager.AppSettings["connStringDB"];
+            connection = new SqlConnection(connString); //connstring converte naar het juiste var type
+            try
+            {                
+                SqlDataReader dataReader;
+                dataSet = new DataSet();               
+                List <string> output = new List<string>();
+                //commando sql
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                
+                
+                
+                //sql adaptop aanmake
+                sqlDataAdapter = new SqlDataAdapter(cmd);
+                //datatable aanmaken van de databank
+                dataTable = new System.Data.DataTable("dbStudentGegevens");
+                //de datatable vullen met gegevens van de databank
+                sqlDataAdapter.Fill(dataTable);
+
+                return dataTable;
+            }
+            catch (System.Exception ex)
+            {
+                return dataTable;
+            }
+
+
+
+        }
 
     }
 }
