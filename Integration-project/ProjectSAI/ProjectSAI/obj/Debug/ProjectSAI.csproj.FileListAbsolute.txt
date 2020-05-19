@@ -95,3 +95,13 @@ J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integra
 C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\WpfAnimatedGif.dll
 C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\WpfAnimatedGif.pdb
 C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\WpfAnimatedGif.xml
+D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csprojAssemblyReference.cache
+D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Syncfusion.Licensing.dll
+D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csproj.CopyComplete
+D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Spire.Doc.dll
+D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Spire.License.dll
+D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Spire.Pdf.dll
+D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Microsoft.mshtml.dll
+D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Spire.Doc.xml
+D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Spire.License.xml
+D:\GITHUB\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Spire.Pdf.xml
