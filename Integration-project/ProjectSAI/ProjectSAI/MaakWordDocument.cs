@@ -52,6 +52,13 @@ namespace ProjectSAI
             part.BodyItems.Add(table);
             navigator.ReplaceBookmarkContent(part);
 
+            BookmarksNavigator navigator2 = new BookmarksNavigator(testdoc);
+            navigator.MoveToBookmark("TotaalAantalStudentenSepJan");
+
+            TextBodyPart part2 = new TextBodyPart(testdoc);
+            part.BodyItems.Add(table);
+            navigator.ReplaceBookmarkContent(part);
+
             testdoc.SaveToFile("output.docx", FileFormat.Docx2013);
             System.Diagnostics.Process.Start("output.docx");
 
