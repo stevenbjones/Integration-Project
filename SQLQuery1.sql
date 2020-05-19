@@ -138,13 +138,20 @@ order by  YEAR([Module begindatum]) ASC, MONTH([Module begindatum]) ASC
 
 
 
-select  [school leren kennen], count([School leren kennen]) as aantal, MONTH([Module begindatum]) as maand, YEAR([Module begindatum])
+select coalesce(nullif([School leren kennen],''), 'onbekend') as [school leren kennen], count([School leren kennen]) as aantal, MONTH([Module begindatum]) as maand, YEAR([Module begindatum])
 from tblStudentGegevens
-
+where [Klas vorig schooljaar] not LIKE Klas + '*'
+and Module = 'Module Initiatie verpleegkunde (20 weken)'
 group by [School leren kennen], MONTH([Module begindatum]), YEAR([Module begindatum])
+order by  YEAR([Module begindatum]) ASC, MONTH([Module begindatum]) ASC
 
+
+
+select coalesce(nullif([School leren kennen],''), 'onbekend') as [school leren kennen], count([School leren kennen]) as aantal, MONTH([Module begindatum]) as maand, YEAR([Module begindatum])
+from tblStudentGegevens
+where Module = 'Module Initiatie verpleegkunde (20 weken)'
+group by [School leren kennen], MONTH([Module begindatum]), YEAR([Module begindatum])
 order by  YEAR([Module begindatum]) ASC, MONTH([Module begindatum]) ASC
 
 /**********************************************************************************/
-
 voorbije 5 jaar
