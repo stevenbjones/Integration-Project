@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 using Word = Microsoft.Office.Interop.Word;
 
 
@@ -12,7 +13,7 @@ namespace ProjectSAI
             List<Leerling> leerlingen = ConnectDatabase.GetAllLeerlingenFromDatabase();
             Word.Application WordApp = new Word.Application();
 
-            object fileName = @"D:\Template2.docx";
+            object fileName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Template2.docx";
 
             object confirmConversions = Type.Missing;
 
@@ -43,6 +44,7 @@ namespace ProjectSAI
             object notEncoding = Type.Missing;
 
             object xmlTransform = Type.Missing;
+            object missing = System.Reflection.Missing.Value;
 
             Microsoft.Office.Interop.Word.Document doc = WordApp.Documents.Open(ref fileName, ref confirmConversions, ref readOnly, ref addToRecentFiles,
 
@@ -66,7 +68,16 @@ namespace ProjectSAI
             doc.Tables[1].Cell(2, 4).Range.Text = "Awesome";
 
             
-            ReplaceBookmarkText(doc, "test2", doc.Tables[1]);
+            ReplaceBookmarkText(doc, "Dropouts", doc.Tables[1]);
+            Microsoft.Office.Interop.Word.Document document = WordApp.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+            document = doc;
+            object filename = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\exportData.docx";
+            doc.SaveAs2(ref filename);
+            doc.Close(ref missing, ref missing, ref missing);
+            doc = null;
+            WordApp.Quit(ref missing, ref missing, ref missing);
+            WordApp = null;
+            MessageBox.Show("Document created successfully !");
         }
 
         private static void ReplaceBookmarkText(Microsoft.Office.Interop.Word.Document doc, string bookmarkName, Word.Table text)

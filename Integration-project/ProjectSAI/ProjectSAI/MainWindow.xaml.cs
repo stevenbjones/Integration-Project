@@ -49,7 +49,7 @@ namespace ProjectSAI
         private async void btnUploadData_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Filter = "CSV files (*.csv)|*.csv|XML files (*.xml)|*.xml";
+            dlg.Filter = "CSV files (*.csv)|*.csv";
 
             if (dlg.ShowDialog() == true)
             {

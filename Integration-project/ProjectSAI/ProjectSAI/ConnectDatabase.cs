@@ -1,4 +1,4 @@
-﻿using DocumentFormat.OpenXml.ExtendedProperties;
+﻿
 using Microsoft.Office.Interop.Word;
 using System;
 using System.Collections.Generic;
