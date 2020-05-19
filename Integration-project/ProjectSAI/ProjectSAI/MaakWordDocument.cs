@@ -40,10 +40,10 @@ namespace ProjectSAI
                 a.Aantal = Convert.ToInt32(resultaat.Rows[i]["Aantal"]);
                 a.Maand = Convert.ToInt32(resultaat.Rows[i]["maand"]);
                 a.Jaar = Convert.ToInt32(resultaat.Rows[i]["jaar"]);
-
+                
                 listAantalPerModule.Add(a);
             }
-
+           
             MessageBox.Show(listAantalPerModule.ToString());
 
             //IDictionary<int, List<string>> data = new Dictionary<int, List<string>>();
