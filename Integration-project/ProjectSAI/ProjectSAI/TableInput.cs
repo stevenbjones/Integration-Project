@@ -13,7 +13,7 @@ namespace ProjectSAI
 
         public int Year { get; set; }
 
-        public string Value { get; set; }
+        public int Value { get; set; }
 
       
     }
