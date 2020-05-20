@@ -39,6 +39,7 @@ namespace ProjectSAI
             //school leren kennen        
             AddTableInBookmark("select coalesce(nullif([School leren kennen],''), 'onbekend') as [school leren kennen], count([School leren kennen]) as value, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where Module = 'Module Initiatie verpleegkunde (20 weken)' and MONTH([Module begindatum]) < 7 group by [School leren kennen], CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE()) - 5) order by  YEAR([Module begindatum]) ASC, semester ASC", table, navigator, "SchoolLerenKennen", part);
 
+
             testdoc.SaveToFile("output.docx", FileFormat.Docx2013);
             System.Diagnostics.Process.Start("output.docx");
         }
@@ -57,7 +58,6 @@ namespace ProjectSAI
                     years.Add(result.Rows[i]["jaar"].ToString());
                 }
             }
-            table.AutoFit(AutoFitBehaviorType.AutoFitToContents);
             years.Sort();
             List<string> groups = new List<string>();
             for (int i = 0; i < result.Rows.Count; i++)
@@ -67,7 +67,6 @@ namespace ProjectSAI
                     groups.Add(result.Rows[i][0].ToString());
                 }
             }
-            table.AutoFit(AutoFitBehaviorType.AutoFitToContents);
             //groups.Sort(); sorteer modules
             table.ResetCells(groups.Count+1, years.Count + 1);
             table.Rows[0].Cells[0].AddParagraph().AppendText(bookmark);
@@ -75,13 +74,11 @@ namespace ProjectSAI
             {
                 table.Rows[0].Cells[i +1].AddParagraph().AppendText(years[i]);
             }
-            table.AutoFit(AutoFitBehaviorType.AutoFitToContents);
             for (int i = 1; i <= groups.Count; i++)
             {
                 table.Rows[i].Cells[0].AddParagraph().AppendText(groups[i-1]);
             
             }
-            table.AutoFit(AutoFitBehaviorType.AutoFitToContents);
 
             for (int i = 1; i <= groups.Count; i++)
             {
@@ -92,19 +89,6 @@ namespace ProjectSAI
                 }
             }
             table.AutoFit(AutoFitBehaviorType.AutoFitToContents);
-
-
-
-            //for (int i = 0; i < result.Rows.Count; i++)
-            //{
-
-            //    }
-            //    //table.Rows[i].Cells[0].AddParagraph().AppendText(result.Rows[i][0].ToString());
-            //    //for (int j = 0; j < result.Columns.Count; j++)
-            //    //{
-            //    //    table.Rows[i].Cells[j].AddParagraph().AppendText(result.Rows[i][j].ToString());
-            //    //}
-            //}
 
             navigator.MoveToBookmark(bookmark);
 

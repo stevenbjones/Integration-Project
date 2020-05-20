@@ -70,9 +70,10 @@ namespace ProjectSAI
                 string fileName;
                 fileName = dlg.FileName;
                 ConnectDatabase.UploadCSV(fileName, dtgStudent);
+                await Task.Run(() => this.Dispatcher.Invoke(() => ConnectDatabase.FillDataGrid(dtgStudent)));
+                MessageBox.Show("Items toegevoegd.", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            await Task.Run(() => this.Dispatcher.Invoke(() => ConnectDatabase.FillDataGrid(dtgStudent)));
-            MessageBox.Show("Items toegevoegd.", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            
         }
 
         private void btnGenerateRapport_Click(object sender, RoutedEventArgs e)
