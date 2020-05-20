@@ -28,8 +28,9 @@ order by  YEAR([Module begindatum]), semester
 select Module ,COUNT([Module attest]) as geslaagd , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar
 from tblStudentGegevens
 where [Module attest] = 'Geslaagd'
+and MONTH([Module begindatum]) < 7
 group by module , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum])
-HAVING YEAR([Module begindatum]) >= (Year(GETDATE())-5)
+HAVING YEAR([Module begindatum]) >= (Year(GETDATE())-5) 
 order by  YEAR([Module begindatum]), semester 
 
 /******************************************Gemiddelde duur aantal semesters van de opleiding / student PER MOdule per afstudeerjaar********************************************************/
