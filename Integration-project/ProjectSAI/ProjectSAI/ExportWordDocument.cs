@@ -78,7 +78,7 @@ namespace ProjectSAI
             //Vul de table met data van de datatable
 
              
-            table.ResetCells(result.Rows.Count + 1, result.Columns.Count);
+            
 
             List<string> years = new List<string>();
             for (int i = 0; i < result.Rows.Count; i++)
@@ -89,12 +89,27 @@ namespace ProjectSAI
                 }
             }
             years.Sort();
+            List<string> groups = new List<string>();
+            for (int i = 0; i < result.Rows.Count; i++)
+            {
+                if (!groups.Contains(result.Rows[i][0].ToString()))
+                {
+                    groups.Add(result.Rows[i][0].ToString());
+                }
+            }
+            //groups.Sort(); sorteer modules
+            table.ResetCells(years.Count+1, groups.Count+1);
             table.Rows[0].Cells[0].AddParagraph().AppendText(bookmark);
             for (int i = 0; i < years.Count; i++)
             {
-                table.Rows[0].Cells[i+1].AddParagraph().AppendText(years[i]);
+                table.Rows[0].Cells[i +1].AddParagraph().AppendText(years[i]);
+            }
+            for (int i = 1; i <= groups.Count; i++)
+            {
+                table.Rows[i].Cells[0].AddParagraph().AppendText(groups[i-1]);
             }
 
+            //WAT EEN DORST
             //for (int i = 0; i < result.Rows.Count; i++)
             //{
 
