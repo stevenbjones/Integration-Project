@@ -98,7 +98,7 @@ namespace ProjectSAI
                 }
             }
             //groups.Sort(); sorteer modules
-            table.ResetCells(years.Count+1, groups.Count+1);
+            table.ResetCells(groups.Count+1, years.Count + 1);
             table.Rows[0].Cells[0].AddParagraph().AppendText(bookmark);
             for (int i = 0; i < years.Count; i++)
             {
@@ -107,9 +107,18 @@ namespace ProjectSAI
             for (int i = 1; i <= groups.Count; i++)
             {
                 table.Rows[i].Cells[0].AddParagraph().AppendText(groups[i-1]);
+            
             }
-
-            //WAT EEN DORST
+            for (int i = 1; i <= groups.Count; i++)
+            {
+                List<TableInput> tableInputByGroup = GetTableInputsByGroup(result, groups[i - 1]);
+                for (int j = 1; j < tableInputByGroup.Count; j++)
+                {
+                    table.Rows[i].Cells[j].AddParagraph().AppendText(tableInputByGroup[j].Value);
+                }
+            }
+           
+     
             //for (int i = 0; i < result.Rows.Count; i++)
             //{
 
@@ -131,6 +140,23 @@ namespace ProjectSAI
 
         }
 
-      
+        public static List<TableInput> GetTableInputsByGroup(DataTable datatable, string group)
+        {
+            List<TableInput> result = new List<TableInput>();
+
+            for (int i = 0; i < datatable.Rows.Count; i++)
+            {
+                if (datatable.Rows[i][0].ToString() == group)
+                {
+                    result.Add(new TableInput()
+                    {
+                        Group = group,
+                        Year = Convert.ToInt32(datatable.Rows[i]["jaar"].ToString()),
+                        Value = datatable.Rows[i]["value"].ToString()
+                    });
+                }
+            }
+            return result;
+        }
     }
 }
