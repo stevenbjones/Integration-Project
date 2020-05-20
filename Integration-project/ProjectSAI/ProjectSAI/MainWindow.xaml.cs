@@ -85,10 +85,7 @@ namespace ProjectSAI
                 else
                 {
                     chkEnableDatagrid.IsChecked = true;
-
                 }
-
-
             }
         }
     }
