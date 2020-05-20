@@ -49,30 +49,25 @@ namespace ProjectSAI
             //IDictionary<int, List<string>> data = new Dictionary<int, List<string>>();
 
             TabelAantalLlnPerModule test = new TabelAantalLlnPerModule();
-          
 
-
-          
-
-
-
-            DataTable dt = new DataTable();
-            dt.Columns.Add("id", typeof(string));
-            dt.Columns.Add("name", typeof(string));
-            dt.Rows.Add(new string[] { "Stamnummer", "Nationaliteit " });
-            foreach (Leerling l in leerlingen)
+            DataTable dt2 = new DataTable();
+            dt2.Columns.Add("Module", typeof(string));
+            dt2.Columns.Add("Aantal", typeof(string));
+            dt2.Columns.Add("Maand", typeof(string));
+            dt2.Columns.Add("Jaar", typeof(string));
+            dt2.Rows.Add(new string[] { "Module", "Aantal ", "Maand" , "Jaar" });
+            foreach (TabelAantalLlnPerModule l in listAantalPerModule)
             {
-                dt.Rows.Add(new string[] { l.Stamnummer, l.Nationaliteit });
+                dt2.Rows.Add(new string[] { l.NaamModule, l.Aantal.ToString(), l.Maand.ToString(), l.Jaar.ToString() });
             }
 
+            table.ResetCells(dt2.Rows.Count, dt2.Columns.Count);
 
-            table.ResetCells(dt.Rows.Count, dt.Columns.Count);
-
-            for (int i = 0; i < dt.Rows.Count; i++)
+            for (int i = 0; i < dt2.Rows.Count; i++)
             {
-                for (int j = 0; j < dt.Columns.Count; j++)
+                for (int j = 0; j < dt2.Columns.Count; j++)
                 {
-                    table.Rows[i].Cells[j].AddParagraph().AppendText(dt.Rows[i][j].ToString());
+                    table.Rows[i].Cells[j].AddParagraph().AppendText(dt2.Rows[i][j].ToString());
                 }
             }
 
@@ -83,12 +78,7 @@ namespace ProjectSAI
             part.BodyItems.Add(table);
             navigator.ReplaceBookmarkContent(part);
 
-            BookmarksNavigator navigator2 = new BookmarksNavigator(testdoc);
-            navigator.MoveToBookmark("TotaalAantalStudentenSepJan");
 
-            TextBodyPart part2 = new TextBodyPart(testdoc);
-            part.BodyItems.Add(table);
-            navigator.ReplaceBookmarkContent(part);
 
             testdoc.SaveToFile("output.docx", FileFormat.Docx2013);
             System.Diagnostics.Process.Start("output.docx");
