@@ -20,9 +20,8 @@ namespace ProjectSAI
         public static void Create()
         {
             //Laad de template in
-            Document testdoc = new Document();
-            testdoc.LoadFromFile(@"D:\test\Template2.docx");
-
+            Document testdoc = new Document();          
+            testdoc.LoadFromFile(AppDomain.CurrentDomain.BaseDirectory + "\\Template.docx");
             //Maak table
             Table table = new Table(testdoc, true);
 
