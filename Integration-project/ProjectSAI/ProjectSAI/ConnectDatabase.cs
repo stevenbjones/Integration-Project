@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -97,12 +98,22 @@ namespace ProjectSAI
             SqlCommand cmdClearTable = new SqlCommand("Delete from dbo.tblStudentGegevens", connection);
             SqlCommand cmdInsertTable;
 
+            for (int i = 0; i < datagrid.Items.Count; i++)
+            {
+                Leerling leerling = (Leerling)datagrid.Items[i];
+                if (leerling.Geboortedatum.Year < 1800 || leerling.Geboortedatum.Year > 9999 || leerling.ModuleBegindatum.Year < 1800 || leerling.ModuleBegindatum.Year > 9999 || leerling.ModuleEinddatum.Year < 1800 || leerling.ModuleEinddatum.Year > 9999 || leerling.EinddatumInschrijving.Year < 1800 || leerling.EinddatumInschrijving.Year > 9999)
+                {
+                    MessageBox.Show("Opgelet! Controleer op het volgende: de datum mag niet minder dan het jaar 1800 zijn en meer dan het jaar 9999. Controleer dat u overal een goede datum heeft ingevuld. ", "Opgepast!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+            }
+
             try
             {
                 connection.Open();
                 cmdClearTable.ExecuteNonQuery();
 
-                for (int i = 0; i < datagrid.Items.Count-1; i++)
+                for (int i = 0; i < datagrid.Items.Count; i++)
                 {
                     Leerling leerling = (Leerling)datagrid.Items[i];
 
@@ -144,14 +155,19 @@ namespace ProjectSAI
 
                     cmdInsertTable.ExecuteNonQuery();
                 }
-                MessageBox.Show("Data succesvol verandert", "Gelukt", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Data succesvol veranderd", "Gelukt", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (SqlTypeException ex)
+
+            {
+                MessageBox.Show("Fout bij het toevoegen van een student: de datum mag niet minder dan het jaar 1800 zijn en meer dan het jaar 9999. Controleer dat u overal een goede datum heeft ingevuld. ", "Fout!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (System.Exception ex)
-            
+
             {
-                MessageBox.Show("Er is een onverwachte fout opgetreden bij het updaten van de databank: " + ex.ToString(), "Fout!", MessageBoxButton.OK, MessageBoxImage.Error);             
+                MessageBox.Show("Er is een onverwachte fout opgetreden bij het updaten van de databank: " + ex.ToString(), "Fout!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-       
+
         }
 
         public static List<Leerling> GetAllLeerlingenFromDatabase()
@@ -173,7 +189,7 @@ namespace ProjectSAI
                 leerling.Nationaliteit = dataTable.Rows[i]["Nationaliteit"].ToString();
                 leerling.Geslacht = dataTable.Rows[i]["Geslacht"].ToString();
 
-                leerling.Geboortedatum = Convert.ToDateTime(dataTable.Rows[i]["Geboortedatum"]);               
+                leerling.Geboortedatum = Convert.ToDateTime(dataTable.Rows[i]["Geboortedatum"]);
                 leerling.Stamnummer = dataTable.Rows[i]["Stamnummer"].ToString();
                 leerling.Thuistaal = dataTable.Rows[i]["Thuistaal"].ToString();
                 leerling.ProevenVerpleegkunde = dataTable.Rows[i]["Proeven_verpleegkunde"].ToString();
@@ -188,8 +204,8 @@ namespace ProjectSAI
                 leerling.Module = dataTable.Rows[i]["Module"].ToString();
                 leerling.ModuleAttest = dataTable.Rows[i]["Module attest"].ToString();
 
-                leerling.ModuleBegindatum  = Convert.ToDateTime(dataTable.Rows[i]["Module begindatum"]);
-                leerling.ModuleEinddatum  = Convert.ToDateTime(dataTable.Rows[i]["Module einddatum"]);
+                leerling.ModuleBegindatum = Convert.ToDateTime(dataTable.Rows[i]["Module begindatum"]);
+                leerling.ModuleEinddatum = Convert.ToDateTime(dataTable.Rows[i]["Module einddatum"]);
                 leerling.EinddatumInschrijving = Convert.ToDateTime(dataTable.Rows[i]["Einddatum inschrijving"]);
                 leerling.AfdelingsCode = dataTable.Rows[i]["Afdelingscode"].ToString();
                 leerling.Klas = dataTable.Rows[i]["Klas"].ToString();
@@ -259,7 +275,7 @@ namespace ProjectSAI
                         DateTime einddatumInschrijving = new DateTime();
 
 
-                        
+
                         if (listStrLineElements[0] == "")
                         {
                             listStrLineElements[0] = DateTime.MaxValue.ToString();
@@ -276,7 +292,7 @@ namespace ProjectSAI
                         }
                         else
                         {
-                             moduleBeginDatum = DateTime.ParseExact(listStrLineElements[16], "dd/MM/yyyy", cultureinfo);
+                            moduleBeginDatum = DateTime.ParseExact(listStrLineElements[16], "dd/MM/yyyy", cultureinfo);
                             listStrLineElements[16] = moduleBeginDatum.ToString();
                         }
 
@@ -339,15 +355,15 @@ namespace ProjectSAI
                         "'" + listStrLineElements[28] + "')";
                         SqlCommand command = new SqlCommand(insertQuery, connection);
 
-                        command.Parameters.AddWithValue("@geboortedatum", geboortedatum );
+                        command.Parameters.AddWithValue("@geboortedatum", geboortedatum);
                         command.Parameters.AddWithValue("@modulebegindatum", moduleBeginDatum);
                         command.Parameters.AddWithValue("@moduleeinddatum", moduleEindDatum);
                         command.Parameters.AddWithValue("@einddatuminschrijving", einddatumInschrijving);
-                       
+
 
                         try
                         {
-                           
+
                             command.ExecuteNonQuery();
                         }
                         catch (Exception ex)
@@ -358,12 +374,12 @@ namespace ProjectSAI
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Gelieve het bestand te sluiten alvorens te uploaden.", "Fout", MessageBoxButton.OK, MessageBoxImage.Error);
                 MessageBox.Show(ex.ToString());
             }
-            
+
             FillDataGrid(dataGrid);
         }
 
@@ -372,16 +388,16 @@ namespace ProjectSAI
             connString = ConfigurationManager.AppSettings["connStringDB"];
             connection = new SqlConnection(connString); //connstring converte naar het juiste var type
             try
-            {                
+            {
                 SqlDataReader dataReader;
-                dataSet = new DataSet();               
-                List <string> output = new List<string>();
+                dataSet = new DataSet();
+                List<string> output = new List<string>();
                 //commando sql
                 SqlCommand cmd = new SqlCommand(query, connection);
 
-                
-                
-                
+
+
+
                 //sql adaptop aanmake
                 sqlDataAdapter = new SqlDataAdapter(cmd);
                 //datatable aanmaken van de databank
