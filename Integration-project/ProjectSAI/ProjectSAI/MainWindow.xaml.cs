@@ -61,7 +61,7 @@ namespace ProjectSAI
 
         private void btnGenerateRapport_Click(object sender, RoutedEventArgs e)
         {
-            MaakWordDocument.Create();
+            ExportWordDocument.Create();
         }
 
         private async void chkEnableDatagrid_Click(object sender, RoutedEventArgs e)

@@ -106,7 +106,7 @@
     </Compile>
     <Compile Include="ConnectDatabase.cs" />
     <Compile Include="Leerling.cs" />
-    <Compile Include="MaakWordDocument.cs" />
+    <Compile Include="ExportWordDocument.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
