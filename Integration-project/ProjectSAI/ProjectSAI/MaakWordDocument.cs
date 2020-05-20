@@ -16,6 +16,7 @@ namespace ProjectSAI
 {
     public static class MaakWordDocument
     {
+        
 
         public static void Create()
         {
@@ -25,8 +26,7 @@ namespace ProjectSAI
             //Maak table
             Table table = new Table(testdoc, true);
 
-            //sql string
-            string sql = "select Module, count(Geslacht) as Aantal , MONTH([Module begindatum]) as maand, YEAR([Module begindatum]) as jaar from tblStudentGegevens group by module, MONTH([Module begindatum]) , YEAR([Module begindatum])";
+      
 
             
             
@@ -36,20 +36,42 @@ namespace ProjectSAI
             
 
             TextBodyPart part = new TextBodyPart(testdoc);
-            part.BodyItems.Add(table);
-            navigator.ReplaceBookmarkContent(part);
 
-            MaakTabelInBookmark(testdoc, sql, table, navigator, "test",part);
-          
+
+            /*Aantal studenten /module/sesmter is momenteel dezelfde query, hier wachten op input van jens */
+            //Aantal studenten / module / semester2
+            MaakTabelInBookmark("select Module, count(Geslacht), CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens group by module , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) order by  YEAR([Module begindatum]), semester", table, navigator, "TotaalAantalStudentenFebJun", part);
+
+            //Aantal studenten / module /semster1
+            MaakTabelInBookmark("select Module, count(Geslacht), CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens group by module , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) order by  YEAR([Module begindatum]), semester", table, navigator, "TotaalAantalStudentenSepJan", part);
+
+
+            //Geslaagde mensen / module
+            MaakTabelInBookmark("select Module, COUNT([Module attest]) as geslaagd , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where[Module attest] = 'Geslaagd' group by module , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) order by  YEAR([Module begindatum]), semester", table, navigator, "Slaagpercentage", part);
+
+
+            //Aantal afgestudeerden /semester           
+            MaakTabelInBookmark("select COUNT(Stamnummer) as [aantal afgestudeerden], CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where Module = 'Module Toegepaste verpleegkunde (40 weken)' and[Module attest] = 'Geslaagd' group by  CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum])", table, navigator, "AantalAfgestudeerdeStudenten", part);
+
+            //RedenStoppen          
+            MaakTabelInBookmark("select[Reden stoppen] ,count([Reden stoppen]) as aantal,CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester , YEAR([Module begindatum]) from tblStudentGegevens where [Reden stoppen] != '' group by [Reden stoppen],CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) order by  YEAR([Module begindatum]) ASC, semester ASC ", table, navigator, "RedenStoppen", part);
+
+
+            //school leren kennen        
+            MaakTabelInBookmark("select coalesce(nullif([School leren kennen],''), 'onbekend') as [school leren kennen], count([School leren kennen]) as aantal, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) from tblStudentGegevens where Module = 'Module Initiatie verpleegkunde (20 weken)' group by [School leren kennen], CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE()) - 5) order by  YEAR([Module begindatum]) ASC, semester ASC", table, navigator, "SchoolLerenKennen", part);
+
+
+            
+
             testdoc.SaveToFile("output.docx", FileFormat.Docx2013);
             System.Diagnostics.Process.Start("output.docx");
 
+
+
         }
 
-        public static void MaakTabelInBookmark(Document document,string sql, Table table, BookmarksNavigator navigator, string bookmark, TextBodyPart txtbodyPart)
-        {            
-
-
+        public static void MaakTabelInBookmark(string sql, Table table, BookmarksNavigator navigator, string bookmark, TextBodyPart txtbodyPart)
+        {       
             //Voer sql query uit en steek deze in datatable
             DataTable resultaat = ConnectDatabase.getTable(sql);
 
@@ -65,6 +87,9 @@ namespace ProjectSAI
             }
 
             navigator.MoveToBookmark(bookmark);
+
+            txtbodyPart.BodyItems.Add(table);
+            navigator.ReplaceBookmarkContent(txtbodyPart);
 
         }
     }
