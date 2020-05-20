@@ -42,25 +42,22 @@ namespace ProjectSAI
 
             /*Aantal studenten /module/sesmter is momenteel dezelfde query, hier wachten op input van jens */
             //Aantal studenten / module / semester2
-            AddTableInBookmark("select Module, count(Geslacht) as value, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens group by module , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) order by  YEAR([Module begindatum]), semester", table, navigator, "TotaalAantalStudentenFebJun", part);
-
+            AddTableInBookmark("select Module, count(Geslacht) as value, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where MONTH([Module begindatum]) > 7  group by module , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE())-5) order by  YEAR([Module begindatum]), semester", table, navigator, "TotaalAantalStudentenFebJun", part);     
             //Aantal studenten / module /semster1
-            AddTableInBookmark("select Module, count(Geslacht) as value, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens group by module , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) order by  YEAR([Module begindatum]), semester", table, navigator, "TotaalAantalStudentenSepJan", part);
-
-
+            AddTableInBookmark("select Module, count(Geslacht) as value, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where MONTH([Module begindatum]) < 7  group by module ,group by module , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE())-5) order by  YEAR([Module begindatum]), semester", table, navigator, "TotaalAantalStudentenSepJan", part);
             //Geslaagde mensen / module
-            AddTableInBookmark("select Module, COUNT([Module attest]) as value , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where[Module attest] = 'Geslaagd' group by module , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) order by  YEAR([Module begindatum]), semester", table, navigator, "Slaagpercentage", part);
+            AddTableInBookmark("select Module, COUNT([Module attest]) as value , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where[Module attest] = 'Geslaagd' and MONTH([Module begindatum]) < 7 group by module , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) order by  YEAR([Module begindatum]), semester", table, navigator, "Slaagpercentage", part);
 
 
             //Aantal afgestudeerden /semester           
-            AddTableInBookmark("select COUNT(Stamnummer) as value, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where Module = 'Module Toegepaste verpleegkunde (40 weken)' and[Module attest] = 'Geslaagd' group by  CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum])", table, navigator, "AantalAfgestudeerdeStudenten", part);
+            AddTableInBookmark("select COUNT(Stamnummer) as value, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where Module = 'Module Toegepaste verpleegkunde (40 weken)' and[Module attest] = 'Geslaagd' and MONTH([Module begindatum]) < 7 group by  CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum])", table, navigator, "AantalAfgestudeerdeStudenten", part);
 
             //RedenStoppen          
-            AddTableInBookmark("select[Reden stoppen] ,count([Reden stoppen]) as value,CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester , YEAR([Module begindatum]) as jaar from tblStudentGegevens where [Reden stoppen] != '' group by [Reden stoppen],CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) order by  YEAR([Module begindatum]) ASC, semester ASC ", table, navigator, "RedenStoppen", part);
+            AddTableInBookmark("select[Reden stoppen] ,count([Reden stoppen]) as value,CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester , YEAR([Module begindatum]) as jaar from tblStudentGegevens where [Reden stoppen] != '' and MONTH([Module begindatum]) < 7 group by [Reden stoppen],CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) order by  YEAR([Module begindatum]) ASC, semester ASC ", table, navigator, "RedenStoppen", part);
 
 
             //school leren kennen        
-            AddTableInBookmark("select coalesce(nullif([School leren kennen],''), 'onbekend') as [school leren kennen], count([School leren kennen]) as value, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where Module = 'Module Initiatie verpleegkunde (20 weken)' group by [School leren kennen], CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE()) - 5) order by  YEAR([Module begindatum]) ASC, semester ASC", table, navigator, "SchoolLerenKennen", part);
+            AddTableInBookmark("select coalesce(nullif([School leren kennen],''), 'onbekend') as [school leren kennen], count([School leren kennen]) as value, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where Module = 'Module Initiatie verpleegkunde (20 weken)' and MONTH([Module begindatum]) < 7 group by [School leren kennen], CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE()) - 5) order by  YEAR([Module begindatum]) ASC, semester ASC", table, navigator, "SchoolLerenKennen", part);
 
 
 
@@ -116,9 +113,9 @@ namespace ProjectSAI
             for (int i = 1; i <= groups.Count; i++)
             {
                 List<TableInput> tableInputByGroup = GetTableInputsByGroup(result, groups[i - 1]);
-                for (int j = 1; j < tableInputByGroup.Count; j++)
+                for (int j = 1; j <= tableInputByGroup.Count; j++)
                 {
-                    table.Rows[i].Cells[j].AddParagraph().AppendText(tableInputByGroup[j].Value.ToString());
+                    table.Rows[i].Cells[j].AddParagraph().AppendText(tableInputByGroup[j-1].Value.ToString());
                 }
             }
            
