@@ -15,28 +15,18 @@ using System.Linq;
 namespace ProjectSAI
 {
     public static class MaakWordDocument
-    {
-        
-
+    {   
         public static void Create()
         {
             //Laad de template in
             Document testdoc = new Document();          
             testdoc.LoadFromFile(AppDomain.CurrentDomain.BaseDirectory + "\\Template.docx");
             //Maak table
-            Table table = new Table(testdoc, true);
+            Table table = new Table(testdoc, true);        
 
-      
-
-            
-            
-         
-
-            BookmarksNavigator navigator = new BookmarksNavigator(testdoc);
-            
+            BookmarksNavigator navigator = new BookmarksNavigator(testdoc);            
 
             TextBodyPart part = new TextBodyPart(testdoc);
-
 
             /*Aantal studenten /module/sesmter is momenteel dezelfde query, hier wachten op input van jens */
             //Aantal studenten / module / semester2
@@ -56,18 +46,12 @@ namespace ProjectSAI
             //RedenStoppen          
             MaakTabelInBookmark("select[Reden stoppen] ,count([Reden stoppen]) as aantal,CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester , YEAR([Module begindatum]) from tblStudentGegevens where [Reden stoppen] != '' group by [Reden stoppen],CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) order by  YEAR([Module begindatum]) ASC, semester ASC ", table, navigator, "RedenStoppen", part);
 
-
             //school leren kennen        
             MaakTabelInBookmark("select coalesce(nullif([School leren kennen],''), 'onbekend') as [school leren kennen], count([School leren kennen]) as aantal, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) from tblStudentGegevens where Module = 'Module Initiatie verpleegkunde (20 weken)' group by [School leren kennen], CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE()) - 5) order by  YEAR([Module begindatum]) ASC, semester ASC", table, navigator, "SchoolLerenKennen", part);
-
-
-            
-
+                                    
+            //Sla document op
             testdoc.SaveToFile("output.docx", FileFormat.Docx2013);
             System.Diagnostics.Process.Start("output.docx");
-
-
-
         }
 
         public static void MaakTabelInBookmark(string sql, Table table, BookmarksNavigator navigator, string bookmark, TextBodyPart txtbodyPart)
