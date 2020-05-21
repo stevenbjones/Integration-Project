@@ -17,10 +17,9 @@ namespace ProjectSAI
             Document testdoc = new Document();          
             testdoc.LoadFromFile(AppDomain.CurrentDomain.BaseDirectory + "\\Template.docx");
             //Maak table
-            //Section section = testdoc.Sections[0];
-
-            //Spire.Doc.Table table = section.Tables[0] as Spire.Doc.Table;
-            Table table = new Table(testdoc);
+            Section section = testdoc.Sections[0];
+            Table table = section.Tables[0] as Table;
+            //Table table = new Table(testdoc);
             table.ApplyStyle(DefaultTableStyle.MediumShading1Accent2);
             
             BookmarksNavigator navigator = new BookmarksNavigator(testdoc);
@@ -28,13 +27,13 @@ namespace ProjectSAI
             TextBodyPart part = new TextBodyPart(testdoc);
 
             /*Aantal studenten /module/sesmter */
+
+            //Aantal studenten / module /semster1
+            AddTableInBookmark("select Module, count(Geslacht) as value, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where MONTH([Module begindatum]) < 7  group by module ,group by module , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE())-5) order by  YEAR([Module begindatum]), semester", table, navigator, "TotaalAantalStudentenSem1", part);
             //Aantal studenten / module / semester2
             AddTableInBookmark("select Module, count(Geslacht) as value, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where MONTH([Module begindatum]) > 7  group by module , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE())-5) order by  YEAR([Module begindatum]), semester", table, navigator, "TotaalAantalStudentenSem2", part);  
             
-            //Aantal studenten / module /semster1
-            AddTableInBookmark("select Module, count(Geslacht) as value, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where MONTH([Module begindatum]) < 7  group by module ,group by module , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE())-5) order by  YEAR([Module begindatum]), semester", table, navigator, "TotaalAantalStudentenSem1", part);
-            
-            
+           
             //Geslaagde mensen / module per semester 
             //Semester 1
             AddTableInBookmark("select Module, COUNT([Module attest]) as value , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where[Module attest] = 'Geslaagd' and MONTH([Module begindatum]) < 7 group by module , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) order by  YEAR([Module begindatum]), semester", table, navigator, "MensenGeslaagdSem1", part);
@@ -145,7 +144,7 @@ namespace ProjectSAI
                     table.Rows[i].Cells[j].AddParagraph().AppendText(tableInputByGroup[j-1].Value.ToString());
                 }
             }
-           // table.AutoFit(AutoFitBehaviorType.AutoFitToContents);
+            table.AutoFit(AutoFitBehaviorType.AutoFitToContents);
 
             navigator.MoveToBookmark(bookmark);
 
