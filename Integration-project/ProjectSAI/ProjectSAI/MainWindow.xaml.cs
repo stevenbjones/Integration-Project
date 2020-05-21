@@ -34,6 +34,22 @@ namespace ProjectSAI
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
+            if (dtgStudent.Items == null)
+            {
+                MessageBoxResult result = MessageBox.Show("U gaat nu alle items van de databank verwijderen doordat er geen items in het datagrid staan. Bent u zeker om dit te doen?", "Opgelet", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+               if (result == MessageBoxResult.Yes)
+                {
+                    chkEditCells.IsChecked = false;
+                    btnSubmit.IsEnabled = false;
+                    dtgStudent.IsReadOnly = true;
+                    ConnectDatabase.UpdateDatabase(dtgStudent);
+                }
+                else
+                {
+                    return;
+                }
+            }
             chkEditCells.IsChecked = false;
             btnSubmit.IsEnabled = false;
             dtgStudent.IsReadOnly = true;
@@ -54,9 +70,10 @@ namespace ProjectSAI
                 string fileName;
                 fileName = dlg.FileName;
                 ConnectDatabase.UploadCSV(fileName, dtgStudent);
+                await Task.Run(() => this.Dispatcher.Invoke(() => ConnectDatabase.FillDataGrid(dtgStudent)));
+                MessageBox.Show("Items toegevoegd.", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            await Task.Run(() => this.Dispatcher.Invoke(() => ConnectDatabase.FillDataGrid(dtgStudent)));
-            MessageBox.Show("Items toegevoegd.", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            
         }
 
         private void btnGenerateRapport_Click(object sender, RoutedEventArgs e)

@@ -128,3 +128,10 @@ J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integra
 J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration5\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csproj.CopyComplete
 J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration5\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.exe
 J:\Gebruikers\Jens Van de Steen\OneDrive - ODISEE\C#\Integration-project\Integration5\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.pdb
+C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Spire.Doc.dll
+C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Spire.License.dll
+C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Spire.Pdf.dll
+C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Microsoft.mshtml.dll
+C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Spire.Doc.xml
+C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Spire.License.xml
+C:\Users\jarno\Documents\GitHub\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\bin\Debug\Spire.Pdf.xml
