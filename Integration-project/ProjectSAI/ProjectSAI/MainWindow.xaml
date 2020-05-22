@@ -81,18 +81,9 @@
         <Button Name="btnSubmit" IsEnabled="false" Content="Submit veranderingen" HorizontalAlignment="Left" Margin="1053,826,0,0" VerticalAlignment="Top" Width="131" Height="33" Click="btnSubmit_Click"/>
 
         <Button Name="btnUploadData" Content="Data Uploaden" HorizontalAlignment="Left" Margin="10,803,0,0" VerticalAlignment="Top" Width="167" Height="58" FontSize="16" Click="btnUploadData_Click"/>
-        <Button Name="btnGenerateRapport" Content="Rapport Genereren" HorizontalAlignment="Left" Margin="410,803,0,0" VerticalAlignment="Top" Width="166" Height="58" FontSize="16" Click="btnGenerateRapport_Click"/>
-        <!-- dropdown met keuzes logo, kan eventueel nog via een Enum + databinding voor content. Globale var voor bijhouden logo bij generatie op word document? -->
-        <ComboBox Name="cmboPartnerLogo" HorizontalAlignment="Left" Margin="205,832,0,0" VerticalAlignment="Top" Width="185" SelectionChanged="cmboPartnerLogo_SelectionChanged"  FontSize="16">
-            <ComboBoxItem IsSelected="True" Content = "Geen" FontSize="16"/>
-            <ComboBoxItem Content = "Sint Augustinusinstituut Aalst" FontSize="16"/>
-            <ComboBoxItem Content = "Benedictuspoort – Gent" FontSize="16"/>
-            <ComboBoxItem Content = "Sint Carolus – Sint Niklaas" FontSize="16"/>
-            <ComboBoxItem Content = "Sint Guido – Anderlecht" FontSize="16"/>
-
-        </ComboBox>
-        <Label Content="Logo Rapport" HorizontalAlignment="Left" Margin="201,803,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <CheckBox x:Name="chkEnableDatagrid" Content="Data tonen" HorizontalAlignment="Left" Margin="601,843,0,0" VerticalAlignment="Top" Click="chkEnableDatagrid_Click"  Height="18" Width="98" />
+        <Button Name="btnGenerateRapport" Content="Rapport Genereren" HorizontalAlignment="Left" Margin="182,806,0,0" VerticalAlignment="Top" Width="166" Height="58" FontSize="16" Click="btnGenerateRapport_Click"/>
+       
+          <CheckBox x:Name="chkEnableDatagrid" Content="Data tonen" HorizontalAlignment="Left" Margin="601,843,0,0" VerticalAlignment="Top" Click="chkEnableDatagrid_Click"  Height="18" Width="98" />
         <Label Name="lblOutput" Content="" HorizontalAlignment="Left" Margin="699,807,0,0" VerticalAlignment="Top" Height="52" Width="338"/>
     </Grid>
 </Window>
