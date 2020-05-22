@@ -9,7 +9,7 @@ HAVING YEAR([Module begindatum]) >= (Year(GETDATE())-5)
 order by YEAR([Module begindatum]),semester 
 
 create or alter view TotaalAantalVrouwenPerSemester as
-select Count(Stamnummer) as 'value' , Geslacht, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar
+select Count(Stamnummer) as 'value' ,  CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar
 from tblStudentGegevens
 where Geslacht = 'V' 
 group  by CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum])
@@ -26,10 +26,15 @@ order by YEAR([Module begindatum]),semester
 
 
 
-select TotaalAantalMannenPerSemester.Geslacht as 'Group' , ROUND(CAST(TotaalAantalMannenPerSemester.value as float) / CAST(TotaalAantalStudentenPerSemester.value as float )*100,2) as value , TotaalAantalStudentenPerSemester.semester, TotaalAantalStudentenPerSemester.jaar
+/**MAN**/
+select  CAST(ROUND(CAST(TotaalAantalMannenPerSemester.value as float) / CAST(TotaalAantalStudentenPerSemester.value as float )*100,2) AS nvarchar(50)) + '%' as value , TotaalAantalStudentenPerSemester.semester, TotaalAantalStudentenPerSemester.jaar
 from TotaalAantalStudentenPerSemester join TotaalAantalMannenPerSemester on (TotaalAantalMannenPerSemester.jaar = TotaalAantalStudentenPerSemester.jaar and TotaalAantalMannenPerSemester.semester = TotaalAantalStudentenPerSemester.semester) 
 where TotaalAantalStudentenPerSemester.jaar >= (Year(GETDATE())-5)
 
+/**Vrouw**/
+select CAST(ROUND(CAST(TotaalAantalVrouwenPerSemester.value as float) / CAST(TotaalAantalStudentenPerSemester.value as float )*100,2) AS nvarchar(50)) + '%' as value , TotaalAantalStudentenPerSemester.semester, TotaalAantalStudentenPerSemester.jaar
+from TotaalAantalStudentenPerSemester join TotaalAantalVrouwenPerSemester on (TotaalAantalVrouwenPerSemester.jaar = TotaalAantalStudentenPerSemester.jaar and TotaalAantalVrouwenPerSemester.semester = TotaalAantalStudentenPerSemester.semester) 
+where TotaalAantalStudentenPerSemester.jaar >= (Year(GETDATE())-5)
 
 
 select COUNT(Geslacht) as 'Aantal Man' ,CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum])

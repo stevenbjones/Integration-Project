@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -237,7 +238,7 @@ namespace ProjectSAI
                     string connString = ConfigurationManager.AppSettings["connStringMaster"];
                     SqlConnection connection = new SqlConnection(connString);
 
-                    string headerLine = sr.ReadLine(); //Leest 1e lijn csv
+                    string headerLine = sr.ReadLine(); //Leest 1e lijn csv               
 
                     //leest de rest.
                     var lines = File.ReadAllLines(filePath, System.Text.Encoding.GetEncoding("iso-8859-1"));
@@ -376,11 +377,9 @@ namespace ProjectSAI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Gelieve het bestand te sluiten alvorens te uploaden.", "Fout", MessageBoxButton.OK, MessageBoxImage.Error);
-                MessageBox.Show(ex.ToString());
-            }
-
-            FillDataGrid(dataGrid);
+                MessageBox.Show("Er is iets onverwachts foutgegaan bij het inladen van de data. Gelieve alle data eens na te kijken: "+ ex, "Fout", MessageBoxButton.OK, MessageBoxImage.Error);
+              
+            }            
         }
 
         public static System.Data.DataTable getTable(string query)

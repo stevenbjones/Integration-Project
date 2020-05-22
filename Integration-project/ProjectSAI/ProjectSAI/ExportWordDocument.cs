@@ -97,7 +97,7 @@ namespace ProjectSAI
             {
                 if (ConnectDatabase.ExecuteQuery("create or alter view AantalModulesPerAfgestudeerdeStudent as select count(tblStudentGegevens.Module) as aantalModules, GeslaagdeStudenten.Stamnummer from tblStudentGegevens INNER JOIN GeslaagdeStudenten ON tblStudentGegevens.Stamnummer = GeslaagdeStudenten.Stamnummer group by   GeslaagdeStudenten.Stamnummer"))
                 {
-                    AddTableInBookmarkWithoutGroups("select ROUND(AVG(CAST(AantalModulesPerAfgestudeerdeStudent.aantalModules as float)),2)  as value, YEAR([Module begindatum]) as jaar from tblStudentGegevens INNER JOIN AantalModulesPerAfgestudeerdeStudent ON tblStudentGegevens.Stamnummer = AantalModulesPerAfgestudeerdeStudent.Stamnummer Group by YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE()) - 5)", table, navigator, "GemiddeldeDuurSem1", part);
+                    AddTableInBookmarkWithoutGroups("select ROUND(AVG(CAST(AantalModulesPerAfgestudeerdeStudent.aantalModules as float)),2)  as value, YEAR([Module begindatum]) as jaar from tblStudentGegevens INNER JOIN AantalModulesPerAfgestudeerdeStudent ON tblStudentGegevens.Stamnummer = AantalModulesPerAfgestudeerdeStudent.Stamnummer Group by YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE()) - 5)", table, navigator, "GemiddeldeDuur", part);
                 }
 
             }
