@@ -138,7 +138,7 @@ namespace ProjectSAI
 
             for (int i = 1; i <= groups.Count; i++)
             {
-                List<TableInput> tableInputByGroup = GetTableInputsByGroup(result, groups[i - 1]);
+                List<TableInput> tableInputByGroup = GetTableInputsByGroup(result, groups[i - 1], years);
                 for (int j = 1; j <= tableInputByGroup.Count; j++)
                 {
                     table.Rows[i].Cells[j].AddParagraph().AppendText(tableInputByGroup[j-1].Value.ToString());
@@ -153,22 +153,53 @@ namespace ProjectSAI
 
         }
 
-        public static List<TableInput> GetTableInputsByGroup(DataTable datatable, string group)
+        public static List<TableInput> GetTableInputsByGroup(DataTable datatable, string group, List<string> years)
         {
+            int yearCheck = 0;
             List<TableInput> result = new List<TableInput>();
 
             for (int i = 0; i < datatable.Rows.Count; i++)
             {
+                var temp = datatable.Rows[i][0].ToString();
+                var temp2 = datatable.Rows[i]["jaar"].ToString();
                 if (datatable.Rows[i][0].ToString() == group)
                 {
-                    result.Add(new TableInput()
+
+                    if (datatable.Rows[i]["jaar"].ToString() == years[yearCheck])
                     {
-                        Group = group,
-                        Year = Convert.ToInt32(datatable.Rows[i]["jaar"].ToString()),
-                        Value = Convert.ToInt32(datatable.Rows[i]["value"].ToString())
-                    });
+
+                        result.Add(new TableInput()
+                        {
+                            Group = group,
+                            Year = Convert.ToInt32(datatable.Rows[i]["jaar"].ToString()),
+                            Value = Convert.ToInt32(datatable.Rows[i]["value"].ToString())
+                        });
+                        yearCheck++;
+                    }
+                    else
+                    {
+                        result.Add(new TableInput()
+                        {
+                            Group = group,
+                            Year = Convert.ToInt32(years[yearCheck]),
+                            Value = 0
+                        });
+                        i--;
+                        yearCheck++;
+                    }
                 }
             }
+            if (result.Count == years.Count - 1)
+            {
+                result.Add(new TableInput()
+                {
+                    Group = group,
+                    Year = Convert.ToInt32(years[yearCheck]),
+                    Value = 0
+                });
+            }
+
+
             return result;
         }
     }
