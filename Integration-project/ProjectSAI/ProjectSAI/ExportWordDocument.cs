@@ -50,10 +50,10 @@ namespace ProjectSAI
             //Aantal afgestudeerden /semester 
             //TABEL KLOPT NIET
             //semester 1
-            AddTableInBookmark("select COUNT(Stamnummer) as value, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where Module = 'Module Toegepaste verpleegkunde (40 weken)' and[Module attest] = 'Geslaagd' and MONTH([Module begindatum]) < 7 group by  CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum])", table, navigator, "AantalAfgestudeerdeStudentenSem1", part);
+            AddTableInBookmarkWithoutGroups("select COUNT(Stamnummer) as value, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where Module = 'Module Toegepaste verpleegkunde (40 weken)' and[Module attest] = 'Geslaagd' and MONTH([Module begindatum]) < 7 group by  CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum])", table, navigator, "AantalAfgestudeerdeStudentenSem1", part);
             
             //semester 2
-            AddTableInBookmark("select COUNT(Stamnummer) as value, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where Module = 'Module Toegepaste verpleegkunde (40 weken)' and[Module attest] = 'Geslaagd' and MONTH([Module begindatum]) > 7 group by  CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum])", table, navigator, "AantalAfgestudeerdeStudentenSem2", part);
+            AddTableInBookmarkWithoutGroups("select COUNT(Stamnummer) as value, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where Module = 'Module Toegepaste verpleegkunde (40 weken)' and[Module attest] = 'Geslaagd' and MONTH([Module begindatum]) > 7 group by  CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum])", table, navigator, "AantalAfgestudeerdeStudentenSem2", part);
 
 
             //RedenStoppen  
@@ -74,13 +74,18 @@ namespace ProjectSAI
             AddTableInBookmark("select coalesce(nullif([School leren kennen],''), 'onbekend') as [school leren kennen], count([School leren kennen]) as value, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where Module = 'Module Initiatie verpleegkunde (20 weken)' and MONTH([Module begindatum]) > 7 group by [School leren kennen], CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE()) - 5) order by  YEAR([Module begindatum]) ASC, semester ASC", table, navigator, "SchoolLerenKennenSem2", part);
 
 
-            //Aantal modules dat hernomen worden per module per semester*
-            //semester 1
+            ////Aantal modules dat hernomen worden per module per semester*
+            ////semester 1
 
-           // AddTableInBookmark("select Module, count(Module) as value ,CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where [Verleende studiebewijzen 1ste zit] = '' and[Reden stoppen] = '' and[Klas vorig schooljaar] = '' and MONTH([Module begindatum]) < 7 group by Module,  CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE()) - 5) order by  YEAR([Module begindatum]) ASC, semester ASC", table, navigator, "ModuleHernemenSem1", part);
+            //// AddTableInBookmark("select Module, count(Module) as value ,CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where [Verleende studiebewijzen 1ste zit] = '' and[Reden stoppen] = '' and[Klas vorig schooljaar] = '' and MONTH([Module begindatum]) < 7 group by Module,  CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE()) - 5) order by  YEAR([Module begindatum]) ASC, semester ASC", table, navigator, "ModuleHernemenSem1", part);
 
-            //semester 2
-           // AddTableInBookmark("select Module, count(Module) as value ,CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where [Verleende studiebewijzen 1ste zit] = '' and[Reden stoppen] = '' and[Klas vorig schooljaar] = '' and MONTH([Module begindatum]) > 7 group by Module,  CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE()) - 5) order by  YEAR([Module begindatum]) ASC, semester ASC", table, navigator, "ModuleHernemenSem2", part);
+            ////semester 2
+            //if (ConnectDatabase.ExecuteQuery("create or alter view StudentenMetEenVorigeKlas as select Module as module,[Module attest] as moduleAttest, REPLACE([Klas vorig schooljaar], ' ', '') as VorigeKlas  ,Klas as Klas,[Module begindatum] as begindatum from tblStudentGegevens where[Klas vorig schooljaar]  != ''"))
+            //{
+            //    if (ConnectDatabase.ExecuteQuery())
+            //        AddTableInBookmark("select Module, count(Module) as value ,CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where [Verleende studiebewijzen 1ste zit] = '' and[Reden stoppen] = '' and[Klas vorig schooljaar] = '' and MONTH([Module begindatum]) > 7 group by Module,  CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE()) - 5) order by  YEAR([Module begindatum]) ASC, semester ASC", table, navigator, "ModuleHernemenSem2", part);
+            //}
+
 
 
            
@@ -88,8 +93,12 @@ namespace ProjectSAI
             /******************/
 
             //Gemiddelde duur aantal semesters van de opleiding / student PER MOdule per afstudeerjaar (andere functie nodig)
-            // AddTableInBookmark("select ROUND(AVG(CAST(AantalModulesPerAfgestudeerdeStudent.aantalModules as float)), 2) as value, YEAR([Module begindatum]) from tblStudentGegevens INNER JOIN AantalModulesPerAfgestudeerdeStudent ON tblStudentGegevens.Stamnummer = AantalModulesPerAfgestudeerdeStudent.Stamnummer Group by YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE()) - 5)", table, navigator, "SchoolLerenKennen", part);
+            if (ConnectDatabase.ExecuteQuery("create or alter view GeslaagdeStudenten as select Stamnummer, Module from tblStudentGegevens where Module = 'Module Toegepaste verpleegkunde (40 weken)' and[Module attest] = 'Geslaagd'"))
+            {
+                if (ConnectDatabase.ExecuteQuery("create or alter view AantalModulesPerAfgestudeerdeStudent as select count(tblStudentGegevens.Module) as aantalModules, GeslaagdeStudenten.Stamnummer from tblStudentGegevens INNER JOIN GeslaagdeStudenten ON tblStudentGegevens.Stamnummer = GeslaagdeStudenten.Stamnummer group by   GeslaagdeStudenten.Stamnummer"))
+                    AddTableInBookmarkWithoutGroups("select ROUND(AVG(CAST(AantalModulesPerAfgestudeerdeStudent.aantalModules as float)),2)  as value, YEAR([Module begindatum]) as jaar from tblStudentGegevens INNER JOIN AantalModulesPerAfgestudeerdeStudent ON tblStudentGegevens.Stamnummer = AantalModulesPerAfgestudeerdeStudent.Stamnummer Group by YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE()) - 5)", table, navigator, "GemiddeldeDuur", part);
 
+            }         
 
             testdoc.SaveToFile("output.docx", FileFormat.Docx2013);
             System.Diagnostics.Process.Start("output.docx");
@@ -110,6 +119,7 @@ namespace ProjectSAI
                 }
             }
             years.Sort();
+
             List<string> groups = new List<string>();
             for (int i = 0; i < result.Rows.Count; i++)
             {
@@ -147,7 +157,44 @@ namespace ProjectSAI
             navigator.ReplaceBookmarkContent(txtbodyPart);
 
         }
+        public static void AddTableInBookmarkWithoutGroups(string sql, Table table, BookmarksNavigator navigator, string bookmark, TextBodyPart txtbodyPart)
+        {
+            //Voer sql query uit en steek deze in datatable
+            DataTable result = ConnectDatabase.getTable(sql);
 
+            //Vul de table met data van de datatable
+            List<string> years = new List<string>();
+            for (int i = 0; i < result.Rows.Count; i++)
+            {
+                if (!years.Contains(result.Rows[i]["jaar"].ToString()))
+                {
+                    years.Add(result.Rows[i]["jaar"].ToString());
+                }
+            }
+            years.Sort();
+
+            
+          
+            table.ResetCells(2, years.Count + 1);
+            table.Rows[0].Cells[0].AddParagraph().AppendText(bookmark);
+            for (int i = 0; i < years.Count; i++)
+            {
+                table.Rows[0].Cells[i + 1].AddParagraph().AppendText(years[i]);
+            }
+           
+                 for (int i = 1; i <= years.Count; i++)
+                {
+                    table.Rows[1].Cells[i].AddParagraph().AppendText(result.Rows[i-1]["value"].ToString());
+                }
+            
+            table.AutoFit(AutoFitBehaviorType.AutoFitToContents);
+
+            navigator.MoveToBookmark(bookmark);
+
+            txtbodyPart.BodyItems.Add(table);
+            navigator.ReplaceBookmarkContent(txtbodyPart);
+
+        }
         public static List<TableInput> GetTableInputsByGroup(DataTable datatable, string group, List<string> years)
         {
             int yearCheck = 0;

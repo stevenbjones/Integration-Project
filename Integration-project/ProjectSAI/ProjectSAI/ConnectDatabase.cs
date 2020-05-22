@@ -413,5 +413,23 @@ namespace ProjectSAI
             }
         }
 
+        public static bool ExecuteQuery(string query)
+        {
+            try
+            {
+                connString = ConfigurationManager.AppSettings["connStringDB"];
+                connection = new SqlConnection(connString); //connstring converte naar het juiste var type
+                SqlCommand cmdClearTable = new SqlCommand(query, connection);
+                connection.Open();
+                cmdClearTable.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fout bij het uitvoeren van query: " + query + "Volledige foutboodschap: " + ex, "Fout", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+        }
+
     }
 }

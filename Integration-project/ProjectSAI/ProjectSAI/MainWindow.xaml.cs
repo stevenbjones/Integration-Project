@@ -1,7 +1,11 @@
 ﻿using Microsoft.Win32;
+using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Markup;
 
 namespace ProjectSAI
 {
@@ -56,9 +60,7 @@ namespace ProjectSAI
             ConnectDatabase.UpdateDatabase(dtgStudent);
         }
 
-        private void cmboPartnerLogo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-        }
+       
 
         private async void btnUploadData_Click(object sender, RoutedEventArgs e)
         {
@@ -105,5 +107,9 @@ namespace ProjectSAI
                 }
             }
         }
+
+       
     }
+   
+    
 }

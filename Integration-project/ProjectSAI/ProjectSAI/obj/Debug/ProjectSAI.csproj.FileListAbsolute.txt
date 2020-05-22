@@ -157,3 +157,4 @@ J:\OneDrive\Odisee\OneDrive - ODISEE\C#\Integration-project\Integration6\Integra
 J:\OneDrive\Odisee\OneDrive - ODISEE\C#\Integration-project\Integration6\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.Properties.Resources.resources
 J:\OneDrive\Odisee\OneDrive - ODISEE\C#\Integration-project\Integration6\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csproj.GenerateResource.cache
 J:\OneDrive\Odisee\OneDrive - ODISEE\C#\Integration-project\Integration6\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csproj.CopyComplete
+J:\OneDrive\Odisee\OneDrive - ODISEE\C#\Integration-project\Integration6\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\GeneratedInternalTypeHelper.g.cs
