@@ -21,7 +21,7 @@ namespace ProjectSAI
             Section section = testdoc.Sections[0];
             Table table = section.Tables[0] as Table;
             //Table table = new Table(testdoc);
-            table.ApplyStyle(DefaultTableStyle.MediumShading1Accent2);
+            table.ApplyStyle(DefaultTableStyle.MediumShading1Accent1);
             
             BookmarksNavigator navigator = new BookmarksNavigator(testdoc);
             
@@ -110,8 +110,10 @@ namespace ProjectSAI
                 {
                     if (ConnectDatabase.ExecuteQuery("create or alter view TotaalAantalMannenPerSemester as select Count(Stamnummer) as 'value' , Geslacht, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where Geslacht = 'M' group  by Geslacht, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE()) - 5)"))
                     {
+                        //Mannen
                         AddTableInBookmarkWithoutGroups("select CAST(ROUND(CAST(TotaalAantalMannenPerSemester.value as float) / CAST(TotaalAantalStudentenPerSemester.value as float) * 100,2) AS nvarchar(50)) +'%' as value , TotaalAantalStudentenPerSemester.semester, TotaalAantalStudentenPerSemester.jaar from TotaalAantalStudentenPerSemester join TotaalAantalMannenPerSemester on(TotaalAantalMannenPerSemester.jaar = TotaalAantalStudentenPerSemester.jaar and TotaalAantalMannenPerSemester.semester = TotaalAantalStudentenPerSemester.semester) where TotaalAantalStudentenPerSemester.jaar >= (Year(GETDATE()) - 5) ", table, navigator, "VerhoudingManVrouwSem1", part);
 
+                        //Vrouwen
                         AddTableInBookmarkWithoutGroups(" select CAST(ROUND(CAST(TotaalAantalVrouwenPerSemester.value as float) / CAST(TotaalAantalStudentenPerSemester.value as float) * 100,2) AS nvarchar(50)) +'%' as value , TotaalAantalStudentenPerSemester.semester, TotaalAantalStudentenPerSemester.jaar from TotaalAantalStudentenPerSemester join TotaalAantalVrouwenPerSemester on(TotaalAantalVrouwenPerSemester.jaar = TotaalAantalStudentenPerSemester.jaar and TotaalAantalVrouwenPerSemester.semester = TotaalAantalStudentenPerSemester.semester) where TotaalAantalStudentenPerSemester.jaar >= (Year(GETDATE()) - 5) ", table, navigator, "VerhoudingManVrouwSem2", part);
 
                     }

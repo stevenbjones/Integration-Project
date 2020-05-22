@@ -240,7 +240,7 @@ namespace ProjectSAI
                     string headerLine = sr.ReadLine(); //Leest 1e lijn csv
 
                     //leest de rest.
-                    var lines = File.ReadAllLines(filePath);
+                    var lines = File.ReadAllLines(filePath, System.Text.Encoding.GetEncoding("iso-8859-1"));
                     bool dataHasComma = false;
                     if (lines.Count() == 0) return;
 

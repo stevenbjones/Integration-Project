@@ -38,21 +38,12 @@ namespace ProjectSAI
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
-            if (dtgStudent.Items == null)
+            if (dtgStudent.Items.Count == 0)
             {
                 MessageBoxResult result = MessageBox.Show("U gaat nu alle items van de databank verwijderen doordat er geen items in het datagrid staan. Bent u zeker om dit te doen?", "Opgelet", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
-               if (result == MessageBoxResult.Yes)
-                {
-                    chkEditCells.IsChecked = false;
-                    btnSubmit.IsEnabled = false;
-                    dtgStudent.IsReadOnly = true;
-                    ConnectDatabase.UpdateDatabase(dtgStudent);
-                }
-                else
-                {
-                    return;
-                }
+                if (result == MessageBoxResult.No) return;
+                
             }
             chkEditCells.IsChecked = false;
             btnSubmit.IsEnabled = false;
