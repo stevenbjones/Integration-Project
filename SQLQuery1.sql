@@ -1,12 +1,35 @@
 
 /* 2 query's, man vrouw per semester */
 
-select COUNT(Geslacht) as 'Aantal Vrouw',CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar
-FROM dbo.tblStudentGegevens  
+create or alter view TotaalAantalStudentenPerSemester as
+select Count(Stamnummer) as 'value' , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar
+from tblStudentGegevens
+group  by CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum])
+HAVING YEAR([Module begindatum]) >= (Year(GETDATE())-5)
+order by YEAR([Module begindatum]),semester 
+
+create or alter view TotaalAantalVrouwenPerSemester as
+select Count(Stamnummer) as 'value' , Geslacht, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar
+from tblStudentGegevens
 where Geslacht = 'V' 
 group  by CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum])
 HAVING YEAR([Module begindatum]) >= (Year(GETDATE())-5)
 order by YEAR([Module begindatum]),semester 
+
+create or alter view TotaalAantalMannenPerSemester as
+select Count(Stamnummer) as 'value' , Geslacht, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar
+from tblStudentGegevens
+where Geslacht = 'M' 
+group  by Geslacht, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum])
+HAVING YEAR([Module begindatum]) >= (Year(GETDATE())-5)
+order by YEAR([Module begindatum]),semester 
+
+
+
+select TotaalAantalMannenPerSemester.Geslacht as 'Group' , ROUND(CAST(TotaalAantalMannenPerSemester.value as float) / CAST(TotaalAantalStudentenPerSemester.value as float )*100,2) as value , TotaalAantalStudentenPerSemester.semester, TotaalAantalStudentenPerSemester.jaar
+from TotaalAantalStudentenPerSemester join TotaalAantalMannenPerSemester on (TotaalAantalMannenPerSemester.jaar = TotaalAantalStudentenPerSemester.jaar and TotaalAantalMannenPerSemester.semester = TotaalAantalStudentenPerSemester.semester) 
+where TotaalAantalStudentenPerSemester.jaar >= (Year(GETDATE())-5)
+
 
 
 select COUNT(Geslacht) as 'Aantal Man' ,CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum])
@@ -15,6 +38,10 @@ where Geslacht = 'M'
 group  by CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END, YEAR([Module begindatum])
 HAVING YEAR([Module begindatum]) >= (Year(GETDATE())-5)
 order by  YEAR([Module begindatum]), semester 
+
+
+
+
 /****************************Aantal Studenten / module **********************************************/
 
 select Module ,count(Geslacht) , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar
@@ -48,8 +75,9 @@ group by   GeslaagdeStudenten.Stamnummer
 
 select ROUND(AVG(CAST(AantalModulesPerAfgestudeerdeStudent.aantalModules as float)),2), YEAR([Module begindatum])
 from tblStudentGegevens INNER JOIN AantalModulesPerAfgestudeerdeStudent ON tblStudentGegevens.Stamnummer = AantalModulesPerAfgestudeerdeStudent.Stamnummer
-HAVING YEAR([Module begindatum]) >= (Year(GETDATE())-5)
+
 Group by YEAR([Module begindatum])
+HAVING YEAR([Module begindatum]) >= (Year(GETDATE())-5)
 
 
 /**********Aantal modules dat hernomen worden per module per semester***************/
@@ -58,10 +86,6 @@ create or alter view StudentenMetEenVorigeKlas as
 select Module as module ,[Module attest] as moduleAttest, REPLACE([Klas vorig schooljaar], ' ', '') as VorigeKlas  ,Klas as Klas,[Module begindatum] as begindatum
 from tblStudentGegevens
 where [Klas vorig schooljaar]  != ''
-
-select Module,CASE WHEN MONTH([begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR(begindatum), substring(VorigeKlas, 1, len(VorigeKlas) - 1) , substring([Klas], 1, len([Klas])-1)
-from StudentenMetEenVorigeKlas
-where substring(VorigeKlas, 1, len(VorigeKlas) - 1) =  substring([Klas], 1, len([Klas])-1)
 
 select Module,count(Module),CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum])
 from tblStudentGegevens
@@ -94,7 +118,7 @@ order by  YEAR([Module begindatum]) ASC, semester ASC
 
 select coalesce(nullif([School leren kennen],''), 'onbekend') as [school leren kennen], count([School leren kennen]) as aantal, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum])
 from tblStudentGegevens
-where Module = 'Module Initiatie verpleegkunde (20 weken)'
+where Module = 'Module Initiatie verpleegkunde (20 weken)' and MONTH([Module begindatum])> 7
 group by [School leren kennen], CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum])
 HAVING YEAR([Module begindatum]) >= (Year(GETDATE())-5)
 order by  YEAR([Module begindatum]) ASC, semester ASC
@@ -103,3 +127,9 @@ order by  YEAR([Module begindatum]) ASC, semester ASC
 voorbije 5 jaar
 
 
+
+
+
+select Module, count(Geslacht) as value, CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where MONTH([Module begindatum]) > 7  group by module ,CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) HAVING YEAR([Module begindatum]) >= (Year(GETDATE())-5) order by  YEAR([Module begindatum]), semester
+
+select Module, COUNT([Module attest]) as value , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END AS semester, YEAR([Module begindatum]) as jaar from tblStudentGegevens where[Module attest] = 'Geslaagd' and MONTH([Module begindatum]) > 7 group by module , CASE WHEN MONTH([Module begindatum]) < 7 THEN 1 ELSE 2 END , YEAR([Module begindatum]) order by  YEAR([Module begindatum]), semester
