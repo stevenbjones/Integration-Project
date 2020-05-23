@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectSAI", "ProjectSAI\ProjectSAI.csproj", "{1B01A46A-A760-41A4-B945-3281CE90AD5A}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ProjectSAIInstaller", "ProjectSAIInstaller\ProjectSAIInstaller.vdproj", "{404D394C-3457-4590-B002-3C6BBF0DB643}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{1B01A46A-A760-41A4-B945-3281CE90AD5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B01A46A-A760-41A4-B945-3281CE90AD5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B01A46A-A760-41A4-B945-3281CE90AD5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{404D394C-3457-4590-B002-3C6BBF0DB643}.Debug|Any CPU.ActiveCfg = Debug
+		{404D394C-3457-4590-B002-3C6BBF0DB643}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -24,7 +24,9 @@ namespace ProjectSAI
 
         public static void CreateDatabaseIfNotExists()
         {
+            MessageBox.Show("test");
             string txtDatabase = File.ReadAllText("DatabaseSQL.txt"); //text file lezen en in var steken
+            MessageBox.Show(txtDatabase);
             if (!CheckDatabaseExists("dbStudentGegevens")) //check of dbStudentGegevens is angemaakt
             {
                 CreateDatabase(txtDatabase); //database maken dat in de textfile zit
@@ -66,10 +68,14 @@ namespace ProjectSAI
             //2 commandos, 1 voor de databank aan te maken, andere voor tabellen en eventueel data te importeren. Moet appart, anders kregen we errors
             SqlCommand cmdCreateDatabase = new SqlCommand("Create Database dbStudentGegevens", connection);
             SqlCommand cmdCreateTable = new SqlCommand(txtDatabase, connection);
+            MessageBox.Show("in method");
+            
 
             try
             {
+                MessageBox.Show(cmdCreateDatabase.ToString());
                 connection.Open();
+                MessageBox.Show("Open");
                 cmdCreateDatabase.ExecuteNonQuery();
                 cmdCreateTable.ExecuteNonQuery();
                 connection.Close();
@@ -374,7 +380,9 @@ namespace ProjectSAI
                         connection.Close();
                     }
                 }
+                MessageBox.Show("Items worden toegevoegd, klik op: OK.", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show("Er is iets onverwachts foutgegaan bij het inladen van de data. Gelieve alle data eens na te kijken: "+ ex, "Fout", MessageBoxButton.OK, MessageBoxImage.Error);
