@@ -24,8 +24,8 @@ namespace ProjectSAI
 
         public static void CreateDatabaseIfNotExists()
         {
-            MessageBox.Show("test");
-            string txtDatabase = File.ReadAllText("DatabaseSQL.txt"); //text file lezen en in var steken
+            
+            string txtDatabase = File.ReadAllText(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\DatabaseSQL.txt"); //text file lezen en in var steken
             MessageBox.Show(txtDatabase);
             if (!CheckDatabaseExists("dbStudentGegevens")) //check of dbStudentGegevens is angemaakt
             {
@@ -77,7 +77,9 @@ namespace ProjectSAI
                 connection.Open();
                 MessageBox.Show("Open");
                 cmdCreateDatabase.ExecuteNonQuery();
+                MessageBox.Show("created");
                 cmdCreateTable.ExecuteNonQuery();
+                MessageBox.Show("tables created dus feest");
                 connection.Close();
             }
             catch (System.Exception ex)
