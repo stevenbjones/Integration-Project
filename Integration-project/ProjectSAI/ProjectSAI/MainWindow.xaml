@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectSAI"
-        Icon="sai.ico"
         mc:Ignorable="d"
           Title="Rappport Generatie SAI en Partners" Height="907.5" Width="1210.5" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,4,-19">
@@ -86,5 +85,6 @@
        
           <CheckBox x:Name="chkEnableDatagrid" Content="Data tonen" HorizontalAlignment="Left" Margin="601,843,0,0" VerticalAlignment="Top" Click="chkEnableDatagrid_Click"  Height="18" Width="98" />
         <Label Name="lblOutput" Content="" HorizontalAlignment="Left" Margin="699,807,0,0" VerticalAlignment="Top" Height="52" Width="338"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="411,833,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
     </Grid>
 </Window>

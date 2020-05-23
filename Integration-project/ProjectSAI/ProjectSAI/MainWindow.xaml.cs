@@ -17,14 +17,7 @@ namespace ProjectSAI
     {
         public MainWindow()
         {
-            InitializeComponent();
-            try
-            {
-
-                ConnectDatabase.CreateDatabaseIfNotExists();
-            }
-            catch (Exception ex)
-            { MessageBox.Show(ex.ToString()); }
+            InitializeComponent();                    
         }
 
         private void chkEditCells_Click(object sender, RoutedEventArgs e)
@@ -105,7 +98,10 @@ namespace ProjectSAI
             }
         }
 
-       
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ConnectDatabase.CreateDatabaseIfNotExists();
+        }
     }
    
     

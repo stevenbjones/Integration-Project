@@ -180,3 +180,4 @@ J:\OneDrive\Odisee\OneDrive - ODISEE\C#\Integration-project\Integration7\Integra
 J:\OneDrive\Odisee\OneDrive - ODISEE\C#\Integration-project\Integration7\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csproj.CopyComplete
 J:\OneDrive\Odisee\OneDrive - ODISEE\C#\Integration-project\Integration7\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.exe
 J:\OneDrive\Odisee\OneDrive - ODISEE\C#\Integration-project\Integration7\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.pdb
+J:\OneDrive\Odisee\OneDrive - ODISEE\C#\Integration-project\Integration7\Integration-Project\Integration-project\ProjectSAI\ProjectSAI\obj\Debug\ProjectSAI.csprojAssemblyReference.cache
