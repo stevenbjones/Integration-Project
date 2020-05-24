@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_09203454A9384240A3CEF942447CDCF5"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0E84E2F74D2246DDB3264218ABFDBE37"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -34,6 +40,12 @@
         "Entry"
         {
         "MsmKey" = "8:_281E43F43FE9C44889D276DFFBD7E04B"
+        "OwnerKey" = "8:_3FC0AA749741479E8B1146C64CD874F9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_281E43F43FE9C44889D276DFFBD7E04B"
         "OwnerKey" = "8:_7D3C3D755E3147928116C73A03ADA7D8"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -41,12 +53,6 @@
         {
         "MsmKey" = "8:_281E43F43FE9C44889D276DFFBD7E04B"
         "OwnerKey" = "8:_F69A83544A91AC66BFDDE27FB782365F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_281E43F43FE9C44889D276DFFBD7E04B"
-        "OwnerKey" = "8:_3FC0AA749741479E8B1146C64CD874F9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -82,13 +88,7 @@
         "Entry"
         {
         "MsmKey" = "8:_3FC2ECA720CFA29B0790F2A471DDB7AD"
-        "OwnerKey" = "8:_7CCAAA9A24E54627B9A88C5FD96B210D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3FC2ECA720CFA29B0790F2A471DDB7AD"
-        "OwnerKey" = "8:_F69A83544A91AC66BFDDE27FB782365F"
+        "OwnerKey" = "8:_3FC0AA749741479E8B1146C64CD874F9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -100,13 +100,19 @@
         "Entry"
         {
         "MsmKey" = "8:_3FC2ECA720CFA29B0790F2A471DDB7AD"
-        "OwnerKey" = "8:_3FC0AA749741479E8B1146C64CD874F9"
+        "OwnerKey" = "8:_7D3C3D755E3147928116C73A03ADA7D8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_3FC2ECA720CFA29B0790F2A471DDB7AD"
-        "OwnerKey" = "8:_7D3C3D755E3147928116C73A03ADA7D8"
+        "OwnerKey" = "8:_7CCAAA9A24E54627B9A88C5FD96B210D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3FC2ECA720CFA29B0790F2A471DDB7AD"
+        "OwnerKey" = "8:_F69A83544A91AC66BFDDE27FB782365F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -148,13 +154,13 @@
         "Entry"
         {
         "MsmKey" = "8:_7178377BD9DA314C13B2E73A1AAD9D1A"
-        "OwnerKey" = "8:_C1A7925B46384FE5BB0B00A83EAD2343"
+        "OwnerKey" = "8:_281E43F43FE9C44889D276DFFBD7E04B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_7178377BD9DA314C13B2E73A1AAD9D1A"
-        "OwnerKey" = "8:_281E43F43FE9C44889D276DFFBD7E04B"
+        "OwnerKey" = "8:_C1A7925B46384FE5BB0B00A83EAD2343"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -232,6 +238,42 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E7C39AD4629141F7A133C2B6EE3A48CF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C1A7925B46384FE5BB0B00A83EAD2343"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_7D3C3D755E3147928116C73A03ADA7D8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_7178377BD9DA314C13B2E73A1AAD9D1A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5C4A751A952941A69941F7E18F866AA7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5ADAC0A930664C2D81EFE830CF7993BA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_40E3D2244CE245CC897B87CEB3C61254"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -244,37 +286,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5ADAC0A930664C2D81EFE830CF7993BA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C1A7925B46384FE5BB0B00A83EAD2343"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E7C39AD4629141F7A133C2B6EE3A48CF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_3FC0AA749741479E8B1146C64CD874F9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3738FA8AA143454D82951323DE4EB09A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7D3C3D755E3147928116C73A03ADA7D8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -286,19 +298,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5C4A751A952941A69941F7E18F866AA7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7178377BD9DA314C13B2E73A1AAD9D1A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_3FC2ECA720CFA29B0790F2A471DDB7AD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_3738FA8AA143454D82951323DE4EB09A"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -319,6 +325,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -335,6 +357,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -364,6 +402,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_09203454A9384240A3CEF942447CDCF5"
+            {
+            "SourcePath" = "8:..\\ProjectSAI\\bin\\Debug\\SAILogo.jpg"
+            "TargetName" = "8:SAILogo.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_E61F34AF73414C9893025485803D217D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0E84E2F74D2246DDB3264218ABFDBE37"
             {
             "SourcePath" = "8:..\\ProjectSAI\\bin\\Debug\\Spire.License.xml"
@@ -1084,7 +1142,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ProjectSAI"
         "ProductCode" = "8:{5A01AFB9-1A0E-4070-80D6-B06F2A8DC1C9}"
-        "PackageCode" = "8:{49F62158-3FA6-4A71-BE03-7151ED48FE0E}"
+        "PackageCode" = "8:{062D5100-E893-4F81-87AE-C8BD06B32089}"
         "UpgradeCode" = "8:{E4E8EA73-C2D9-4BBF-8192-3B5FD1958F62}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1251,7 +1309,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_09203454A9384240A3CEF942447CDCF5"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -1319,8 +1378,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1202"
+                            "Setting" = "3:2"
+                            "Value" = "8:Dit programma is met copyright beschermd."
                             "DefaultValue" = "8:#1202"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1332,8 +1391,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1203"
+                            "Setting" = "3:2"
+                            "Value" = "8:Deze setup zal je helpen om het project van team8 te installeren op jouw pc."
                             "DefaultValue" = "8:#1203"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1497,7 +1556,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_09203454A9384240A3CEF942447CDCF5"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "UpdateText"
@@ -1508,8 +1568,8 @@
                             "Type" = "3:15"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1258"
+                            "Setting" = "3:2"
+                            "Value" = "8:Voor dit programa te updaten, gelieve het eerst te uninstallen via add/remove programs."
                             "DefaultValue" = "8:#1258"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1541,7 +1601,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_09203454A9384240A3CEF942447CDCF5"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "ShowProgress"
