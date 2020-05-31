@@ -85,6 +85,5 @@
        
           <CheckBox x:Name="chkEnableDatagrid" Content="Data tonen" HorizontalAlignment="Left" Margin="601,843,0,0" VerticalAlignment="Top" Click="chkEnableDatagrid_Click"  Height="18" Width="98" />
         <Label Name="lblOutput" Content="" HorizontalAlignment="Left" Margin="699,807,0,0" VerticalAlignment="Top" Height="52" Width="338"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="411,833,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
     </Grid>
 </Window>

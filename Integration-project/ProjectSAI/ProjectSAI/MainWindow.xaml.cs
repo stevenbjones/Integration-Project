@@ -17,7 +17,8 @@ namespace ProjectSAI
     {
         public MainWindow()
         {
-            InitializeComponent();                    
+            InitializeComponent();
+            ConnectDatabase.CreateDatabaseIfNotExists();
         }
 
         private void chkEditCells_Click(object sender, RoutedEventArgs e)
@@ -51,7 +52,7 @@ namespace ProjectSAI
 
        
 
-        private async void btnUploadData_Click(object sender, RoutedEventArgs e)
+        private void btnUploadData_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Filter = "CSV files (*.csv)|*.csv";
@@ -61,8 +62,6 @@ namespace ProjectSAI
                 string fileName;
                 fileName = dlg.FileName;
                 ConnectDatabase.UploadCSV(fileName, dtgStudent);
-
-                await Task.Run(() => this.Dispatcher.Invoke(() => ConnectDatabase.FillDataGrid(dtgStudent)));
                
             }
             
@@ -98,10 +97,7 @@ namespace ProjectSAI
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ConnectDatabase.CreateDatabaseIfNotExists();
-        }
+     
     }
    
     
